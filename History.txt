@@ -1,0 +1,11 @@
+= To do 
+* drag & drop とソートを両立させる方法は？
+* donation 催促ウィンドウ
+* MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+= 2006.06.07
+* 2006-06-07 16:36:55.222 QuickFileType[9051] *** Illegal NSTableView data source (<MCTWindowController: 0x36c5d0>).  Must implement numberOfRowsInTableView: and tableView:objectValueForTableColumn:row:
+	というエラーがでる。
+	dataSourceとしての implementation は必要なのか？→ dataSource は使わない
+
+* 複数のファイルを開いたとき常に、MCTWindowController を使うようにした。

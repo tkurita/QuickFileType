@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {cancelAction = id; okAction = id; }; 
+            CLASS = MCTDocument; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {fileListController = id; fileTable = id; typeTableView = id; }; 
+            SUPERCLASS = NSDocument; 
+        }
+    ); 
+    IBVersion = 1; 
+}
