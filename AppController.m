@@ -8,8 +8,8 @@
 
 - (NSArray *)URLsFromPaths:(NSArray *)filenames
 {
-	NSEnumerator *enumerator = [NSArray objectEnumerator];
-	NSMutableArray *urls = [NSMutableArray arrayWithCapacity:[filenames length]];
+	NSEnumerator *enumerator = [filenames objectEnumerator];
+	NSMutableArray *urls = [NSMutableArray arrayWithCapacity:[filenames count]];
 	NSString *aFilename;
 	while (aFilename = [enumerator nextObject]) {
 		[urls addObject:[NSURL fileURLWithPath:aFilename]];
