@@ -188,26 +188,14 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 -(void) moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet *)indexSet
 										toIndex:(unsigned int)insertIndex
 {
-	
-/*	NSArray	*objects = [[typeTemplatesController arrangedObjects] objectsAtIndexes:indexSet];
-	[typeTemplatesController removeObjectsAtArrangedObjectIndexes:indexSet];
-	[typeTemplatesController insertObjects:objects atArrangedObjectIndexes:
-		[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(insertIndex,1)] ];
-*/	
-    
 	unsigned int	index = [indexSet lastIndex];
 	
     unsigned int	aboveInsertIndexCount = 0;
     id object;
     unsigned int	removeIndex;
-	//[typeTable setHighlightedTableColumn:nil];
-	//[typeTable setSortDescriptors:nil];
-	//[typeTemplatesController setSortDescriptors:nil];
-    //[typeTemplatesController rearrangeObjects];
-	NSArray	*objects = [typeTemplatesController arrangedObjects];
-	
+	NSMutableArray *objects = [[typeTemplatesController arrangedObjects] mutableCopy];
+	NSMutableArray *selectedObj = [NSMutableArray arrayWithCapacity:[indexSet count]];
 	while (NSNotFound != index) {
-		printf("index %i\n", index);
 		if (index >= insertIndex) {
 			removeIndex = index + aboveInsertIndexCount;
 			aboveInsertIndexCount += 1;
@@ -218,16 +206,15 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		}
 		
 		object = [objects objectAtIndex:removeIndex];
-		NSLog([object description]);
-		NSLog(@"before remove");
-		printf("removeIndex %d\n",removeIndex);
-		[typeTemplatesController removeObjectAtArrangedObjectIndex:removeIndex];
-		NSLog(@"after remove");
-		[typeTemplatesController insertObject:object atArrangedObjectIndex:insertIndex];
-		
+		[objects removeObjectAtIndex:removeIndex];
+		[objects insertObject:object atIndex:insertIndex];
+		[selectedObj addObject:object];
 		index = [indexSet indexLessThanIndex:index];
     }
-	//[typeTemplatesController rearrangeObjects];
+	[typeTemplatesController setSortDescriptors:nil];
+	[typeTemplatesController removeObjects:objects];
+	[typeTemplatesController addObjects:objects];
+	[typeTemplatesController setSelectedObjects:selectedObj];
 }
 
 - (void)insertTypesFromPathes:(NSArray *)pathes row:(int)row
