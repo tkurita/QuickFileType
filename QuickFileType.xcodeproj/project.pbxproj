@@ -60,8 +60,8 @@
 		2C1EDBC00A1A9CE6000C2CB3 /* MCTWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTWindowController.h; sourceTree = "<group>"; };
 		2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTWindowController.m; sourceTree = "<group>"; };
 		2C3FF9FD0A35F84400419FF3 /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
-		2C9B80B00A12DCC000A872A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = /Users/tkurita/Dev/Projects/QuickFileType_old/AppController.h; sourceTree = "<absolute>"; };
-		2C9B80B10A12DCC000A872A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = /Users/tkurita/Dev/Projects/QuickFileType_old/AppController.m; sourceTree = "<absolute>"; };
+		2C9B80B00A12DCC000A872A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		2C9B80B10A12DCC000A872A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = GetFinderSelection.applescript; sourceTree = "<group>"; };
 		2C9B816B0A135A7600A872A9 /* FactorySetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = FactorySetting.plist; sourceTree = "<group>"; };
 		2C9B82BE0A14553F00A872A9 /* OSTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTypeFormatter.h; sourceTree = "<group>"; };

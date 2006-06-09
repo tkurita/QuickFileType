@@ -94,12 +94,14 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 171475857;
-			PBXWorkspaceStateSaveDate = 171475857;
+			PBXPerProjectTemplateStateSaveDate = 171505246;
+			PBXWorkspaceStateSaveDate = 171505246;
 		};
 		perUserProjectItems = {
-			2CACFEFB0A37045900748AC9 /* PBXTextBookmark */ = 2CACFEFB0A37045900748AC9 /* PBXTextBookmark */;
-			2CCFBB720A3885710017A3D1 /* PBXTextBookmark */ = 2CCFBB720A3885710017A3D1 /* PBXTextBookmark */;
+			2CACFEFB0A37045900748AC9 = 2CACFEFB0A37045900748AC9 /* PBXTextBookmark */;
+			2CCFBB720A3885710017A3D1 = 2CCFBB720A3885710017A3D1 /* PBXTextBookmark */;
+			2CCFBB830A38F6650017A3D1 /* PBXTextBookmark */ = 2CCFBB830A38F6650017A3D1 /* PBXTextBookmark */;
+			2CCFBB8E0A38F6FB0017A3D1 /* PBXTextBookmark */ = 2CCFBB8E0A38F6FB0017A3D1 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 2C5CA5A80A12D86300AD6E75 /* Source Control */;
 		userBuildSettings = {
@@ -220,8 +222,9 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			SubversionToolPath = /sw/bin/svn;
 		};
-		scmType = "";
+		scmType = scm.subversion;
 	};
 	2C5CA5A90A12D86300AD6E75 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
@@ -362,6 +365,26 @@
 		state = 1;
 	};
 	2CCFBB720A3885710017A3D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
+		name = "History.txt: 4";
+		rLen = 0;
+		rLoc = 101;
+		rType = 0;
+		vrLen = 436;
+		vrLoc = 0;
+	};
+	2CCFBB830A38F6650017A3D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
+		name = "History.txt: 4";
+		rLen = 0;
+		rLoc = 101;
+		rType = 0;
+		vrLen = 436;
+		vrLoc = 0;
+	};
+	2CCFBB8E0A38F6FB0017A3D1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
 		name = "History.txt: 4";

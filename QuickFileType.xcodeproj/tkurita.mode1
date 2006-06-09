@@ -204,10 +204,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>2CCFBB720A3885710017A3D1</string>
+						<string>2CCFBB8E0A38F6FB0017A3D1</string>
 						<key>history</key>
 						<array>
-							<string>2CACFEFB0A37045900748AC9</string>
+							<string>2CCFBB720A3885710017A3D1</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -500,8 +500,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
-									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -544,7 +542,7 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2CCFBB710A3885710017A3D1</string>
+				<string>2CCFBB820A38F6650017A3D1</string>
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -575,10 +573,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>2C9B80C30A12F73000A872A9</string>
 		<string>2CACFEF90A37045900748AC9</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
-		<string>/Users/tkurita/Dev/Projects/QuickFileType/QuickFileType.xcodeproj</string>
+		<string>/Users/tkurita/Dev/Projects/QuickFileType/trunk/QuickFileType.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>31 123 300 791 0 0 1440 938 </string>
@@ -1022,9 +1019,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>2CCFBB740A3885710017A3D1</string>
+				<string>2CCFBB840A38F6650017A3D1</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>2CCFBB750A3885710017A3D1</string>
+				<string>2CCFBB850A38F6650017A3D1</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>
