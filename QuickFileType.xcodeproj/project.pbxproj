@@ -24,7 +24,9 @@
 		2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */; };
 		2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDBBC0A1A9C62000C2CB3 /* MCTWindow.nib */; };
 		2C1EDBC20A1A9CE6000C2CB3 /* MCTWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */; };
-		2C3FF9FE0A35F84400419FF3 /* History.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */; };
+		2C3ED7F20A3DBE4800E2938D /* FlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3ED7F10A3DBE4800E2938D /* FlipView.m */; };
+		2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */; };
+		2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515CF30A42603B00A87E0C /* UtilityFunctions.m */; };
 		2C9B80B20A12DCC000A872A9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */; };
 		2C9B80DD0A12F7BB00A872A9 /* GetFinderSelection.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C9B816B0A135A7600A872A9 /* FactorySetting.plist */; };
@@ -59,7 +61,13 @@
 		2C1EDBBD0A1A9C62000C2CB3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MCTWindow.nib; sourceTree = "<group>"; };
 		2C1EDBC00A1A9CE6000C2CB3 /* MCTWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTWindowController.h; sourceTree = "<group>"; };
 		2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTWindowController.m; sourceTree = "<group>"; };
+		2C3ED7F00A3DBE4800E2938D /* FlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipView.h; sourceTree = "<group>"; };
+		2C3ED7F10A3DBE4800E2938D /* FlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipView.m; sourceTree = "<group>"; };
 		2C3FF9FD0A35F84400419FF3 /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
+		2C515C920A424EB400A87E0C /* BoolToStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoolToStringTransformer.h; sourceTree = "<group>"; };
+		2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoolToStringTransformer.m; sourceTree = "<group>"; };
+		2C515CF20A42603B00A87E0C /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
+		2C515CF30A42603B00A87E0C /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
 		2C9B80B00A12DCC000A872A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		2C9B80B10A12DCC000A872A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = GetFinderSelection.applescript; sourceTree = "<group>"; };
@@ -132,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				2C9B80B00A12DCC000A872A9 /* AppController.h */,
+				2C515C920A424EB400A87E0C /* BoolToStringTransformer.h */,
+				2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */,
 				2C9B80B10A12DCC000A872A9 /* AppController.m */,
 				2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */,
 				2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */,
@@ -147,6 +157,10 @@
 				2CE75EE00A1C01170005790B /* HFSTypeUtils.m */,
 				2CACFEB60A36F26000748AC9 /* CTDocumentController.h */,
 				2CACFEB70A36F26000748AC9 /* CTDocumentController.m */,
+				2C3ED7F00A3DBE4800E2938D /* FlipView.h */,
+				2C3ED7F10A3DBE4800E2938D /* FlipView.m */,
+				2C515CF20A42603B00A87E0C /* UtilityFunctions.h */,
+				2C515CF30A42603B00A87E0C /* UtilityFunctions.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -242,7 +256,6 @@
 				2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */,
 				2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */,
 				2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */,
-				2C3FF9FE0A35F84400419FF3 /* History.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +275,9 @@
 				2C1EDBC20A1A9CE6000C2CB3 /* MCTWindowController.m in Sources */,
 				2CE75EE10A1C01170005790B /* HFSTypeUtils.m in Sources */,
 				2CACFEB80A36F26000748AC9 /* CTDocumentController.m in Sources */,
+				2C3ED7F20A3DBE4800E2938D /* FlipView.m in Sources */,
+				2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */,
+				2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

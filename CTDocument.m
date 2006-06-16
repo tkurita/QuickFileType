@@ -1,5 +1,7 @@
 #import "CTDocument.h"
 #import "HFSTypeUtils.h"
+#import "BoolToStringTransformer.h"
+#import "UtilityFunctions.h"
 
 #define useLog 1
 
@@ -7,11 +9,29 @@
 
 #pragma mark init and dealloc
 
++ (void)initialize
+{	
+	NSValueTransformer *transformer = [[[BoolToStringTransformer alloc] init] autorelease];
+	[NSValueTransformer setValueTransformer:transformer forName:@"BoolToString"];
+}
+
 - (void)dealloc {
 	[_creatorCode release];
 	[_typeCode release];
+	[_currentKind release];
+	[_currentUTI release];
+	[_currentAppPath release];
+	[_currentAppIcon release];
+	
+	[_iconImg release];
+	
 	[_originalCreatorCode release];
 	[_originalTypeCode release];
+	[_originalExtension release];
+	[_originalKind release];
+	[_originalUTI release];
+	[_originalAppPath release];
+	[_originalAppIcon release];
 	
 	[super dealloc];
 }
@@ -36,6 +56,23 @@
 }
 
 #pragma mark others
+- (void)checkUserLaunchServiceSetting
+{
+	NSArray *userLSHandlers = [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.apple.LaunchServices"] objectForKey:@"LSHandlers"];
+	if (userLSHandlers == nil) return;
+	
+	NSEnumerator *enumerator = [userLSHandlers objectEnumerator];
+	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+	id handlerEntry;
+	while (handlerEntry = [enumerator nextObject]) {
+		if ([[handlerEntry objectForKey:@"LSHandlerContentTagClass"] isEqualToString:@"public.filename-extension"]) {
+			[dict setValue:handlerEntry forKey:[handlerEntry objectForKey:@"LSHandlerContentTag"]];
+		}
+	}
+	
+	[self setUserLSHandlersForExtensions:dict];
+}
+
 - (void)applyTypes
 {
 	NSMutableDictionary *attDict = [NSMutableDictionary dictionary];
@@ -55,6 +92,17 @@
 	[self setCreatorCode:[typeDict objectForKey:@"creatorCode"]];
 	[self setTypeCode:[typeDict objectForKey:@"typeCode"]];	
 	[self applyTypes];
+}
+
+- (BOOL)setOriginalTypesFromFile:(NSString *)path
+{
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSDictionary *attInfo = [fileManager fileAttributesAtPath:path traverseLink:YES];
+	if (![[attInfo objectForKey:NSFileType] isEqualTo:NSFileTypeRegular]) return NO;
+	
+	[self setOriginalCreatorCode: OSTypeToNSString([attInfo objectForKey:NSFileHFSCreatorCode])];
+	[self setOriginalTypeCode: OSTypeToNSString([attInfo objectForKey:NSFileHFSTypeCode])];
+	return YES;
 }
 
 - (BOOL)setTypesFromFile:(NSString *)path
@@ -77,7 +125,71 @@
 	[self setTypeCode:[selection objectForKey:@"typeCode"]];		
 }
 
-#pragma mark accessor methods
+- (void)updateCurrentKind
+{
+	NSString *kindString = nil;
+	OSStatus err = LSCopyKindStringForTypeInfo(UTGetOSTypeFromString((CFStringRef)_typeCode),
+											UTGetOSTypeFromString((CFStringRef)_creatorCode),
+											(CFStringRef)_originalExtension,
+											   (CFStringRef *)&kindString);
+//	OSStatus err = LSCopyKindStringForTypeInfo(UTGetOSTypeFromString((CFStringRef)_typeCode),
+//											   UTGetOSTypeFromString((CFStringRef)_creatorCode),
+//											   NULL,
+//											   (CFStringRef *)&kindString);
+	if (err != noErr) {
+		NSLog(@"Error in updateCurrentKind. error : %i", err);
+		return;
+	}
+	
+	[_currentKind release];
+	_currentKind = kindString;
+}
+
+- (void)updateCurrentUTI
+{
+	NSString *typeCode;
+	if (_userLSHandler == nil) {
+		typeCode = _typeCode;
+	}
+	else {
+		typeCode = nil;
+	}
+		
+	[self setCurrentUTI:getUTIFromTags(typeCode, _originalExtension)];
+	
+	LSHandlerOptions handlerOption = LSGetHandlerOptionsForContentType((CFStringRef)_currentUTI);
+	_ignoringCreatorForUTI = (handlerOption == kLSHandlerOptionsIgnoreCreator);
+}
+
+- (void)updateCurrentApp
+{
+	NSURL *outAppURL = nil;
+	OSStatus err = LSGetApplicationForInfo(UTGetOSTypeFromString((CFStringRef)_typeCode),
+											 UTGetOSTypeFromString((CFStringRef)_creatorCode),
+											 (CFStringRef)_originalExtension,
+											 kLSRolesAll,
+											 NULL,
+											 (CFURLRef *)&outAppURL);
+	if (err != noErr) {
+		NSLog(@"Error in updateCurrentApp. error : %i", err);
+		return;
+	}
+	
+	NSString *appPath = [outAppURL path];
+	if (![appPath isEqualToString:_currentAppPath]) {
+		[self setCurrentAppPath: [outAppURL path]];
+		[self setCurrentAppIcon:convertToSize16Image([[NSWorkspace sharedWorkspace] iconForFile:appPath])];
+	}
+}
+
+#pragma mark accessors for current values
+- (void)setUserLSHandlersForExtensions:dict
+{
+	[dict retain];
+	[_userLSHandlersForExtensions release];
+	_userLSHandlersForExtensions = dict;
+}
+
 - (void)setIconImg:(NSImage *)iconImg
 {
 	[iconImg retain];
@@ -85,28 +197,19 @@
 	_iconImg = iconImg;
 }
 
+- (NSImage *)iconImg16
+{
+	return convertToSize16Image(_iconImg);
+}
+
 - (NSImage *)iconImg
 {
 	return _iconImg;
 }
 
-- (void)setKind:(NSString *)kind
+- (NSString *)currentKind
 {
-	[kind retain];
-	[_kind release];
-	_kind = kind;
-}
-
-- (NSString *)kind
-{
-	return _kind;
-}
-
-- (void)setOriginalTypeCode:(NSString *)theType
-{
-	[theType retain];
-	[_originalTypeCode release];
-	_originalTypeCode = theType;
+	return _currentKind;
 }
 
 - (void)setTypeCode:(NSString *)typeCode
@@ -114,11 +217,83 @@
 	[typeCode retain];
 	[_typeCode release];
 	_typeCode = typeCode;
+	[self updateCurrentKind];
+	[self updateCurrentUTI];
+	[self updateCurrentApp];
 }
 
 - (NSString *)typeCode
 {
 	return _typeCode;
+}
+
+- (void)setCreatorCode:(NSString *)creatorCode
+{
+	[creatorCode retain];
+	[_creatorCode release];
+	_creatorCode = creatorCode;
+	[self updateCurrentKind];
+	[self updateCurrentApp];
+}
+
+- (NSString *)creatorCode
+{
+	return _creatorCode;
+}
+
+- (void)setCurrentUTI:(NSString *)uti
+{
+	NSLog(@"start setCurrentUTI : %@", uti);
+	[uti retain];
+	[_currentUTI release];
+	_currentUTI = uti;
+}
+
+- (NSString *)currentUTI
+{
+	return _currentUTI;
+}
+
+- (void)setCurrentAppIcon:(NSImage *)iconImage
+{
+	[iconImage retain];
+	[_currentAppIcon release];
+	_currentAppIcon = iconImage;
+}
+
+- (NSImage *)currentAppIcon
+{
+	return _currentAppIcon;
+}
+
+- (void)setCurrentAppPath:(NSString *)path
+{
+	[path retain];
+	[_currentAppPath release];
+	_currentAppPath = path;
+}
+
+- (id) ignoringCreatorForUTI
+{
+	return [NSNumber numberWithBool:_ignoringCreatorForUTI];
+}
+
+- (id)ignoringCreatorForExtension
+{
+	return [NSNumber numberWithBool:(_userLSHandler != nil)];
+}
+
+#pragma mark accessors for original values
+- (void)setOriginalTypeCode:(NSString *)theType
+{
+	[theType retain];
+	[_originalTypeCode release];
+	_originalTypeCode = theType;
+}
+
+- (NSString *)originalTypeCode
+{
+	return _originalTypeCode;
 }
 
 - (void)setOriginalCreatorCode:(NSString *)theType
@@ -128,17 +303,67 @@
 	_originalCreatorCode = theType;
 }
 
-- (void)setCreatorCode:(NSString *)creatorCode
+- (NSString *)originalCreatorCode
 {
-	NSLog(@"setCreatorCode:%@", creatorCode);
-	[creatorCode retain];
-	[_creatorCode release];
-	_creatorCode = creatorCode;
+	return _originalCreatorCode;
 }
 
-- (NSString *)creatorCode
+#pragma mark delegate of NSWindow
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize
 {
-	return _creatorCode;
+	if (_isCollapsed) {
+		NSRect currentRect = [sender frame];
+		return currentRect.size;
+	}
+	else {
+		return proposedFrameSize;
+	}
+}
+
+- (void)setOriginalKind:(NSString *)kind
+{
+	[kind retain];
+	[_originalKind release];
+	_originalKind = kind;
+}
+
+- (NSString *)originalKind
+{
+	return _originalKind;
+}
+
+- (void)setOriginalUTI:(NSString *)uti
+{
+	[uti retain];
+	[_originalUTI release];
+	_originalUTI = uti;
+}
+
+- (NSString *)originalUTI
+{
+	return _originalUTI;
+}
+
+- (NSString *)originalAppPath
+{
+	return _originalAppPath;
+}
+
+- (NSImage *)originalAppIcon
+{
+	return _originalAppIcon;
+}
+
+- (void)setOriginalExtension:(NSString *)extensionString
+{
+	[extensionString retain];
+	[_originalExtension release];
+	_originalExtension = extensionString;
+}
+
+- (NSString *)originalExtension
+{
+	return _originalExtension;
 }
 
 #pragma mark override NSDocument
@@ -170,14 +395,55 @@
 
 - (BOOL)readFromFile:(NSString *)absolutePath ofType:(NSString *)typeName
 {
-	if (![self setTypesFromFile:absolutePath]) return NO;
+	//read user's Launch services setting
+	[self checkUserLaunchServiceSetting];
 	
-	[self setOriginalCreatorCode: _creatorCode];
-	[self setOriginalTypeCode: _typeCode];
-	
+	//setup document icon image
 	NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
 	[self setIconImg:[workspace iconForFile:absolutePath]];
 	
+	//setup original fileTypes
+	if (![self setOriginalTypesFromFile:absolutePath]) return NO;
+	
+	//setup original kind
+	NSString *kindString = nil;
+	OSStatus err = LSCopyKindStringForURL((CFURLRef)[NSURL fileURLWithPath:absolutePath], (CFStringRef *)&kindString);
+	[self setOriginalKind:[kindString autorelease]];
+	
+	//setup original extension;
+	[self setOriginalExtension:[[[self fileURL] path] pathExtension]];
+	
+	//setup original UTI
+	CFStringRef tagClass;
+	NSString *tag;
+	NSDictionary *userHandler;
+	if (userHandler = [_userLSHandlersForExtensions objectForKey:_originalExtension]) {
+		_userLSHandler = userHandler;
+		tagClass = kUTTagClassFilenameExtension;
+		tag = _originalExtension;
+	}
+	else if (![_originalTypeCode isEqualTo:@""]) {
+		tagClass = kUTTagClassOSType;
+		tag = _originalTypeCode;
+	}
+	else {
+		NSLog(@"no originalType Code");
+		tagClass = kUTTagClassFilenameExtension;
+		tag = _originalExtension;
+		NSLog(tag);
+	}
+	_originalUTI = (NSString *)UTTypeCreatePreferredIdentifierForTag(tagClass, (CFStringRef)tag, CFSTR("public.data"));
+	
+	//setup default application path
+	NSURL *appURL = nil;
+	err = LSGetApplicationForURL((CFURLRef)[self fileURL], kLSRolesAll, NULL, (CFURLRef *)&appURL);
+	_originalAppPath = [[appURL path] retain];
+	_originalAppIcon = [convertToSize16Image([workspace iconForFile:_originalAppPath]) retain];
+	
+	//setup current file type & creator type
+	[self setCreatorCode: _originalCreatorCode];
+	[self setTypeCode: _originalTypeCode];
+
     return YES;
 }
 

@@ -1,7 +1,48 @@
-= To do 
-* drag & drop とソートを両立させる方法は？
+= To do
+* Tool Tips を設定する
 * donation 催促ウィンドウ
+
+= may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+= 2006.06.16
+* LSCopyDefaultRoleHandlerForContentType -- UTI に関連ずけられた application の取得
+* FInder では extension だけに関連づけられた UTI が定義される？
+
+* com.apple.LaunchServices.plist をuserdefaults で読みにいく
+	*そこで登録されている拡張子は、クリエータタイプとファイルタイプを無視すると考える。
+* どうして WOED ファイルはクリエータを無視する？
+* 情報ドローワには何を表示させる？
+	* とりあえず、
+		* original extension -- OK
+		* original default application -- LSGetApplicationForItem, LSGetApplicationForURL --OK
+		* original kind -- OK
+		* original UTI -- OK
+	* UTI -- OSType or 拡張子を UTI に変換 UTTypeCreatePreferredIdentifierForTag
+		* OSType とは file type のこと？
+	* アプリケーション -- LSGetApplicationForInfo でクリエータタイプからもとめる。
+		* original と設定した creator type の両方を求める
+	* LSGetHandlerOptionsForContentType
+		* UTI を与えて、その UTI がクリエータタイプを無視するかどうか調べる。
+	* 拡張子 -- Cocoa を使って取得。Launch Services は使わない。-- OK
+	* 現在の種類 -- LSCopyKindStringForRef, LSCopyKindStringForURL -- OK
+	* 変更後の種類 -- LSCopyKindStringForTypeInfo ファイルタイプ, creator Type, 拡張子から求める。
+* icon の大きさを 16×16 にする。
+
+= 2006.06.13
+* original default application
+* current UTI
+* current Kind
+
+= 2006.06.12
+* ドローワーのスクロールビューの挙動がおかしい
+	* isFlipped で YES を返す View FlipView を一枚噛ますことで対処
+* 情報ドローワに originalTypeCode, originalCreatorCode, originalExtension, originalKind を表示させるようにした。
+* type table を collapse しているときは、resize を禁止する。
+* 情報ウィンドウを開閉できるようにした。
+
+= 2006.06.09
+* drag & drop とソートを両立させる方法は？ -- 解決
 
 = 2006.06.07
 * 2006-06-07 16:36:55.222 QuickFileType[9051] *** Illegal NSTableView data source (<MCTWindowController: 0x36c5d0>).  Must implement numberOfRowsInTableView: and tableView:objectValueForTableColumn:row:

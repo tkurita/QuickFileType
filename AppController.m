@@ -20,6 +20,7 @@
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
 	unsigned int nFile = [filenames count];
+	NSError *error = nil;
 	
 	if (nFile > 1) {
 		id mctWindow = [[MCTWindowController alloc] initWithWindowNibName:@"MCTWindow"];
@@ -28,7 +29,7 @@
 	}
 	else {
 		[[NSDocumentController sharedDocumentController]
-				openDocumentWithContentsOfFile:[filenames lastObject] display:YES];			
+				openDocumentWithContentsOfURL:[[self URLsFromPaths:filenames] lastObject] display:YES error:&error];
 	}
 }
 

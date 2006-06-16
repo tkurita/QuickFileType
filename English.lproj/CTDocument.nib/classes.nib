@@ -16,6 +16,7 @@
             SUPERCLASS = NSDocument; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = FlipView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
         {CLASS = OSTypeFormatter; LANGUAGE = ObjC; SUPERCLASS = NSFormatter; }, 
         {
             ACTIONS = {
