@@ -147,6 +147,8 @@
 
 - (void)updateCurrentUTI
 {
+	if (_ignoringCreatorForUTI) return;
+	
 	NSString *typeCode;
 	if (_userLSHandler == nil) {
 		typeCode = _typeCode;
@@ -395,6 +397,8 @@
 
 - (BOOL)readFromFile:(NSString *)absolutePath ofType:(NSString *)typeName
 {
+	NSURL *fURL = [self fileURL];
+	OSStatus err;
 	//read user's Launch services setting
 	[self checkUserLaunchServiceSetting];
 	
@@ -407,36 +411,42 @@
 	
 	//setup original kind
 	NSString *kindString = nil;
-	OSStatus err = LSCopyKindStringForURL((CFURLRef)[NSURL fileURLWithPath:absolutePath], (CFStringRef *)&kindString);
+	err = LSCopyKindStringForURL((CFURLRef)[NSURL fileURLWithPath:absolutePath], (CFStringRef *)&kindString);
 	[self setOriginalKind:[kindString autorelease]];
 	
 	//setup original extension;
-	[self setOriginalExtension:[[[self fileURL] path] pathExtension]];
+	[self setOriginalExtension:[[fURL path] pathExtension]];
 	
 	//setup original UTI
-	CFStringRef tagClass;
-	NSString *tag;
-	NSDictionary *userHandler;
-	if (userHandler = [_userLSHandlersForExtensions objectForKey:_originalExtension]) {
-		_userLSHandler = userHandler;
-		tagClass = kUTTagClassFilenameExtension;
-		tag = _originalExtension;
-	}
-	else if (![_originalTypeCode isEqualTo:@""]) {
-		tagClass = kUTTagClassOSType;
-		tag = _originalTypeCode;
-	}
-	else {
-		NSLog(@"no originalType Code");
-		tagClass = kUTTagClassFilenameExtension;
-		tag = _originalExtension;
-		NSLog(tag);
-	}
-	_originalUTI = (NSString *)UTTypeCreatePreferredIdentifierForTag(tagClass, (CFStringRef)tag, CFSTR("public.data"));
+//	CFStringRef tagClass;
+//	NSString *tag;
+//	NSDictionary *userHandler;
+//	if (userHandler = [_userLSHandlersForExtensions objectForKey:_originalExtension]) {
+//		_userLSHandler = userHandler;
+//		tagClass = kUTTagClassFilenameExtension;
+//		tag = _originalExtension;
+//	}
+//	else if (isValidType(_originalTypeCode)) {
+//		tagClass = kUTTagClassOSType;
+//		tag = _originalTypeCode;
+//	}
+//	else {
+//		NSLog(@"no originalType Code");
+//		tagClass = kUTTagClassFilenameExtension;
+//		tag = _originalExtension;
+//		NSLog(tag);
+//	}
+//	_originalUTI = (NSString *)UTTypeCreatePreferredIdentifierForTag(tagClass, (CFStringRef)tag, CFSTR("public.data"));
+	
+	FSRef fileRef;
+	CFURLGetFSRef((CFURLRef)fURL, &fileRef);
+	NSString *theUTI = nil;
+	err = LSCopyItemAttribute(&fileRef, kLSRolesAll, kLSItemContentType, (CFTypeRef *)&theUTI );
+	_originalUTI = theUTI;
 	
 	//setup default application path
 	NSURL *appURL = nil;
-	err = LSGetApplicationForURL((CFURLRef)[self fileURL], kLSRolesAll, NULL, (CFURLRef *)&appURL);
+	err = LSGetApplicationForURL((CFURLRef)fURL, kLSRolesAll, NULL, (CFURLRef *)&appURL);
 	_originalAppPath = [[appURL path] retain];
 	_originalAppIcon = [convertToSize16Image([workspace iconForFile:_originalAppPath]) retain];
 	
