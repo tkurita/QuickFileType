@@ -1,7 +1,24 @@
 #import "TypeTableController.h"
 #import "HFSTypeUtils.h"
+#import "UtilityFunctions.h"
 
 #define useLog 1
+
+NSString *removeHatenaType(NSString *typeString)
+{
+	if ([typeString isEqualToString:@"????"]) {
+		return @"";
+	}
+	else {
+		return typeString;
+	}
+}
+
+void setupIcon(id targetObj, NSImage *iconImage)
+{
+	[targetObj setObject:[NSArchiver archivedDataWithRootObject:convertImageSize(iconImage, 16)] forKey:@"icon16"];
+	[targetObj setObject:[NSArchiver archivedDataWithRootObject:convertImageSize(iconImage, 32)] forKey:@"icon32"];
+}
 
 @implementation TypeTableController
 //static NSString *CopiedRowsType = @"COPIED_ROWS_TYPE";
@@ -62,24 +79,63 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	[typeTable setDoubleAction:selector];
 }
 
+-(void)setUpdatedIcon:(NSImage *)iconImage
+{
+	[iconImage retain];
+	[_updatedIcon release];
+	_updatedIcon = iconImage;
+}
+
 #pragma mark methods for actions
 - (void)didEndSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(id)contextInfo
 {
 	if (returnCode == NSOKButton) {
+		NSString *typeCode = removeHatenaType([typeCodeField stringValue]);
+		NSString *creatorCode = removeHatenaType([creatorCodeField stringValue]);
+		
 		if (contextInfo == nil) {
+			// make new entry
 			id dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-				[creatorCodeField stringValue], @"creatorCode",
-				[typeCodeField stringValue], @"typeCode",
+				creatorCode, @"creatorCode",
+				typeCode, @"typeCode",
 				[kindField stringValue], @"kind", nil];
+			if (_updatedIcon == nil) {
+				[self setUpdatedIcon:iconForCreatorAndType(creatorCode, typeCode)];
+			}
+			setupIcon(dict, _updatedIcon);
 			[typeTemplatesController addObject:dict];
+			//[[NSUserDefaultsController sharedUserDefaultsController] save:self];
 		}
 		else {
-			[contextInfo setObject:[creatorCodeField stringValue] forKey:@"creatorCode"];
-			[contextInfo setObject:[typeCodeField stringValue] forKey:@"typeCode"];
-			[contextInfo setObject:[kindField stringValue] forKey:@"kind"];
+			// update existing entry
+			id selectedDict = [contextInfo objectForKey:@"selectedDict"];
+			NSIndexSet *selectedIndexs = [contextInfo objectForKey:@"selectedIndexes"];
+			
+			NSString *preCreator = [selectedDict objectForKey:@"creatorCode"];
+			NSString *preType = [selectedDict objectForKey:@"typeCode"];
+			//[typeTemplatesController objectDidBeginEditing:self];
+			if (![preCreator isEqualToString:creatorCode]) {
+				[selectedDict setValue:creatorCode forKey:@"creatorCode"];
+				_shouldUpdateIcon =  YES;
+			}
+			if (![preType isEqualToString:typeCode]) {
+				[selectedDict setValue:typeCode forKey:@"typeCode"];
+				_shouldUpdateIcon =  YES;
+			}
+			if (_shouldUpdateIcon) {
+				
+				[selectedDict setObject:[kindField stringValue] forKey:@"kind"];
+				if (_updatedIcon == nil) {
+					[self setUpdatedIcon:iconForCreatorAndType(creatorCode, typeCode)];
+				}
+				setupIcon(selectedDict, _updatedIcon);
+				[typeTemplatesController removeObject:selectedDict];
+				[typeTemplatesController insertObject:selectedDict atArrangedObjectIndex:[selectedIndexs firstIndex] ];
+			}
 		}
-	}	
+	}
 	[sheet orderOut:self];
+	if (contextInfo != nil) [contextInfo release];
 }
 
 - (void)setupTemplateEditorFor:(NSDictionary *)typeDict
@@ -87,6 +143,10 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	[creatorCodeField setStringValue: [typeDict objectForKey:@"creatorCode"]];
 	[typeCodeField setStringValue: [typeDict objectForKey:@"typeCode"]];
 	[kindField setStringValue: [typeDict objectForKey:@"kind"]];
+	NSData *iconData;
+	if (iconData = [typeDict objectForKey:@"icon32"]) {
+		[iconField setImage: [NSUnarchiver unarchiveObjectWithData:iconData]];
+	}
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
@@ -101,6 +161,14 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 }
 
 #pragma mark actions
+- (IBAction)updateIcon:(id)sender
+{
+	NSImage *iconImage = iconForCreatorAndType([creatorCodeField stringValue], [typeCodeField stringValue]);
+	[self setUpdatedIcon:iconImage];
+	[iconField setImage:convertImageSize(iconImage, 32)];
+	_shouldUpdateIcon = YES;
+}
+
 - (IBAction)insertNewTypeTemplate:(id)sender
 {
 	[self setupTemplateEditorFor:
@@ -141,15 +209,20 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 
 - (IBAction)editSelectedTemplate:(id)sender
 {
+	_shouldUpdateIcon = NO;
+	[self setUpdatedIcon:nil];
 	NSArray *selectedItems = [typeTemplatesController selectedObjects];
 	NSDictionary *selectedDict = [selectedItems objectAtIndex:0];
-	[self setupTemplateEditorFor:selectedDict];
+	NSIndexSet *indexSet = [typeTemplatesController selectionIndexes];
 	
+	[self setupTemplateEditorFor:selectedDict];
+
 	[NSApp beginSheet: typeTemplateEditor
-	   modalForWindow: [sender window]
-		modalDelegate: self
-	   didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
-		  contextInfo: selectedDict];	
+		   modalForWindow: [sender window]
+			modalDelegate: self
+		   didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+		  contextInfo: [[NSDictionary dictionaryWithObjectsAndKeys:selectedDict, @"selectedDict", indexSet, @"selectedIndexes", nil] retain]
+			];
 }
 
 
