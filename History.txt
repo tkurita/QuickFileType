@@ -1,10 +1,17 @@
 = To do
-* Tool Tips を設定する
 * donation 催促ウィンドウ
+* Tool Tips を設定する
 
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
+
+= 2006.06.19
+* Drag&Drop で登録したいときにアイコンを取得するようにする。
+* タイプテンプレートの変更が保存されない不具合がある。
+	* NSArrayController から取得した object を変更しても、NSUserDefaultsController に通知されないようだ。
+	* しょうがないから、remove して insertすることにした。
+	
 = 2006.06.16
 * LSCopyDefaultRoleHandlerForContentType -- UTI に関連ずけられた application の取得
 * FInder では extension だけに関連づけられた UTI が定義される？
@@ -29,6 +36,13 @@
 	* 変更後の種類 -- LSCopyKindStringForTypeInfo ファイルタイプ, creator Type, 拡張子から求める。
 * icon の大きさを 16×16 にする。
 
+= 2006.06.14
+* タイプテンプレートにアイコンを表示させる。
+	* LSGetApplicationForInfo でアプリケーションを取得
+	* iconForFileType: -- type code が extension しか与えられない
+	* GetIconRef
+	* 最初の起動時に初期化処理をして、取得したアイコンは UserDefaults に保存
+	
 = 2006.06.13
 * original default application
 * current UTI
@@ -43,6 +57,7 @@
 
 = 2006.06.09
 * drag & drop とソートを両立させる方法は？ -- 解決
+	* 全部、remove してから、並び替えた array を addObjects することにした。
 
 = 2006.06.07
 * 2006-06-07 16:36:55.222 QuickFileType[9051] *** Illegal NSTableView data source (<MCTWindowController: 0x36c5d0>).  Must implement numberOfRowsInTableView: and tableView:objectValueForTableColumn:row:

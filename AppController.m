@@ -1,12 +1,11 @@
 #import "AppController.h"
 #import "CTDocument.h"
 #import "MCTWindowController.h"
+#import "UtilityFunctions.h"
 
 #define useLog 1
 
-@implementation AppController
-
-- (NSArray *)URLsFromPaths:(NSArray *)filenames
+NSArray *URLsFromPaths(NSArray *filenames)
 {
 	NSEnumerator *enumerator = [filenames objectEnumerator];
 	NSMutableArray *urls = [NSMutableArray arrayWithCapacity:[filenames count]];
@@ -17,6 +16,8 @@
 	return urls;
 }
 
+@implementation AppController
+
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
 	unsigned int nFile = [filenames count];
@@ -24,12 +25,12 @@
 	
 	if (nFile > 1) {
 		id mctWindow = [[MCTWindowController alloc] initWithWindowNibName:@"MCTWindow"];
-		[mctWindow setupFileTable:[self URLsFromPaths:filenames]];
+		[mctWindow setupFileTable:URLsFromPaths(filenames)];
 		[mctWindow showWindow:self];
 	}
 	else {
 		[[NSDocumentController sharedDocumentController]
-				openDocumentWithContentsOfURL:[[self URLsFromPaths:filenames] lastObject] display:YES error:&error];
+				openDocumentWithContentsOfURL:[URLsFromPaths(filenames) lastObject] display:YES error:&error];
 	}
 }
 
@@ -38,8 +39,27 @@
 #if useLog
 	NSLog(@"start applicationDidFinishLaunching");
 #endif
+	//initialize type template icons
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults boolForKey:@"NeedUpdateIcons"]) {
+		NSMutableArray *typeTemplates = [[userDefaults objectForKey:@"TypeTemplates"] mutableCopy];
+		NSMutableDictionary *typeDict;
+		NSImage *scaledIcon;
+		NSImage *iconImage;
+		for (unsigned i = 0; i < [typeTemplates count];  i++) {
+			typeDict = [[typeTemplates objectAtIndex:i] mutableCopy];
+			iconImage = iconForCreatorAndTypeString([typeDict objectForKey:@"creatorCode"], [typeDict objectForKey:@"typeCode"]);
+			scaledIcon = convertImageSize(iconImage, 16);
+			[typeDict setObject:[NSArchiver archivedDataWithRootObject:scaledIcon] forKey:@"icon16"];
+			scaledIcon = convertImageSize(iconImage, 32);
+			[typeDict setObject:[NSArchiver archivedDataWithRootObject:scaledIcon] forKey:@"icon32"];
+			[typeTemplates replaceObjectAtIndex:i withObject:typeDict];
+		}
+		[userDefaults setObject:typeTemplates forKey:@"TypeTemplates"];
+		[userDefaults setBool:NO forKey:@"NeedUpdateIcons"];
+	}
 	
-	
+	//get finder's selection
 	NSBundle *bundle = [NSBundle mainBundle];
 	NSString *scriptPath = [bundle pathForResource:@"GetFinderSelection" ofType:@"scpt" inDirectory:@"Scripts"
 		];

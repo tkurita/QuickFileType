@@ -12,9 +12,13 @@
 	IBOutlet id creatorCodeField;
 	IBOutlet id typeCodeField;
 	IBOutlet id kindField;
+	IBOutlet id iconField;
 	
 	id _owner;
 	SEL _applySelector;
+	
+	BOOL _shouldUpdateIcon;
+	NSImage *_updatedIcon;
 }
 - (IBAction)applyTypeTemplate:(id)sender;
 - (IBAction)cancelTemplateEditor:(id)sender;
@@ -22,6 +26,7 @@
 - (IBAction)editSelectedTemplate:(id)sender;
 - (IBAction)insertNewTypeTemplate:(id)sender;
 - (IBAction)okTemplateEditor:(id)sender;
+- (IBAction)updateIcon:(id)sender;
 
 - (id)initWithNibName:(NSString *)nibName owner:(id)owner;
 - (NSView *)view;

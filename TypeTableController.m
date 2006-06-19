@@ -100,11 +100,10 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 				typeCode, @"typeCode",
 				[kindField stringValue], @"kind", nil];
 			if (_updatedIcon == nil) {
-				[self setUpdatedIcon:iconForCreatorAndType(creatorCode, typeCode)];
+				[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
 			}
 			setupIcon(dict, _updatedIcon);
 			[typeTemplatesController addObject:dict];
-			//[[NSUserDefaultsController sharedUserDefaultsController] save:self];
 		}
 		else {
 			// update existing entry
@@ -113,7 +112,6 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 			
 			NSString *preCreator = [selectedDict objectForKey:@"creatorCode"];
 			NSString *preType = [selectedDict objectForKey:@"typeCode"];
-			//[typeTemplatesController objectDidBeginEditing:self];
 			if (![preCreator isEqualToString:creatorCode]) {
 				[selectedDict setValue:creatorCode forKey:@"creatorCode"];
 				_shouldUpdateIcon =  YES;
@@ -126,7 +124,7 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 				
 				[selectedDict setObject:[kindField stringValue] forKey:@"kind"];
 				if (_updatedIcon == nil) {
-					[self setUpdatedIcon:iconForCreatorAndType(creatorCode, typeCode)];
+					[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
 				}
 				setupIcon(selectedDict, _updatedIcon);
 				[typeTemplatesController removeObject:selectedDict];
@@ -157,13 +155,14 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		NSDictionary *attInfo = [fileManager fileAttributesAtPath:resultPath traverseLink:YES];
 		[creatorCodeField setStringValue: OSTypeToNSString([attInfo objectForKey:NSFileHFSCreatorCode])];
 		[typeCodeField setStringValue: OSTypeToNSString([attInfo objectForKey:NSFileHFSTypeCode])];
+		[self updateIcon:self];
 	}
 }
 
 #pragma mark actions
 - (IBAction)updateIcon:(id)sender
 {
-	NSImage *iconImage = iconForCreatorAndType([creatorCodeField stringValue], [typeCodeField stringValue]);
+	NSImage *iconImage = iconForCreatorAndTypeString([creatorCodeField stringValue], [typeCodeField stringValue]);
 	[self setUpdatedIcon:iconImage];
 	[iconField setImage:convertImageSize(iconImage, 32)];
 	_shouldUpdateIcon = YES;
@@ -304,10 +303,16 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		(NSString *)LSCopyKindStringForURL((CFURLRef)[NSURL fileURLWithPath:path], (CFStringRef *)&kindString);
 		[kindString autorelease];
 		attInfo = [fileManager fileAttributesAtPath:path traverseLink:YES];
-		typeDict = [NSDictionary dictionaryWithObjectsAndKeys:
-			OSTypeToNSString([attInfo objectForKey:NSFileHFSCreatorCode]), @"creatorCode",
-			OSTypeToNSString([attInfo objectForKey:NSFileHFSTypeCode]), @"typeCode", 
-			kindString, @"kind", nil];
+		NSNumber *creatorCode = [attInfo objectForKey:NSFileHFSCreatorCode];
+		NSNumber *typeCode = [attInfo objectForKey:NSFileHFSTypeCode];
+		NSImage *iconImage = iconForCreatorAndType([creatorCode intValue], [typeCode intValue]);
+		
+		typeDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+			OSTypeToNSString(creatorCode), @"creatorCode",
+			OSTypeToNSString(typeCode), @"typeCode", 
+			kindString, @"kind", nil];		
+		setupIcon(typeDict, iconImage);
+		
 		[typeList addObject:typeDict];
 	}
 	NSIndexSet *insertIdxes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(row,[typeList count])];
@@ -324,7 +329,6 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		
 		NSData* rowData = [pboard dataForType:MovedRowsType];
 		NSIndexSet* rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
-		NSLog([rowIndexes description]);
 		[self moveObjectsInArrangedObjectsFromIndexes:rowIndexes toIndex:row];
 		
 		success = YES;
@@ -338,7 +342,6 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 															  format:&format
 													errorDescription:&error];		
 		[self insertTypesFromPathes:plist row:row];
-		//NSLog([plist description]);
 		success = YES;
 	}
 	

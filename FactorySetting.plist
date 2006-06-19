@@ -13,6 +13,8 @@
 	</array>
 	<key>HistoryMax</key>
 	<integer>10</integer>
+	<key>NeedUpdateIcons</key>
+	<true/>
 	<key>TableCollapseState</key>
 	<true/>
 	<key>TypeHistory</key>

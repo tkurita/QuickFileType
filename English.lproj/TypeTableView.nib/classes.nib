@@ -10,12 +10,14 @@
                 editSelectedTemplate = id; 
                 insertNewTypeTemplate = id; 
                 okTemplateEditor = id; 
+                updateIcon = id; 
             }; 
             CLASS = TypeTableController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
                 applyButton = id; 
                 creatorCodeField = id; 
+                iconField = id; 
                 kindField = id; 
                 typeCodeField = id; 
                 typeTable = id; 
