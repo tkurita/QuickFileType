@@ -12,7 +12,13 @@
             }; 
             CLASS = CTDocument; 
             LANGUAGE = ObjC; 
-            OUTLETS = {collapseButton = id; creatorPopup = id; typePopup = id; typeTableBox = id; }; 
+            OUTLETS = {
+                collapseButton = id; 
+                creatorPopup = id; 
+                infoDrawer = id; 
+                typePopup = id; 
+                typeTableBox = id; 
+            }; 
             SUPERCLASS = NSDocument; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 

@@ -1,5 +1,4 @@
 = To do
-* drawer の開閉状態を保存する
 * FavoriteTable の 開閉状態を保存する
 * donation メニュー項目を作る
 * 不要なメニュー項目を消す
@@ -10,6 +9,7 @@
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
 = 2006.06.20
+* drawer の開閉状態を保存する
 * donation 催促ウィンドウ
 * window の位置を保存する
 	* NSWindow が NSWindowController の支配下にあるときには、Interface Builder で設定した autosave name は無視されるようだ。

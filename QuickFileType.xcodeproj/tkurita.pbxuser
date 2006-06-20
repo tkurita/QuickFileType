@@ -16,10 +16,10 @@
 			8D15AC270486D014006FF6A4 /* QuickFileType */,
 		);
 		breakpoints = (
-			2C9B856E0A14CB1500A872A9 /* CTDocument.m:549 */,
+			2C9B856E0A14CB1500A872A9 /* CTDocument.m:554 */,
 			2C26C7B00A1C208300E86197 /* TypeTableController.m:92 */,
 			2C26C8CE0A1C528500E86197 /* TypeTableController.m:194 */,
-			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:505 */,
+			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:510 */,
 			2C515DCD0A42855B00A87E0C /* BoolToStringTransformer.m:16 */,
 			2CE2C6CE0A4674F300D56041 /* TypeTableController.m:132 */,
 			2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:309 */,
@@ -108,6 +108,11 @@
 			2C0C30EA0A47E0CF00565E73 = 2C0C30EA0A47E0CF00565E73 /* PBXTextBookmark */;
 			2C0C312E0A47E31C00565E73 = 2C0C312E0A47E31C00565E73 /* PBXTextBookmark */;
 			2CFDDA1B0A47E99A00433884 /* PBXTextBookmark */ = 2CFDDA1B0A47E99A00433884 /* PBXTextBookmark */;
+			2CFDDA2D0A47ED4200433884 /* PBXTextBookmark */ = 2CFDDA2D0A47ED4200433884 /* PBXTextBookmark */;
+			2CFDDA2E0A47ED4200433884 /* PBXTextBookmark */ = 2CFDDA2E0A47ED4200433884 /* PBXTextBookmark */;
+			2CFDDA2F0A47ED4200433884 /* PBXTextBookmark */ = 2CFDDA2F0A47ED4200433884 /* PBXTextBookmark */;
+			2CFDDA300A47ED4200433884 /* PBXTextBookmark */ = 2CFDDA300A47ED4200433884 /* PBXTextBookmark */;
+			2CFDDA310A47ED4200433884 /* PBXTextBookmark */ = 2CFDDA310A47ED4200433884 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 2C5CA5A80A12D86300AD6E75 /* Source Control */;
 		userBuildSettings = {
@@ -115,16 +120,16 @@
 	};
 	2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 9292}}";
-			sepNavSelRange = "{8777, 0}";
-			sepNavVisRect = "{{0, 5758}, {671, 701}}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 9388}}";
+			sepNavSelRange = "{8881, 0}";
+			sepNavVisRect = "{{0, 5857}, {671, 701}}";
 			sepNavWindowFrame = "{{397, 110}, {716, 799}}";
 		};
 	};
 	2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1082}}";
-			sepNavSelRange = "{858, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1098}}";
+			sepNavSelRange = "{248, 0}";
 			sepNavVisRect = "{{0, 0}, {671, 701}}";
 			sepNavWindowFrame = "{{698, 93}, {716, 799}}";
 		};
@@ -134,7 +139,7 @@
 		fRef = 2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */;
 		name = "CTDocument.h: _frameName";
 		rLen = 0;
-		rLoc = 858;
+		rLoc = 882;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -144,7 +149,7 @@
 		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		name = "CTDocument.m: 382";
 		rLen = 0;
-		rLoc = 9291;
+		rLoc = 9456;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 8382;
@@ -154,7 +159,7 @@
 		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		name = "CTDocument.m: 382";
 		rLen = 0;
-		rLoc = 9291;
+		rLoc = 9456;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 8382;
@@ -164,7 +169,7 @@
 		fRef = 2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */;
 		name = "CTDocument.h: _frameName";
 		rLen = 0;
-		rLoc = 858;
+		rLoc = 882;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -189,7 +194,7 @@
 		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		name = "CTDocument.m: 375";
 		rLen = 0;
-		rLoc = 8777;
+		rLoc = 8942;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 8347;
@@ -427,10 +432,10 @@
 		isa = XCBreakpointsBucket;
 		name = "プロジェクトブレークポイント";
 		objects = (
-			2C9B856E0A14CB1500A872A9 /* CTDocument.m:549 */,
+			2C9B856E0A14CB1500A872A9 /* CTDocument.m:554 */,
 			2C26C7B00A1C208300E86197 /* TypeTableController.m:92 */,
 			2C26C8CE0A1C528500E86197 /* TypeTableController.m:194 */,
-			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:505 */,
+			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:510 */,
 			2C515DCD0A42855B00A87E0C /* BoolToStringTransformer.m:16 */,
 			2CE2C6CE0A4674F300D56041 /* TypeTableController.m:132 */,
 			2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:309 */,
@@ -470,7 +475,7 @@
 			sepNavWindowFrame = "{{15, 134}, {716, 799}}";
 		};
 	};
-	2C9B856E0A14CB1500A872A9 /* CTDocument.m:549 */ = {
+	2C9B856E0A14CB1500A872A9 /* CTDocument.m:554 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -480,7 +485,7 @@
 		fileReference = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		functionName = "-chooseFromFile:";
 		hitCount = 1;
-		lineNumber = 549;
+		lineNumber = 554;
 		location = CTDocument.ob;
 		modificationTime = 172482884.949272;
 		state = 1;
@@ -493,7 +498,7 @@
 			sepNavWindowFrame = "{{425, 352}, {632, 479}}";
 		};
 	};
-	2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:505 */ = {
+	2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:510 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -503,7 +508,7 @@
 		fileReference = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		functionName = "-okAction:";
 		hitCount = 1;
-		lineNumber = 505;
+		lineNumber = 510;
 		location = CTDocument.ob;
 		modificationTime = 172482885.046845;
 		state = 1;
@@ -559,10 +564,60 @@
 		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		name = "CTDocument.m: 375";
 		rLen = 0;
-		rLoc = 8777;
+		rLoc = 8942;
 		rType = 0;
 		vrLen = 1218;
 		vrLoc = 8347;
+	};
+	2CFDDA2D0A47ED4200433884 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */;
+		name = "CTDocument.h: infoDrawer";
+		rLen = 0;
+		rLoc = 248;
+		rType = 0;
+		vrLen = 1106;
+		vrLoc = 0;
+	};
+	2CFDDA2E0A47ED4200433884 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
+		name = "CTDocument.m: 395";
+		rLen = 0;
+		rLoc = 9719;
+		rType = 0;
+		vrLen = 1340;
+		vrLoc = 8413;
+	};
+	2CFDDA2F0A47ED4200433884 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
+		name = "CTDocument.m: 395";
+		rLen = 0;
+		rLoc = 9719;
+		rType = 0;
+		vrLen = 1340;
+		vrLoc = 8413;
+	};
+	2CFDDA300A47ED4200433884 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */;
+		name = "CTDocument.h: infoDrawer";
+		rLen = 0;
+		rLoc = 248;
+		rType = 0;
+		vrLen = 1106;
+		vrLoc = 0;
+	};
+	2CFDDA310A47ED4200433884 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
+		name = "CTDocument.m: 374";
+		rLen = 0;
+		rLoc = 8881;
+		rType = 0;
+		vrLen = 1470;
+		vrLoc = 8413;
 	};
 	8D15AC270486D014006FF6A4 /* QuickFileType */ = {
 		activeExec = 0;

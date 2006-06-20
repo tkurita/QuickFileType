@@ -370,6 +370,8 @@
 
 - (void)windowWillClose:(NSNotification *)aNotification
 {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults setBool:([infoDrawer state] == NSDrawerOpenState) forKey:@"IsOpenInfoDrawer"];
 	[[aNotification object] saveFrameUsingName:_frameName];
 }
 
@@ -390,7 +392,10 @@
 	if (![collapseButton state]) {
 		[self collapseTypeTableBox:self];
 	}
-
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults boolForKey:@"IsOpenInfoDrawer"]) {
+		[infoDrawer open:self];
+	}
 	[super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
 }

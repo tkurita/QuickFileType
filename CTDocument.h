@@ -9,7 +9,8 @@
     IBOutlet id typePopup;
 	IBOutlet id typeTableBox;
 	IBOutlet id collapseButton;
-		
+	IBOutlet id infoDrawer;
+	
 	NSString *_creatorCode;
 	NSString *_typeCode;
 	NSString *_currentKind;
