@@ -12,6 +12,8 @@
 
 	TypeTableController *_typeTableController;
 	NSMutableArray *_documentArray;
+	
+	NSString *_frameName;
 }
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)okAction:(id)sender;

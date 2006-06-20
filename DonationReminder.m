@@ -37,7 +37,7 @@
 
 + (id)remindDonation
 {
-	return [self displayReminder];
+	//return [self displayReminder];
 	NSDictionary *bundleInfo = [[NSBundle mainBundle] infoDictionary];
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSArray *verList = [userDefaults objectForKey:@"DonatedVersions"];
@@ -54,7 +54,7 @@
 - (void)awakeFromNib
 {
 	NSString *theMessage = [_productMessage stringValue];
-	[_productMessage setStringValue: [NSString stringWithFormat:theMessage,NSLocalizedString(@"QuickFileType",@"")]];
+	[_productMessage setStringValue: [NSString stringWithFormat:theMessage,NSLocalizedString(@"this software",@"")]];
 	[[self window] center];
 }
 

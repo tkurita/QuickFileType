@@ -30,6 +30,7 @@
 
 - (void)windowWillClose:(NSNotification *)aNotification
 {
+	[[aNotification object] saveFrameUsingName:_frameName];
 	[self release];
 }
 
@@ -103,7 +104,10 @@
 {
 	[self setupTypeTable];
 	[fileTable setDoubleAction:@selector(openCTDocument:)];
-	[[self window] center];
+	_frameName = @"MCTWindow";
+	NSWindow *aWindow = [self window];
+	[aWindow center];
+	[aWindow setFrameUsingName:_frameName];
 }
 
 @end

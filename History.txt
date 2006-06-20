@@ -1,12 +1,19 @@
 = To do
+* drawer の開閉状態を保存する
+* FavoriteTable の 開閉状態を保存する
+* donation メニュー項目を作る
+* 不要なメニュー項目を消す
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
-* donation 催促ウィンドウ
 * Tool Tips を設定する
 
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
-
+= 2006.06.20
+* donation 催促ウィンドウ
+* window の位置を保存する
+	* NSWindow が NSWindowController の支配下にあるときには、Interface Builder で設定した autosave name は無視されるようだ。
+	
 = 2006.06.19
 * Drag&Drop で登録したいときにアイコンを取得するようにする。
 * タイプテンプレートの変更が保存されない不具合がある。

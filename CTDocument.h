@@ -31,10 +31,10 @@
 	BOOL _ignoringCreatorForUTI;
 	BOOL _ignoringCreatorForExtension;
 	
-	
 	TypeTableController *_typeTableController;
 	BOOL _isCollapsed;
 	NSRect _typeBoxFrame;
+	NSString *_frameName;
 }
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)chooseFromFile:(id)sender;

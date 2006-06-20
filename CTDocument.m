@@ -310,18 +310,6 @@
 	return _originalCreatorCode;
 }
 
-#pragma mark delegate of NSWindow
-- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize
-{
-	if (_isCollapsed) {
-		NSRect currentRect = [sender frame];
-		return currentRect.size;
-	}
-	else {
-		return proposedFrameSize;
-	}
-}
-
 - (void)setOriginalKind:(NSString *)kind
 {
 	[kind retain];
@@ -368,6 +356,23 @@
 	return _originalExtension;
 }
 
+#pragma mark delegate of NSWindow
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize
+{
+	if (_isCollapsed) {
+		NSRect currentRect = [sender frame];
+		return currentRect.size;
+	}
+	else {
+		return proposedFrameSize;
+	}
+}
+
+- (void)windowWillClose:(NSNotification *)aNotification
+{
+	[[aNotification object] saveFrameUsingName:_frameName];
+}
+
 #pragma mark override NSDocument
 - (NSString *)windowNibName
 {
@@ -378,10 +383,14 @@
 
 - (void)windowControllerDidLoadNib:(NSWindowController *) aController
 {
-	[[aController window] center];
+	_frameName = @"CTDocumentWindow";
+	NSWindow *aWindow = [aController window];
+	[aWindow center];
+	[aWindow setFrameUsingName:_frameName];
 	if (![collapseButton state]) {
 		[self collapseTypeTableBox:self];
 	}
+
 	[super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
 }
