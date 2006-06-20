@@ -180,7 +180,7 @@
 	NSString *appPath = [outAppURL path];
 	if (![appPath isEqualToString:_currentAppPath]) {
 		[self setCurrentAppPath: [outAppURL path]];
-		[self setCurrentAppIcon:convertToSize16Image([[NSWorkspace sharedWorkspace] iconForFile:appPath])];
+		[self setCurrentAppIcon:convertImageSize([[NSWorkspace sharedWorkspace] iconForFile:appPath], 16)];
 	}
 }
 
@@ -201,7 +201,7 @@
 
 - (NSImage *)iconImg16
 {
-	return convertToSize16Image(_iconImg);
+	return convertImageSize(_iconImg, 16);
 }
 
 - (NSImage *)iconImg
@@ -448,7 +448,7 @@
 	NSURL *appURL = nil;
 	err = LSGetApplicationForURL((CFURLRef)fURL, kLSRolesAll, NULL, (CFURLRef *)&appURL);
 	_originalAppPath = [[appURL path] retain];
-	_originalAppIcon = [convertToSize16Image([workspace iconForFile:_originalAppPath]) retain];
+	_originalAppIcon = [convertImageSize([workspace iconForFile:_originalAppPath], 16) retain];
 	
 	//setup current file type & creator type
 	[self setCreatorCode: _originalCreatorCode];

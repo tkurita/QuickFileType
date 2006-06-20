@@ -1,4 +1,5 @@
 = To do
+* typeTemplate ではなく favorites という言葉を使うようにしよう。
 * donation 催促ウィンドウ
 * Tool Tips を設定する
 

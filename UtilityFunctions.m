@@ -48,44 +48,14 @@ NSImage *convertImageSize(NSImage *iconImage, int imgSize)
 		[iconImage setScalesWhenResized:NO];
 		[iconImage setSize:targetSize];
 #if useLog
-		NSLog(@"have size 16");
+		NSLog(@"have target size %i", imgSize);
 #endif
 	}
 	else {
 		//[iconImage setScalesWhenResized:NO];
 		[iconImage setSize:targetSize];
 #if useLog
-		NSLog(@"not have size 16");
-#endif
-	}
-	return iconImage;
-}
-
-NSImage *convertToSize16Image(NSImage *iconImage)
-{
-	NSArray * repArray = [iconImage representations];
-	NSEnumerator *repEnum = [repArray objectEnumerator];
-	NSImageRep *imageRep;
-	NSSize Size16 = NSMakeSize(16, 16);
-	BOOL hasSize16 = NO;
-	while (imageRep = [repEnum nextObject]) {
-		if (NSEqualSizes([imageRep size],Size16)) {
-			hasSize16 = YES;
-			break;
-		}
-	}
-	if (hasSize16) {
-		[iconImage setScalesWhenResized:NO];
-		[iconImage setSize:NSMakeSize(16, 16)];
-#if useLog
-		NSLog(@"have size 16");
-#endif
-	}
-	else {
-		//[iconImage setScalesWhenResized:NO];
-		[iconImage setSize:NSMakeSize(16, 16)];
-#if useLog
-		NSLog(@"not have size 16");
+		NSLog(@"not have target size %i", imgSize);
 #endif
 	}
 	return iconImage;

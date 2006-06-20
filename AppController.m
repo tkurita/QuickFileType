@@ -2,6 +2,7 @@
 #import "CTDocument.h"
 #import "MCTWindowController.h"
 #import "UtilityFunctions.h"
+#import "DonationReminder.h"
 
 #define useLog 1
 
@@ -42,7 +43,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	//initialize type template icons
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	if ([userDefaults boolForKey:@"NeedUpdateIcons"]) {
-		NSMutableArray *typeTemplates = [[userDefaults objectForKey:@"TypeTemplates"] mutableCopy];
+		NSMutableArray *typeTemplates = [[userDefaults objectForKey:@"FavoriteTypes"] mutableCopy];
 		NSMutableDictionary *typeDict;
 		NSImage *scaledIcon;
 		NSImage *iconImage;
@@ -55,7 +56,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 			[typeDict setObject:[NSArchiver archivedDataWithRootObject:scaledIcon] forKey:@"icon32"];
 			[typeTemplates replaceObjectAtIndex:i withObject:typeDict];
 		}
-		[userDefaults setObject:typeTemplates forKey:@"TypeTemplates"];
+		[userDefaults setObject:typeTemplates forKey:@"FavoriteTypes"];
 		[userDefaults setBool:NO forKey:@"NeedUpdateIcons"];
 	}
 	
@@ -110,7 +111,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 		[documentController openDocument:self];
 	}
 	
-	
+	[DonationReminder remindDonation];
 	return;
 }
 

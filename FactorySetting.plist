@@ -11,19 +11,7 @@
 		<string>msng</string>
 		<string>MOZZ</string>
 	</array>
-	<key>HistoryMax</key>
-	<integer>10</integer>
-	<key>NeedUpdateIcons</key>
-	<true/>
-	<key>TableCollapseState</key>
-	<true/>
-	<key>TypeHistory</key>
-	<array>
-		<string>TEXT</string>
-		<string>msng</string>
-		<string>PDF </string>
-	</array>
-	<key>TypeTemplates</key>
+	<key>FavoriteTypes</key>
 	<array>
 		<dict>
 			<key>creatorCode</key>
@@ -65,6 +53,18 @@
 			<key>typeCode</key>
 			<string>TEXT</string>
 		</dict>
+	</array>
+	<key>HistoryMax</key>
+	<integer>10</integer>
+	<key>NeedUpdateIcons</key>
+	<true/>
+	<key>TableCollapseState</key>
+	<true/>
+	<key>TypeHistory</key>
+	<array>
+		<string>TEXT</string>
+		<string>msng</string>
+		<string>PDF </string>
 	</array>
 </dict>
 </plist>
