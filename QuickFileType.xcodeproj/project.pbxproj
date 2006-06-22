@@ -29,7 +29,6 @@
 		2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515CF30A42603B00A87E0C /* UtilityFunctions.m */; };
 		2C5ED1970A477C9900036C85 /* DonationReminder.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5ED1910A477C9900036C85 /* DonationReminder.nib */; };
 		2C5ED19B0A477E5E00036C85 /* DonationReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5ED1990A477E5E00036C85 /* DonationReminder.m */; };
-		2C5ED1BC0A4782AE00036C85 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C5ED1BB0A4782AE00036C85 /* localizable.strings */; };
 		2C9B80B20A12DCC000A872A9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */; };
 		2C9B80DD0A12F7BB00A872A9 /* GetFinderSelection.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C9B816B0A135A7600A872A9 /* FactorySetting.plist */; };
@@ -37,17 +36,18 @@
 		2C9B83E50A147E4400A872A9 /* OSTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B83E40A147E4400A872A9 /* OSTypeTransformer.m */; };
 		2CACFEB80A36F26000748AC9 /* CTDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CACFEB70A36F26000748AC9 /* CTDocumentController.m */; };
 		2CE75EE10A1C01170005790B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE75EE00A1C01170005790B /* HFSTypeUtils.m */; };
+		2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBD70A4A501D00433884 /* localizable.strings */; };
+		2CFDDBDB0A4A502A00433884 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1660FE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */; };
-		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC310486D014006FF6A4 /* CTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089C1660FE840EACC02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDocument.m; sourceTree = "<group>"; };
@@ -194,9 +194,9 @@
 				2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */,
 				2C1EDBBC0A1A9C62000C2CB3 /* MCTWindow.nib */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
-				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				089C1660FE840EACC02AAC07 /* InfoPlist.strings */,
 				2C9B816B0A135A7600A872A9 /* FactorySetting.plist */,
-				2C5ED1BB0A4782AE00036C85 /* localizable.strings */,
+				2CFDDBD70A4A501D00433884 /* localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -263,12 +263,12 @@
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
 				8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */,
-				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				2CFDDBDB0A4A502A00433884 /* InfoPlist.strings in Resources */,
 				2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */,
 				2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */,
 				2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */,
 				2C5ED1970A477C9900036C85 /* DonationReminder.nib in Resources */,
-				2C5ED1BC0A4782AE00036C85 /* localizable.strings in Resources */,
+				2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,14 +298,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		089C165FFE840EACC02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				089C1660FE840EACC02AAC07 /* English */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -354,7 +346,7 @@
 			name = DonationReminder.nib;
 			sourceTree = "<group>";
 		};
-		2C5ED1BB0A4782AE00036C85 /* localizable.strings */ = {
+		2CFDDBD70A4A501D00433884 /* localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2C5ED1B30A47828F00036C85 /* English */,

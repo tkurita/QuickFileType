@@ -1,6 +1,6 @@
 // !$*UTF8*$!
 {
-	089C1660FE840EACC02AAC07 /* English */ = {
+	089C1660FE840EACC02AAC07 /* InfoPlist.strings */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {893, 659}}";
 			sepNavSelRange = "{0, 0}";
@@ -164,6 +164,14 @@
 			sepNavWindowFrame = "{{698, 93}, {716, 799}}";
 		};
 	};
+	2A37F4BAFDCFA73011CA2CEA /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {421, 266}}";
+			sepNavSelRange = "{111, 0}";
+			sepNavVisRect = "{{0, 0}, {421, 266}}";
+			sepNavWindowFrame = "{{38, 548}, {466, 364}}";
+		};
+	};
 	2C0C30E70A47E0CF00565E73 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */;
@@ -302,7 +310,7 @@
 	2C3FF9FD0A35F84400419FF3 /* History.txt */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {687, 1296}}";
-			sepNavSelRange = "{1791, 0}";
+			sepNavSelRange = "{195, 0}";
 			sepNavVisRect = "{{0, 0}, {687, 669}}";
 			sepNavWindowFrame = "{{488, 78}, {732, 767}}";
 		};
