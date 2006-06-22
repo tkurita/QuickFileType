@@ -35,6 +35,11 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	}
 }
 
+- (IBAction)makeDonation:(id)sender
+{
+	[DonationReminder goToDonation];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 #if useLog

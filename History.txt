@@ -1,12 +1,16 @@
 = To do
-* FavoriteTable の 開閉状態を保存する
 * donation メニュー項目を作る
-* 不要なメニュー項目を消す
+* about 画面を作る
+* help を整備する
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
 
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+= 2006.06.22
+* FavoriteTable の 開閉状態を保存する
+* 不要なメニュー項目を消す -- save
 
 = 2006.06.20
 * drawer の開閉状態を保存する

@@ -2,6 +2,12 @@
 
 @implementation DonationReminder
 
++ (void)goToDonation
+{
+	NSString *urlString = NSLocalizedString(@"http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html", @"");
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+}
+
 - (IBAction)cancelDonation:(id)sender
 {
 	[[self window] close];
@@ -23,8 +29,9 @@
 
 - (IBAction)makeDonation:(id)sender
 {
-	NSString *urlString = NSLocalizedString(@"http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html", @"");
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+//	NSString *urlString = NSLocalizedString(@"http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html", @"");
+//	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+	[[self class] goToDonation];
 	[[self window] close];
 }
 

@@ -10,5 +10,6 @@
 - (IBAction)donated:(id)sender;
 - (IBAction)makeDonation:(id)sender;
 + (id)remindDonation;
++ (void)goToDonation;
 
 @end

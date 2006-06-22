@@ -372,7 +372,11 @@
 {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setBool:([infoDrawer state] == NSDrawerOpenState) forKey:@"IsOpenInfoDrawer"];
+	[userDefaults setInteger:[collapseButton state] forKey:@"TableCollapseState"];
 	[[aNotification object] saveFrameUsingName:_frameName];
+	if (_isCollapsed) {
+		[userDefaults setObject:NSStringFromRect(_typeBoxFrame) forKey:@"TypeBoxFrame"];
+	}
 }
 
 #pragma mark override NSDocument
@@ -385,19 +389,22 @@
 
 - (void)windowControllerDidLoadNib:(NSWindowController *) aController
 {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	[collapseButton setState: [userDefaults integerForKey:@"TableCollapseState"]];
+	if ([collapseButton state] == NSOffState) {
+		[self collapseTypeTableBox:self];
+		_typeBoxFrame = NSRectFromString([userDefaults objectForKey:@"TypeBoxFrame"]);
+	}
+	if ([userDefaults boolForKey:@"IsOpenInfoDrawer"]) {
+		[infoDrawer open:self];
+	}
+
 	_frameName = @"CTDocumentWindow";
 	NSWindow *aWindow = [aController window];
 	[aWindow center];
 	[aWindow setFrameUsingName:_frameName];
-	if (![collapseButton state]) {
-		[self collapseTypeTableBox:self];
-	}
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	if ([userDefaults boolForKey:@"IsOpenInfoDrawer"]) {
-		[infoDrawer open:self];
-	}
+
 	[super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
 }
 
 - (NSData *)dataRepresentationOfType:(NSString *)aType
