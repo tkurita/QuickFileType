@@ -185,53 +185,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>2CFDDBF70A4A6B8B00433884</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>TypeTableController.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>2CFDDBF80A4A6B8B00433884</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>TypeTableController.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>2CFDDC120A4A6C7800433884</string>
-						<key>history</key>
-						<array>
-							<string>2CFDDBF90A4A6B8B00433884</string>
-							<string>2CFDDBFA0A4A6B8B00433884</string>
-						</array>
-						<key>prevStack</key>
-						<array>
-							<string>2CFDDBFB0A4A6B8B00433884</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {792, 726}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>252 171 792 767 0 0 1440 938 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>1094</integer>
@@ -515,11 +469,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>32</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {323, 749}}</string>
+							<string>{{0, 153}, {323, 749}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -540,7 +495,7 @@
 							<real>301</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>31 118 340 808 0 0 1440 938 </string>
+						<string>122 129 340 808 0 0 1440 938 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -593,11 +548,10 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>2C9B80C30A12F73000A872A9</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
-		<string>2CFDDBF70A4A6B8B00433884</string>
 		<string>/Users/tkurita/Dev/Projects/QuickFileType/trunk/QuickFileType.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>31 118 340 808 0 0 1440 938 </string>
+	<string>122 129 340 808 0 0 1440 938 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>
