@@ -37,7 +37,7 @@
 		2CACFEB80A36F26000748AC9 /* CTDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CACFEB70A36F26000748AC9 /* CTDocumentController.m */; };
 		2CE75EE10A1C01170005790B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE75EE00A1C01170005790B /* HFSTypeUtils.m */; };
 		2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBD70A4A501D00433884 /* localizable.strings */; };
-		2CFDDBDB0A4A502A00433884 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1660FE840EACC02AAC07 /* InfoPlist.strings */; };
+		2CFDDBF40A4A6B7500433884 /* setuphelp.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBF30A4A6B7500433884 /* setuphelp.sh */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */; };
@@ -47,7 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		089C1660FE840EACC02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDocument.m; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		2CACFEB70A36F26000748AC9 /* CTDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDocumentController.m; sourceTree = "<group>"; };
 		2CE75EDF0A1C01170005790B /* HFSTypeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSTypeUtils.h; sourceTree = "<group>"; };
 		2CE75EE00A1C01170005790B /* HFSTypeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSTypeUtils.m; sourceTree = "<group>"; };
+		2CFDDBF30A4A6B7500433884 /* setuphelp.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = setuphelp.sh; sourceTree = "<group>"; };
 		32DBCF750370BD2300C91783 /* QuickFileType_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickFileType_Prefix.pch; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* QuickFileType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFileType.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +187,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2CFDDBF30A4A6B7500433884 /* setuphelp.sh */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				2C5ED1910A477C9900036C85 /* DonationReminder.nib */,
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
@@ -194,7 +195,6 @@
 				2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */,
 				2C1EDBBC0A1A9C62000C2CB3 /* MCTWindow.nib */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
-				089C1660FE840EACC02AAC07 /* InfoPlist.strings */,
 				2C9B816B0A135A7600A872A9 /* FactorySetting.plist */,
 				2CFDDBD70A4A501D00433884 /* localizable.strings */,
 			);
@@ -263,12 +263,12 @@
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
 				8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */,
-				2CFDDBDB0A4A502A00433884 /* InfoPlist.strings in Resources */,
 				2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */,
 				2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */,
 				2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */,
 				2C5ED1970A477C9900036C85 /* DonationReminder.nib in Resources */,
 				2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */,
+				2CFDDBF40A4A6B7500433884 /* setuphelp.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +403,10 @@
 		C05733CD08A9546B00998B17 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

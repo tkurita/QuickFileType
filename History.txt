@@ -1,5 +1,4 @@
 = To do
-* about 画面を作る
 * help を整備する
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
@@ -8,6 +7,7 @@
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
 = 2006.06.22
+* about 画面を作る
 * donation メニュー項目を作る
 * FavoriteTable の 開閉状態を保存する
 * 不要なメニュー項目を消す -- save
