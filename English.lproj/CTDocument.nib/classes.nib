@@ -7,6 +7,7 @@
                 chooseFromFile = id; 
                 collapseTypeTableBox = id; 
                 okAction = id; 
+                openAction = id; 
                 removeTypes = id; 
                 revert = id; 
             }; 
@@ -16,6 +17,8 @@
                 collapseButton = id; 
                 creatorPopup = id; 
                 infoDrawer = id; 
+                okButton = id; 
+                openButton = id; 
                 typePopup = id; 
                 typeTableBox = id; 
             }; 

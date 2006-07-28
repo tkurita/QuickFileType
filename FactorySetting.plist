@@ -11,6 +11,8 @@
 		<string>msng</string>
 		<string>MOZZ</string>
 	</array>
+	<key>DefaultButton</key>
+	<string>OK</string>
 	<key>FavoriteTypes</key>
 	<array>
 		<dict>

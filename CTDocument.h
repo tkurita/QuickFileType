@@ -10,6 +10,8 @@
 	IBOutlet id typeTableBox;
 	IBOutlet id collapseButton;
 	IBOutlet id infoDrawer;
+	IBOutlet id okButton;
+	IBOutlet id openButton;
 	
 	NSString *_creatorCode;
 	NSString *_typeCode;
@@ -37,6 +39,7 @@
 	NSRect _typeBoxFrame;
 	NSString *_frameName;
 }
+- (IBAction)openAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)chooseFromFile:(id)sender;
 - (IBAction)okAction:(id)sender;

@@ -3,7 +3,7 @@
 #import "BoolToStringTransformer.h"
 #import "UtilityFunctions.h"
 
-#define useLog 1
+#define useLog 0
 
 @implementation CTDocument
 
@@ -181,6 +181,36 @@
 	if (![appPath isEqualToString:_currentAppPath]) {
 		[self setCurrentAppPath: [outAppURL path]];
 		[self setCurrentAppIcon:convertImageSize([[NSWorkspace sharedWorkspace] iconForFile:appPath], 16)];
+	}
+}
+
+- (void) saveTypeHistory
+{
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	NSMutableArray *creatorHistory = [userDefaults objectForKey:@"CreatorHistory"];
+	NSMutableArray *typeHistory = [userDefaults objectForKey:@"TypeHistory"];
+	
+	unsigned int historyMax = [[userDefaults objectForKey:@"HistoryMax"] unsignedIntValue];
+	if ((_creatorCode != nil) && (![_creatorCode isEqualToString:@""])) {
+		if (![creatorHistory containsObject:_creatorCode]) {
+			creatorHistory = [creatorHistory mutableCopy];
+			[creatorHistory insertObject:_creatorCode atIndex:0];
+			if ([creatorHistory count] > historyMax) {
+				[creatorHistory removeLastObject];
+			}
+			[userDefaults setObject:creatorHistory forKey:@"CreatorHistory"];
+		}
+	}
+	
+	if ((_typeCode != nil)  && (![_typeCode isEqualToString:@""])) {
+		if (![typeHistory containsObject:_typeCode]) {
+			typeHistory = [typeHistory mutableCopy];
+			[typeHistory insertObject:_typeCode atIndex:0];
+			if ([typeHistory count] > historyMax) {
+				[typeHistory removeLastObject];
+			}				
+			[userDefaults setObject:typeHistory forKey:@"TypeHistory"];
+		}
 	}
 }
 
@@ -390,20 +420,31 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *) aController
 {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+	// setup type box status
 	[collapseButton setState: [userDefaults integerForKey:@"TableCollapseState"]];
 	if ([collapseButton state] == NSOffState) {
 		[self collapseTypeTableBox:self];
 		_typeBoxFrame = NSRectFromString([userDefaults objectForKey:@"TypeBoxFrame"]);
 	}
+
+	// setup drawer status
 	if ([userDefaults boolForKey:@"IsOpenInfoDrawer"]) {
 		[infoDrawer open:self];
 	}
-
+	
+	// setup window size
 	_frameName = @"CTDocumentWindow";
 	NSWindow *aWindow = [aController window];
 	[aWindow center];
 	[aWindow setFrameUsingName:_frameName];
 
+	//setup default button
+	NSString *defaultButtonName = [userDefaults stringForKey:@"DefaultButton"];
+	if ([defaultButtonName isEqualToString:@"Open"]) {
+		[okButton setKeyEquivalent:@""];
+		[openButton setKeyEquivalent:@"\r"];
+	}
 	[super windowControllerDidLoadNib:aController];
 }
 
@@ -514,38 +555,22 @@
 
 - (IBAction)okAction:(id)sender
 {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	NSMutableArray *creatorHistory = [userDefaults objectForKey:@"CreatorHistory"];
-	NSMutableArray *typeHistory = [userDefaults objectForKey:@"TypeHistory"];
-	
-	unsigned int historyMax = [[userDefaults objectForKey:@"HistoryMax"] unsignedIntValue];
-	NSLog(_creatorCode);
-	if ((_creatorCode != nil) && (![_creatorCode isEqualToString:@""])) {
-		if (![creatorHistory containsObject:_creatorCode]) {
-			creatorHistory = [creatorHistory mutableCopy];
-			[creatorHistory insertObject:_creatorCode atIndex:0];
-			if ([creatorHistory count] > historyMax) {
-				[creatorHistory removeLastObject];
-			}
-			[userDefaults setObject:creatorHistory forKey:@"CreatorHistory"];
-		}
-	}
-
-	if ((_typeCode != nil)  && (![_typeCode isEqualToString:@""])) {
-		if (![typeHistory containsObject:_typeCode]) {
-			typeHistory = [typeHistory mutableCopy];
-			[typeHistory insertObject:_typeCode atIndex:0];
-			if ([typeHistory count] > historyMax) {
-				[typeHistory removeLastObject];
-			}				
-			[userDefaults setObject:typeHistory forKey:@"TypeHistory"];
-		}
-	}
-	
+	[[NSUserDefaults standardUserDefaults] setObject:[sender title] forKey:@"DefaultButton"];
+	[self saveTypeHistory];
 	[self applyTypes];
 	[self close];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" object:self userInfo:nil];
 	
+}
+
+- (IBAction)openAction:(id)sender
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[sender title] forKey:@"DefaultButton"];
+	[self saveTypeHistory];
+	[self applyTypes];
+	[[NSWorkspace sharedWorkspace] openURL:[self fileURL]];
+	[self close];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" object:self userInfo:nil];
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
