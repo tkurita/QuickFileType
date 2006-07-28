@@ -4,7 +4,7 @@
 #import "UtilityFunctions.h"
 #import "DonationReminder.h"
 
-#define useLog 1
+#define useLog 0
 
 NSArray *URLsFromPaths(NSArray *filenames)
 {
@@ -130,8 +130,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	NSDictionary *defautlsDict = [NSDictionary dictionaryWithContentsOfFile:defaultsPlistPath];
 	
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	//format and suffix
+
 	[userDefaults registerDefaults:defautlsDict];	
 }
 

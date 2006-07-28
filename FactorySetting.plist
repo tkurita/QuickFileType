@@ -68,5 +68,7 @@
 		<string>msng</string>
 		<string>PDF </string>
 	</array>
+	<key>donationURL</key>
+	<string>http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html</string>
 </dict>
 </plist>

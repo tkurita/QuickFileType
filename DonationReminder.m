@@ -4,7 +4,7 @@
 
 + (void)goToDonation
 {
-	NSString *urlString = NSLocalizedString(@"http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html", @"");
+	NSString *urlString = [[NSUserDefaults standardUserDefaults] stringForKey:@"donationURL"];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
 }
 
@@ -29,8 +29,6 @@
 
 - (IBAction)makeDonation:(id)sender
 {
-//	NSString *urlString = NSLocalizedString(@"http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html", @"");
-//	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
 	[[self class] goToDonation];
 	[[self window] close];
 }
