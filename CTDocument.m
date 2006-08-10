@@ -50,9 +50,15 @@
 
 - (void)awakeFromNib
 {
+#if useLog
+	NSLog(@"start awakeFromNib in CTDocument");
+#endif
 	_typeTableController = [[TypeTableController alloc] initWithNibName:@"TypeTableView" owner:self];
 	[typeTableBox setContentView:[_typeTableController view]];
 	[_typeTableController setApplyTemplate:@selector(applyTypeTemplate:)];
+#if useLog
+	NSLog(@"end awakeFromNib in CTDocument");
+#endif	
 }
 
 #pragma mark others
@@ -419,6 +425,9 @@
 
 - (void)windowControllerDidLoadNib:(NSWindowController *) aController
 {
+#if useLog
+	NSLog(@"start windowControllerDidLoadNib");
+#endif
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
 	// setup type box status
@@ -444,8 +453,16 @@
 	if ([defaultButtonName isEqualToString:@"Open"]) {
 		[okButton setKeyEquivalent:@""];
 		[openButton setKeyEquivalent:@"\r"];
+		[_typeTableController setDoubleAction:@selector(openAction:)];
 	}
+	else {
+		[_typeTableController setDoubleAction:@selector(okAction:)];
+	}
+	
 	[super windowControllerDidLoadNib:aController];
+#if useLog
+	NSLog(@"end windowControllerDidLoadNib");
+#endif
 }
 
 - (NSData *)dataRepresentationOfType:(NSString *)aType
@@ -555,7 +572,7 @@
 
 - (IBAction)okAction:(id)sender
 {
-	[[NSUserDefaults standardUserDefaults] setObject:[sender title] forKey:@"DefaultButton"];
+	[[NSUserDefaults standardUserDefaults] setObject:@"OK" forKey:@"DefaultButton"];
 	[self saveTypeHistory];
 	[self applyTypes];
 	[self close];
@@ -565,7 +582,7 @@
 
 - (IBAction)openAction:(id)sender
 {
-	[[NSUserDefaults standardUserDefaults] setObject:[sender title] forKey:@"DefaultButton"];
+	[[NSUserDefaults standardUserDefaults] setObject:@"Open" forKey:@"DefaultButton"];
 	[self saveTypeHistory];
 	[self applyTypes];
 	[[NSWorkspace sharedWorkspace] openURL:[self fileURL]];

@@ -16,7 +16,6 @@
 	
 	id _owner;
 	SEL _applySelector;
-	
 	BOOL _shouldUpdateIcon;
 	NSImage *_updatedIcon;
 }
@@ -33,6 +32,7 @@
 - (void)hideApplyButton;
 - (NSDictionary *)getSelection;
 - (void)setApplyTemplate:(SEL)selector;
+- (void)setDoubleAction:(SEL)selector;
 - (id)typeTemplatesController;
 
 @end

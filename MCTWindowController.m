@@ -97,6 +97,7 @@
 	[typeTableBox setContentView:[_typeTableController view]];
 	[_typeTableController hideApplyButton];
 	[okButton bind:@"enabled" toObject:[_typeTableController typeTemplatesController] withKeyPath:@"selectedObjects.@count" options:nil];
+	[_typeTableController setDoubleAction:@selector(okAction:)];
 
 }
 

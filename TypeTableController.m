@@ -2,7 +2,7 @@
 #import "HFSTypeUtils.h"
 #import "UtilityFunctions.h"
 
-#define useLog 1
+#define useLog 0
 
 NSString *removeHatenaType(NSString *typeString)
 {
@@ -73,10 +73,15 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	return selectedDict;
 }
 
+- (void)setDoubleAction:(SEL)selector
+{
+	[typeTable setDoubleAction:selector];
+}
+
+
 - (void)setApplyTemplate:(SEL)selector
 {
 	_applySelector = selector;
-	[typeTable setDoubleAction:selector];
 }
 
 -(void)setUpdatedIcon:(NSImage *)iconImage

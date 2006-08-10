@@ -5,6 +5,10 @@
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
+= 2006.08.10
+awakeFromNib -> windowControllerDidLoadNib 
+という順番で呼ばれるようだ。
+
 = 2006.06.22
 * help を整備する
 * about 画面を作る
