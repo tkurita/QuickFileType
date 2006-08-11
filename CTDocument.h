@@ -38,6 +38,7 @@
 	BOOL _isCollapsed;
 	NSRect _typeBoxFrame;
 	NSString *_frameName;
+	SEL _defaultAction;
 }
 - (IBAction)openAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;
@@ -67,5 +68,6 @@
 - (NSString *)originalAppPath;
 
 - (void)setUserLSHandlersForExtensions:dict;
+- (void)doDoubleAction:(id)sender;
 
 @end

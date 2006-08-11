@@ -62,6 +62,12 @@
 }
 
 #pragma mark others
+- (void)doDoubleAction:(id)sender
+{
+	[self applyTypeTemplate:sender];
+	[self performSelector:_defaultAction withObject:sender];
+}
+
 - (void)checkUserLaunchServiceSetting
 {
 	NSArray *userLSHandlers = [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.apple.LaunchServices"] objectForKey:@"LSHandlers"];
@@ -453,12 +459,13 @@
 	if ([defaultButtonName isEqualToString:@"Open"]) {
 		[okButton setKeyEquivalent:@""];
 		[openButton setKeyEquivalent:@"\r"];
-		[_typeTableController setDoubleAction:@selector(openAction:)];
+		_defaultAction = @selector(openAction:);
 	}
 	else {
-		[_typeTableController setDoubleAction:@selector(okAction:)];
+		_defaultAction = @selector(okAction:);
 	}
 	
+	[_typeTableController setDoubleAction:@selector(doDoubleAction:)];
 	[super windowControllerDidLoadNib:aController];
 #if useLog
 	NSLog(@"end windowControllerDidLoadNib");
