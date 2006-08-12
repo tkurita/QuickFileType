@@ -30,7 +30,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.0 copyright 1999-2006, Tetsuro KURITA</string>
+	<string>3.0.1 copyright 1999-2006, Tetsuro KURITA</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>QuickFileTypeHelp</string>
 	<key>CFBundleHelpBookName</key>
@@ -48,7 +48,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3.0</string>
+	<string>3.0.1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© Tetsuro KURITA, 1999-2006</string>
 	<key>NSMainNibFile</key>

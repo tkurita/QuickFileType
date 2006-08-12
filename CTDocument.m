@@ -287,7 +287,9 @@
 
 - (void)setCurrentUTI:(NSString *)uti
 {
+#if useLog
 	NSLog(@"start setCurrentUTI : %@", uti);
+#endif
 	[uti retain];
 	[_currentUTI release];
 	_currentUTI = uti;

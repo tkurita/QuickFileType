@@ -27,14 +27,14 @@
 		2C3ED7F20A3DBE4800E2938D /* FlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3ED7F10A3DBE4800E2938D /* FlipView.m */; };
 		2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */; };
 		2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515CF30A42603B00A87E0C /* UtilityFunctions.m */; };
-		2C5ED1970A477C9900036C85 /* DonationReminder.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5ED1910A477C9900036C85 /* DonationReminder.nib */; };
-		2C5ED19B0A477E5E00036C85 /* DonationReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5ED1990A477E5E00036C85 /* DonationReminder.m */; };
 		2C9B80B20A12DCC000A872A9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */; };
 		2C9B80DD0A12F7BB00A872A9 /* GetFinderSelection.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C9B816B0A135A7600A872A9 /* FactorySetting.plist */; };
 		2C9B82C00A14553F00A872A9 /* OSTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B82BF0A14553F00A872A9 /* OSTypeFormatter.m */; };
 		2C9B83E50A147E4400A872A9 /* OSTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B83E40A147E4400A872A9 /* OSTypeTransformer.m */; };
 		2CACFEB80A36F26000748AC9 /* CTDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CACFEB70A36F26000748AC9 /* CTDocumentController.m */; };
+		2CD94ABB0A8D92CB0029C487 /* DonationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */; };
+		2CD94ACA0A8D9D110029C487 /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */; };
 		2CE75EE10A1C01170005790B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE75EE00A1C01170005790B /* HFSTypeUtils.m */; };
 		2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBD70A4A501D00433884 /* localizable.strings */; };
 		2CFDDBF40A4A6B7500433884 /* setuphelp.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBF30A4A6B7500433884 /* setuphelp.sh */; };
@@ -45,6 +45,19 @@
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2CD94AC30A8D9CFD0029C487 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2CD94ACA0A8D9D110029C487 /* DonationReminder.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -70,9 +83,6 @@
 		2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoolToStringTransformer.m; sourceTree = "<group>"; };
 		2C515CF20A42603B00A87E0C /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
 		2C515CF30A42603B00A87E0C /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
-		2C5ED1920A477C9900036C85 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DonationReminder.nib; sourceTree = "<group>"; };
-		2C5ED1990A477E5E00036C85 /* DonationReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationReminder.m; sourceTree = "<group>"; };
-		2C5ED19A0A477E5E00036C85 /* DonationReminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationReminder.h; sourceTree = "<group>"; };
 		2C5ED1B30A47828F00036C85 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/localizable.strings; sourceTree = "<group>"; };
 		2C9B80B00A12DCC000A872A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		2C9B80B10A12DCC000A872A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -84,6 +94,7 @@
 		2C9B83E40A147E4400A872A9 /* OSTypeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTypeTransformer.m; sourceTree = "<group>"; };
 		2CACFEB60A36F26000748AC9 /* CTDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDocumentController.h; sourceTree = "<group>"; };
 		2CACFEB70A36F26000748AC9 /* CTDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDocumentController.m; sourceTree = "<group>"; };
+		2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationReminder.framework; path = ../../DonationReminder/trunk/build/Release/DonationReminder.framework; sourceTree = SOURCE_ROOT; };
 		2CE75EDF0A1C01170005790B /* HFSTypeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSTypeUtils.h; sourceTree = "<group>"; };
 		2CE75EE00A1C01170005790B /* HFSTypeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSTypeUtils.m; sourceTree = "<group>"; };
 		2CFDDBF30A4A6B7500433884 /* setuphelp.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = setuphelp.sh; sourceTree = "<group>"; };
@@ -98,6 +109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				2CD94ABB0A8D92CB0029C487 /* DonationReminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +119,7 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -169,8 +182,6 @@
 				2C3ED7F10A3DBE4800E2938D /* FlipView.m */,
 				2C515CF20A42603B00A87E0C /* UtilityFunctions.h */,
 				2C515CF30A42603B00A87E0C /* UtilityFunctions.m */,
-				2C5ED1990A477E5E00036C85 /* DonationReminder.m */,
-				2C5ED19A0A477E5E00036C85 /* DonationReminder.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -189,7 +200,6 @@
 			children = (
 				2CFDDBF30A4A6B7500433884 /* setuphelp.sh */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
-				2C5ED1910A477C9900036C85 /* DonationReminder.nib */,
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
 				2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */,
 				2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */,
@@ -226,6 +236,7 @@
 			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "QuickFileType" */;
 			buildPhases = (
 				8D15AC2B0486D014006FF6A4 /* Resources */,
+				2CD94AC30A8D9CFD0029C487 /* CopyFiles */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
 				2C9B80D90A12F7B500A872A9 /* AppleScript */,
@@ -266,7 +277,6 @@
 				2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */,
 				2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */,
 				2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */,
-				2C5ED1970A477C9900036C85 /* DonationReminder.nib in Resources */,
 				2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */,
 				2CFDDBF40A4A6B7500433884 /* setuphelp.sh in Resources */,
 			);
@@ -291,7 +301,6 @@
 				2C3ED7F20A3DBE4800E2938D /* FlipView.m in Sources */,
 				2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */,
 				2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */,
-				2C5ED19B0A477E5E00036C85 /* DonationReminder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,14 +347,6 @@
 			name = MCTWindow.nib;
 			sourceTree = "<group>";
 		};
-		2C5ED1910A477C9900036C85 /* DonationReminder.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C5ED1920A477C9900036C85 /* English */,
-			);
-			name = DonationReminder.nib;
-			sourceTree = "<group>";
-		};
 		2CFDDBD70A4A501D00433884 /* localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -361,6 +362,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../DonationReminder/trunk/build/Release\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -380,6 +386,11 @@
 					ppc,
 					i386,
 				);
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../DonationReminder/trunk/build/Release\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;

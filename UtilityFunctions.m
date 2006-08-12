@@ -77,10 +77,11 @@ NSString *getUTIFromTags(NSString *typeString, NSString *extensionString)
 		tag = typeString;
 	}
 	else {
+#if useLog		
 		NSLog(@"no originalType Code");
+#endif		
 		tagClass = kUTTagClassFilenameExtension;
 		tag = extensionString;
-		NSLog(tag);
 	}
 	
 	NSString *theUTI = (NSString *)UTTypeCreatePreferredIdentifierForTag(tagClass, (CFStringRef)tag, CFSTR("public.data"));
