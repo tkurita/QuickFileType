@@ -20,6 +20,7 @@
 /* End PBXAppleScriptBuildPhase section */
 
 /* Begin PBXBuildFile section */
+		2C030D980A946AB9005B592F /* HelpSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C030D970A946AB9005B592F /* HelpSetup.plist */; };
 		2C1EDA940A19B208000C2CB3 /* TypeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EDA920A19B208000C2CB3 /* TypeTableController.m */; };
 		2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */; };
 		2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDBBC0A1A9C62000C2CB3 /* MCTWindow.nib */; };
@@ -70,6 +71,7 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C030D970A946AB9005B592F /* HelpSetup.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = HelpSetup.plist; sourceTree = "<group>"; };
 		2C1EDA900A19B17C000C2CB3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/TypeTableView.nib; sourceTree = "<group>"; };
 		2C1EDA920A19B208000C2CB3 /* TypeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeTableController.m; sourceTree = "<group>"; };
 		2C1EDA930A19B208000C2CB3 /* TypeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeTableController.h; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C030D970A946AB9005B592F /* HelpSetup.plist */,
 				2CFDDBF30A4A6B7500433884 /* setuphelp.sh */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
@@ -279,6 +282,7 @@
 				2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */,
 				2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */,
 				2CFDDBF40A4A6B7500433884 /* setuphelp.sh in Resources */,
+				2C030D980A946AB9005B592F /* HelpSetup.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
