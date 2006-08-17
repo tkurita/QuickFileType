@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 2C5CA59D0A12D84200AD6E75 /* QuickFileType */;
 		activeTarget = 8D15AC270486D014006FF6A4 /* QuickFileType */;
 		addToTargets = (
@@ -534,14 +534,6 @@
 			sepNavSelRange = "{36, 16}";
 			sepNavVisRect = "{{0, 0}, {498, 544}}";
 			sepNavWindowFrame = "{{314, 218}, {543, 642}}";
-		};
-	};
-	2CFDDBF30A4A6B7500433884 /* setuphelp.sh */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {812, 778}}";
-			sepNavSelRange = "{326, 57}";
-			sepNavVisRect = "{{0, 0}, {812, 778}}";
-			sepNavWindowFrame = "{{454, 61}, {857, 876}}";
 		};
 	};
 	8D15AC270486D014006FF6A4 /* QuickFileType */ = {
