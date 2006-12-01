@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>IsLocalized</key>
-	<false/>
+	<true/>
 	<key>ManualFolder</key>
 	<string>/Users/tkurita/Factories/Websites/scriptfactory/scriptfactory/ScriptGallery/FinderHelpers/QuickFileType/manual</string>
 	<key>ManualPage</key>
