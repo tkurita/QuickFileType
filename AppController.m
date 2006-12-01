@@ -6,6 +6,8 @@
 
 #define useLog 0
 
+static BOOL isFirstOpen = YES;
+
 NSArray *URLsFromPaths(NSArray *filenames)
 {
 	NSEnumerator *enumerator = [filenames objectEnumerator];
@@ -21,6 +23,9 @@ NSArray *URLsFromPaths(NSArray *filenames)
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
+#if useLog
+	NSLog([NSString stringWithFormat:@"start openFiles for :%@",[filenames description]]);
+#endif	
 	unsigned int nFile = [filenames count];
 	NSError *error = nil;
 	
@@ -33,6 +38,8 @@ NSArray *URLsFromPaths(NSArray *filenames)
 		[[NSDocumentController sharedDocumentController]
 				openDocumentWithContentsOfURL:[URLsFromPaths(filenames) lastObject] display:YES error:&error];
 	}
+	
+	isFirstOpen = NO;
 }
 
 - (IBAction)makeDonation:(id)sender
@@ -40,36 +47,12 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	[DonationReminder goToDonation];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)openFinderSelection
 {
-#if useLog
-	NSLog(@"start applicationDidFinishLaunching");
-#endif
-	//initialize type template icons
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	if ([userDefaults boolForKey:@"NeedUpdateIcons"]) {
-		NSMutableArray *typeTemplates = [[userDefaults objectForKey:@"FavoriteTypes"] mutableCopy];
-		NSMutableDictionary *typeDict;
-		NSImage *scaledIcon;
-		NSImage *iconImage;
-		for (unsigned i = 0; i < [typeTemplates count];  i++) {
-			typeDict = [[typeTemplates objectAtIndex:i] mutableCopy];
-			iconImage = iconForCreatorAndTypeString([typeDict objectForKey:@"creatorCode"], [typeDict objectForKey:@"typeCode"]);
-			scaledIcon = convertImageSize(iconImage, 16);
-			[typeDict setObject:[NSArchiver archivedDataWithRootObject:scaledIcon] forKey:@"icon16"];
-			scaledIcon = convertImageSize(iconImage, 32);
-			[typeDict setObject:[NSArchiver archivedDataWithRootObject:scaledIcon] forKey:@"icon32"];
-			[typeTemplates replaceObjectAtIndex:i withObject:typeDict];
-		}
-		[userDefaults setObject:typeTemplates forKey:@"FavoriteTypes"];
-		[userDefaults setBool:NO forKey:@"NeedUpdateIcons"];
-	}
-	
-	//get finder's selection
 	NSBundle *bundle = [NSBundle mainBundle];
 	NSString *scriptPath = [bundle pathForResource:@"GetFinderSelection" ofType:@"scpt" inDirectory:@"Scripts"
 		];
-	//NSLog(scriptPath);
+
 	NSURL *scriptURL = [NSURL fileURLWithPath:scriptPath];
 	NSDictionary *errorDict = nil;
 	NSAppleScript *getFinderSelection = [[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:&errorDict];
@@ -115,7 +98,34 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	else {
 		[documentController openDocument:self];
 	}
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+#if useLog
+	NSLog(@"start applicationDidFinishLaunching");
+#endif
+	//initialize type template icons
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults boolForKey:@"NeedUpdateIcons"]) {
+		NSMutableArray *typeTemplates = [[userDefaults objectForKey:@"FavoriteTypes"] mutableCopy];
+		NSMutableDictionary *typeDict;
+		NSImage *scaledIcon;
+		NSImage *iconImage;
+		for (unsigned i = 0; i < [typeTemplates count];  i++) {
+			typeDict = [[typeTemplates objectAtIndex:i] mutableCopy];
+			iconImage = iconForCreatorAndTypeString([typeDict objectForKey:@"creatorCode"], [typeDict objectForKey:@"typeCode"]);
+			scaledIcon = convertImageSize(iconImage, 16);
+			[typeDict setObject:[NSArchiver archivedDataWithRootObject:scaledIcon] forKey:@"icon16"];
+			scaledIcon = convertImageSize(iconImage, 32);
+			[typeDict setObject:[NSArchiver archivedDataWithRootObject:scaledIcon] forKey:@"icon32"];
+			[typeTemplates replaceObjectAtIndex:i withObject:typeDict];
+		}
+		[userDefaults setObject:typeTemplates forKey:@"FavoriteTypes"];
+		[userDefaults setBool:NO forKey:@"NeedUpdateIcons"];
+	}
 	
+	if (isFirstOpen) [self openFinderSelection];
 	[DonationReminder remindDonation];
 	return;
 }
@@ -136,7 +146,6 @@ NSArray *URLsFromPaths(NSArray *filenames)
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
 {
-	//return YES;
 	return NO;
 }
 

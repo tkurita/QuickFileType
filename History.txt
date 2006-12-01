@@ -1,6 +1,8 @@
 = To do
+* 起動していない状態で複数の item を drop すると二つの MCTWindow が開かれる。
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
+
 
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
