@@ -28,7 +28,11 @@
 - (IBAction)updateIcon:(id)sender;
 
 - (id)initWithNibName:(NSString *)nibName owner:(id)owner;
+
+//accessors
 - (NSView *)view;
+- (NSView *)favoritesTableView;
+
 - (void)hideApplyButton;
 - (NSDictionary *)getSelection;
 - (void)setApplyTemplate:(SEL)selector;

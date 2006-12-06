@@ -1,20 +1,20 @@
 // !$*UTF8*$!
 {
 	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Debug;
 		activeExecutable = 2C5CA59D0A12D84200AD6E75 /* QuickFileType */;
 		activeTarget = 8D15AC270486D014006FF6A4 /* QuickFileType */;
 		addToTargets = (
 			8D15AC270486D014006FF6A4 /* QuickFileType */,
 		);
 		breakpoints = (
-			2C9B856E0A14CB1500A872A9 /* CTDocument.m:612 */,
-			2C26C7B00A1C208300E86197 /* TypeTableController.m:95 */,
-			2C26C8CE0A1C528500E86197 /* TypeTableController.m:201 */,
-			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:584 */,
+			2C9B856E0A14CB1500A872A9 /* CTDocument.m:614 */,
+			2C26C7B00A1C208300E86197 /* TypeTableController.m:100 */,
+			2C26C8CE0A1C528500E86197 /* TypeTableController.m:206 */,
+			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:586 */,
 			2C515DCD0A42855B00A87E0C /* BoolToStringTransformer.m:16 */,
-			2CE2C6CE0A4674F300D56041 /* TypeTableController.m:137 */,
-			2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:314 */,
+			2CE2C6CE0A4674F300D56041 /* TypeTableController.m:142 */,
+			2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:319 */,
 			2C5ED1C30A47837400036C85 /* DonationReminder.m:7 */,
 			2C0C30F30A47E11B00565E73 /* CTDocument.m:417 */,
 			2C9B97EB0A8B62E100DCED35 /* CTDocument.m:133 */,
@@ -91,12 +91,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 186670464;
-			PBXWorkspaceStateSaveDate = 186670464;
-		};
-		perUserProjectItems = {
-			2C443F0A0B209F37003DA62E /* PBXTextBookmark */ = 2C443F0A0B209F37003DA62E /* PBXTextBookmark */;
-			2C443F0B0B209F37003DA62E /* PBXTextBookmark */ = 2C443F0B0B209F37003DA62E /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 187089115;
+			PBXWorkspaceStateSaveDate = 187089115;
 		};
 		sourceControlManager = 2C5CA5A80A12D86300AD6E75 /* Source Control */;
 		userBuildSettings = {
@@ -104,17 +100,17 @@
 	};
 	2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 10298}}";
-			sepNavSelRange = "{13125, 135}";
-			sepNavVisRect = "{{0, 7876}, {671, 701}}";
+			sepNavIntBoundsRect = "{{0, 0}, {2036, 10080}}";
+			sepNavSelRange = "{11451, 0}";
+			sepNavVisRect = "{{0, 6963}, {677, 317}}";
 			sepNavWindowFrame = "{{758, 117}, {716, 799}}";
 		};
 	};
 	2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1178}}";
+			sepNavIntBoundsRect = "{{0, 0}, {677, 1184}}";
 			sepNavSelRange = "{944, 0}";
-			sepNavVisRect = "{{0, 477}, {671, 701}}";
+			sepNavVisRect = "{{0, 159}, {677, 670}}";
 			sepNavWindowFrame = "{{480, 101}, {716, 799}}";
 		};
 	};
@@ -150,17 +146,17 @@
 	};
 	2C1EDA920A19B208000C2CB3 /* TypeTableController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {747, 5892}}";
-			sepNavSelRange = "{6681, 118}";
-			sepNavVisRect = "{{0, 3514}, {747, 709}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1119, 5792}}";
+			sepNavSelRange = "{1136, 30}";
+			sepNavVisRect = "{{0, 517}, {753, 678}}";
 			sepNavWindowFrame = "{{106, 121}, {792, 807}}";
 		};
 	};
 	2C1EDA930A19B208000C2CB3 /* TypeTableController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {743, 620}}";
-			sepNavSelRange = "{395, 0}";
-			sepNavVisRect = "{{0, 200}, {743, 337}}";
+			sepNavIntBoundsRect = "{{0, 0}, {753, 688}}";
+			sepNavSelRange = "{823, 0}";
+			sepNavVisRect = "{{0, 0}, {753, 678}}";
 			sepNavWindowFrame = "{{542, 114}, {792, 807}}";
 		};
 	};
@@ -180,7 +176,7 @@
 			sepNavWindowFrame = "{{323, 126}, {663, 790}}";
 		};
 	};
-	2C26C7B00A1C208300E86197 /* TypeTableController.m:95 */ = {
+	2C26C7B00A1C208300E86197 /* TypeTableController.m:100 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -190,11 +186,11 @@
 		fileReference = 2C1EDA920A19B208000C2CB3 /* TypeTableController.m */;
 		functionName = "-doDoubleAction";
 		hitCount = 1;
-		lineNumber = 95;
+		lineNumber = 100;
 		modificationTime = 180502221.69434;
 		state = 1;
 	};
-	2C26C8CE0A1C528500E86197 /* TypeTableController.m:201 */ = {
+	2C26C8CE0A1C528500E86197 /* TypeTableController.m:206 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -204,7 +200,7 @@
 		fileReference = 2C1EDA920A19B208000C2CB3 /* TypeTableController.m */;
 		functionName = "-applyTypeTemplate:";
 		hitCount = 1;
-		lineNumber = 201;
+		lineNumber = 206;
 		modificationTime = 180502221.694329;
 		state = 1;
 	};
@@ -218,9 +214,9 @@
 	};
 	2C3FF9FD0A35F84400419FF3 /* History.txt */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {687, 1352}}";
-			sepNavSelRange = "{207, 0}";
-			sepNavVisRect = "{{0, 0}, {687, 669}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1434, 1308}}";
+			sepNavSelRange = "{59, 0}";
+			sepNavVisRect = "{{0, 0}, {693, 638}}";
 			sepNavWindowFrame = "{{178, 152}, {732, 767}}";
 		};
 	};
@@ -232,24 +228,7 @@
 			sepNavWindowFrame = "{{38, 210}, {888, 702}}";
 		};
 	};
-	2C443F0A0B209F37003DA62E /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 2CACFEB70A36F26000748AC9 /* CTDocumentController.m */;
-		rLen = 24;
-		rLoc = 168;
-		rType = 0;
-	};
-	2C443F0B0B209F37003DA62E /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 2CACFEB70A36F26000748AC9 /* CTDocumentController.m */;
-		name = URLsFromRunningOpenPanel;
-		rLen = 24;
-		rLoc = 168;
-		rType = 0;
-		vrLen = 436;
-		vrLoc = 0;
-	};
-	2C4AC1120A79D4E900089872 /* CTDocument.m:460 */ = {
+	2C4AC1120A79D4E900089872 /* CTDocument.m:462 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -259,7 +238,7 @@
 		fileReference = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		functionName = "-windowControllerDidLoadNib:";
 		hitCount = 1;
-		lineNumber = 460;
+		lineNumber = 462;
 		location = CTDocument.ob;
 		modificationTime = 176908437.916651;
 		state = 1;
@@ -392,9 +371,9 @@
 	};
 	2C9B80B10A12DCC000A872A9 /* AppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 2416}}";
-			sepNavSelRange = "{4093, 0}";
-			sepNavVisRect = "{{5, 1303}, {788, 654}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 2528}}";
+			sepNavSelRange = "{198, 0}";
+			sepNavVisRect = "{{0, 0}, {834, 286}}";
 			sepNavWindowFrame = "{{66, 131}, {827, 783}}";
 		};
 	};
@@ -418,16 +397,16 @@
 		isa = XCBreakpointsBucket;
 		name = "プロジェクトブレークポイント";
 		objects = (
-			2C9B856E0A14CB1500A872A9 /* CTDocument.m:612 */,
-			2C26C7B00A1C208300E86197 /* TypeTableController.m:95 */,
-			2C26C8CE0A1C528500E86197 /* TypeTableController.m:201 */,
-			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:584 */,
+			2C9B856E0A14CB1500A872A9 /* CTDocument.m:614 */,
+			2C26C7B00A1C208300E86197 /* TypeTableController.m:100 */,
+			2C26C8CE0A1C528500E86197 /* TypeTableController.m:206 */,
+			2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:586 */,
 			2C515DCD0A42855B00A87E0C /* BoolToStringTransformer.m:16 */,
-			2CE2C6CE0A4674F300D56041 /* TypeTableController.m:137 */,
-			2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:314 */,
+			2CE2C6CE0A4674F300D56041 /* TypeTableController.m:142 */,
+			2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:319 */,
 			2C5ED1C30A47837400036C85 /* DonationReminder.m:7 */,
 			2C0C30F30A47E11B00565E73 /* CTDocument.m:417 */,
-			2C4AC1120A79D4E900089872 /* CTDocument.m:460 */,
+			2C4AC1120A79D4E900089872 /* CTDocument.m:462 */,
 		);
 	};
 	2C9B82BE0A14553F00A872A9 /* OSTypeFormatter.h */ = {
@@ -462,7 +441,7 @@
 			sepNavWindowFrame = "{{15, 134}, {716, 799}}";
 		};
 	};
-	2C9B856E0A14CB1500A872A9 /* CTDocument.m:612 */ = {
+	2C9B856E0A14CB1500A872A9 /* CTDocument.m:614 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -472,7 +451,7 @@
 		fileReference = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		functionName = "-chooseFromFile:";
 		hitCount = 1;
-		lineNumber = 612;
+		lineNumber = 614;
 		modificationTime = 180502221.694214;
 		state = 1;
 	};
@@ -492,13 +471,13 @@
 	};
 	2CACFEB70A36F26000748AC9 /* CTDocumentController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {749, 336}}";
-			sepNavSelRange = "{168, 24}";
-			sepNavVisRect = "{{0, 0}, {749, 322}}";
-			sepNavWindowFrame = "{{425, 352}, {632, 479}}";
+			sepNavIntBoundsRect = "{{0, 0}, {841, 382}}";
+			sepNavSelRange = "{117, 24}";
+			sepNavVisRect = "{{0, 0}, {841, 382}}";
+			sepNavWindowFrame = "{{425, 320}, {880, 511}}";
 		};
 	};
-	2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:584 */ = {
+	2CB8951D0A1E0A4200BA5DC7 /* CTDocument.m:586 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -508,11 +487,11 @@
 		fileReference = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
 		functionName = "-okAction:";
 		hitCount = 1;
-		lineNumber = 584;
+		lineNumber = 586;
 		modificationTime = 180502221.694284;
 		state = 1;
 	};
-	2CE2C6CE0A4674F300D56041 /* TypeTableController.m:137 */ = {
+	2CE2C6CE0A4674F300D56041 /* TypeTableController.m:142 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -522,11 +501,11 @@
 		fileReference = 2C1EDA920A19B208000C2CB3 /* TypeTableController.m */;
 		functionName = "-didEndSheet:returnCode:contextInfo:";
 		hitCount = 1;
-		lineNumber = 137;
+		lineNumber = 142;
 		modificationTime = 180502221.694351;
 		state = 1;
 	};
-	2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:314 */ = {
+	2CE2C7FA0A46CE6C00D56041 /* TypeTableController.m:319 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -536,7 +515,7 @@
 		fileReference = 2C1EDA920A19B208000C2CB3 /* TypeTableController.m */;
 		functionName = "-insertTypesFromPathes:row:";
 		hitCount = 1;
-		lineNumber = 314;
+		lineNumber = 319;
 		modificationTime = 180502221.694307;
 		state = 1;
 	};

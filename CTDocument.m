@@ -437,12 +437,15 @@
 	NSLog(@"start windowControllerDidLoadNib");
 #endif
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
+	NSWindow *aWindow = [aController window];
 	// setup type box status
 	[collapseButton setState: [userDefaults integerForKey:@"TableCollapseState"]];
 	if ([collapseButton state] == NSOffState) {
 		[self collapseTypeTableBox:self];
 		_typeBoxFrame = NSRectFromString([userDefaults objectForKey:@"TypeBoxFrame"]);
+	}
+	else {
+		[aWindow setInitialFirstResponder:[_typeTableController favoritesTableView]];
 	}
 
 	// setup drawer status
@@ -452,7 +455,6 @@
 	
 	// setup window size
 	_frameName = @"CTDocumentWindow";
-	NSWindow *aWindow = [aController window];
 	[aWindow center];
 	[aWindow setFrameUsingName:_frameName];
 
