@@ -226,6 +226,14 @@
 	}
 }
 
+- (void)setupNextKeyView
+{
+	NSTableView *favorites_table = [_typeTableController favoritesTableView];
+	[[[[self windowControllers] lastObject] window] setInitialFirstResponder:favorites_table];
+	[typePopup setNextKeyView:favorites_table];
+	[favorites_table setNextKeyView:creatorPopup];
+}
+
 #pragma mark accessors for current values
 - (void)setUserLSHandlersForExtensions:dict
 {
@@ -445,7 +453,7 @@
 		_typeBoxFrame = NSRectFromString([userDefaults objectForKey:@"TypeBoxFrame"]);
 	}
 	else {
-		[aWindow setInitialFirstResponder:[_typeTableController favoritesTableView]];
+		[self setupNextKeyView];
 	}
 
 	// setup drawer status
@@ -554,11 +562,17 @@
 	NSRect windowFrame = [window frame];
 
 	if (! _isCollapsed){
+		NSTableView *favorites_table = [_typeTableController favoritesTableView];
+		if ([[window firstResponder] isEqual:favorites_table]) {
+			[window makeFirstResponder:creatorPopup];
+		}
+		[typePopup setNextKeyView:creatorPopup];
 		_typeBoxFrame = [typeTableBox frame];
 		windowFrame.origin.y = windowFrame.origin.y + NSHeight(_typeBoxFrame);
 		windowFrame.size.height = NSHeight(windowFrame) - NSHeight(_typeBoxFrame);
 		[typeTableBox setContentView:nil];
 		[window setFrame:windowFrame display:YES animate:YES];
+		
 		_isCollapsed = YES;
 	}
 	else {
@@ -566,6 +580,7 @@
 		windowFrame.size.height = NSHeight(windowFrame) + NSHeight(_typeBoxFrame);
 		[window setFrame:windowFrame display:YES animate:YES];
 		[typeTableBox setContentView:[_typeTableController view]];
+		[self setupNextKeyView];
 		_isCollapsed = NO;
 	}
 }

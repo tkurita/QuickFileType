@@ -51,7 +51,7 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	return typeTemplatesController;
 }
 
-- (NSView *)favoritesTableView
+- (NSTableView *)favoritesTableView
 {
 	return typeTable;
 }

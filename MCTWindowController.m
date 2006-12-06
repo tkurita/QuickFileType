@@ -107,7 +107,10 @@
 	[fileTable setDoubleAction:@selector(openCTDocument:)];
 	_frameName = @"MCTWindow";
 	NSWindow *aWindow = [self window];
-	[aWindow setInitialFirstResponder:[_typeTableController favoritesTableView]];
+	NSTableView *favorites_table = [_typeTableController favoritesTableView];
+	[aWindow setInitialFirstResponder:favorites_table];
+	[favorites_table setNextKeyView:fileTable];
+	[fileTable setNextKeyView:favorites_table];
 	[aWindow center];
 	[aWindow setFrameUsingName:_frameName];
 }

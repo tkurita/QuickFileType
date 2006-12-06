@@ -31,7 +31,7 @@
 
 //accessors
 - (NSView *)view;
-- (NSView *)favoritesTableView;
+- (NSTableView *)favoritesTableView;
 
 - (void)hideApplyButton;
 - (NSDictionary *)getSelection;
