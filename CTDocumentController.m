@@ -20,8 +20,10 @@
 		if (![[file_info objectForKey:NSFileType] isEqualTo:NSFileTypeRegular]) {
 			NSAlert *alert = [[NSAlert alloc] init];
 			[alert addButtonWithTitle:@"OK"];
-			[alert setMessageText:[NSString stringWithFormat:@"Can't open %@", [[urls lastObject] path]]];
-			[alert setInformativeText:@"Directory does not have a type code and a creator code"];
+			NSString *a_message = NSLocalizedString(@"%@ is not a file.", @"A message when a package is selected in open panel");
+			[alert setMessageText:[NSString stringWithFormat:a_message, [[[urls lastObject] path] lastPathComponent] ]];
+			a_message = NSLocalizedString(@"Directory does not have a type code and a creator code", @"Infomative text when a package is selected in open panel");
+			[alert setInformativeText:a_message];
 			[alert setAlertStyle:NSInformationalAlertStyle];
 			[alert runModal];
 			[alert release];
