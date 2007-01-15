@@ -130,6 +130,31 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	return;
 }
 
+- (void)awakeFromNib
+{
+#if useLog
+	NSLog(@"start awakeFromNib in AppController");
+#endif
+	
+	NSString *defaultsPlistPath = [[NSBundle mainBundle] pathForResource:@"FactorySetting" ofType:@"plist"];
+	NSDictionary *defautlsDict = [NSDictionary dictionaryWithContentsOfFile:defaultsPlistPath];
+	
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+	[userDefaults registerDefaults:defautlsDict];	
+}
+
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
+{
+	return NO;
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
+{
+	return YES;
+}
+
+/* method for service menu */
 - (void)openForServices:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
 {
 	NSArray *types = [pboard types];
@@ -169,30 +194,6 @@ NSArray *URLsFromPaths(NSArray *filenames)
 			break;			
 	}
 	//[NSApp activateIgnoringOtherApps:YES];
-}
-
-- (void)awakeFromNib
-{
-#if useLog
-	NSLog(@"start awakeFromNib in AppController");
-#endif
-	
-	NSString *defaultsPlistPath = [[NSBundle mainBundle] pathForResource:@"FactorySetting" ofType:@"plist"];
-	NSDictionary *defautlsDict = [NSDictionary dictionaryWithContentsOfFile:defaultsPlistPath];
-	
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
-	[userDefaults registerDefaults:defautlsDict];	
-}
-
-- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
-{
-	return NO;
-}
-
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
-{
-	return YES;
 }
 
 @end

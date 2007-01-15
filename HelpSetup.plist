@@ -5,7 +5,7 @@
 	<key>IsLocalized</key>
 	<true/>
 	<key>ManualFolder</key>
-	<string>/Users/tkurita/Factories/Websites/scriptfactory/scriptfactory/ScriptGallery/FinderHelpers/QuickFileType/manual</string>
+	<string>/Users/tkurita/Factories/Websites/scriptfactory/web-content/ScriptGallery/FinderHelpers/QuickFileType/manual</string>
 	<key>ManualPage</key>
 	<string>index.html</string>
 </dict>
