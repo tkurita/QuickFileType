@@ -22,7 +22,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
-			<false/>
+			<true/>
 			<key>NSDocumentClass</key>
 			<string>CTDocument</string>
 		</dict>
@@ -30,7 +30,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.0.2 copyright 1999-2006, Tetsuro KURITA</string>
+	<string>3.0.3 copyright 1999-2007, Tetsuro KURITA</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>QuickFileTypeHelp</string>
 	<key>CFBundleIconFile</key>
@@ -46,12 +46,35 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3.0.2</string>
+	<string>3.0.3</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© Tetsuro KURITA, 1999-2006</string>
+	<string>© Tetsuro KURITA, 1999-2007</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string>_</string>
+			</dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Change Creator and Type</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>openForServices</string>
+			<key>NSPortName</key>
+			<string>QuickFileType</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

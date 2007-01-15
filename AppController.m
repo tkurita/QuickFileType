@@ -130,6 +130,47 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	return;
 }
 
+- (void)openForServices:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
+{
+	NSArray *types = [pboard types];
+	NSArray *file_names;
+	if (![types containsObject:NSFilenamesPboardType] 
+			|| !(file_names = [pboard propertyListForType:NSFilenamesPboardType])) {
+        *error = NSLocalizedString(@"Error: Pasteboard doesn't contain file paths.",
+                   @"Pasteboard couldn't give string.");
+        return;
+    }
+	
+	NSMutableArray *target_files = [NSMutableArray array];
+	NSFileManager *file_manager = [NSFileManager defaultManager];
+	NSEnumerator *enumerator = [file_names objectEnumerator];
+	NSString *a_path;
+	NSDictionary *a_dict;
+	while (a_path = [enumerator nextObject]) {
+		a_dict = [file_manager fileAttributesAtPath:a_path traverseLink:YES];
+		if ([[a_dict objectForKey:NSFileType] isEqualToString:NSFileTypeRegular]) {
+			[target_files addObject:[NSURL fileURLWithPath:a_path]];
+		}
+	}
+	
+	NSDocumentController *document_controller = [NSDocumentController sharedDocumentController];
+	id mctWindow;
+	switch ([target_files count]) {
+		case 0 :
+			[document_controller openDocument:self];
+			break;
+		case 1 :
+			[document_controller openDocumentWithContentsOfURL:[target_files lastObject] display:YES error:nil];
+			break;
+		default:
+			mctWindow = [[MCTWindowController alloc] initWithWindowNibName:@"MCTWindow"];
+			[mctWindow setupFileTable:target_files];
+			[mctWindow showWindow:self];
+			break;			
+	}
+	//[NSApp activateIgnoringOtherApps:YES];
+}
+
 - (void)awakeFromNib
 {
 #if useLog

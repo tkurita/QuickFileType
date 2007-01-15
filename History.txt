@@ -1,11 +1,25 @@
 = To do
-* 起動していない状態で複数の item を drop すると二つの MCTWindow が開かれる。
+
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
+* コンテキストメニューを作る
 
 
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+= 2007-01-15
+* サービスメニューのサポート
+	* サービスメニューはFinder で選択項目が複数あると disable になるようだ
+	* あまりに不完全なので、サポートしない
+* Favorite Table を編集するとエラーが起きる不具合を修正
+* ファイル選択ダイアログで package を選択できてしまう。
+	package を選択するとダイアログを表示するようにした。
+
+= 2006.12.26
+DonationReminder が localize された version に含まれていなかった問題を修正
+* 起動していない状態で複数の item を drop すると二つの MCTWindow が開かれる。
+	いつの間にか済み
 
 = 2006.08.10
 awakeFromNib -> windowControllerDidLoadNib 

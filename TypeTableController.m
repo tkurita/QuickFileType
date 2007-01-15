@@ -102,13 +102,14 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	if (returnCode == NSOKButton) {
 		NSString *typeCode = removeHatenaType([typeCodeField stringValue]);
 		NSString *creatorCode = removeHatenaType([creatorCodeField stringValue]);
+		NSString *new_kind = [kindField stringValue];
 		
 		if (contextInfo == nil) {
 			// make new entry
 			id dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 				creatorCode, @"creatorCode",
 				typeCode, @"typeCode",
-				[kindField stringValue], @"kind", nil];
+				new_kind, @"kind", nil];
 			if (_updatedIcon == nil) {
 				[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
 			}
@@ -117,28 +118,37 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		}
 		else {
 			// update existing entry
-			id selectedDict = [contextInfo objectForKey:@"selectedDict"];
-			NSIndexSet *selectedIndexs = [contextInfo objectForKey:@"selectedIndexes"];
+			id selected_dict = [contextInfo objectForKey:@"selectedDict"];
+			NSIndexSet *selected_indexs = [contextInfo objectForKey:@"selectedIndexes"];
+			unsigned int insertion_index = [selected_indexs firstIndex];
+			NSString *preCreator = [selected_dict objectForKey:@"creatorCode"];
+			NSString *preType = [selected_dict objectForKey:@"typeCode"];
+			NSString *pre_kind = [selected_dict objectForKey:@"kind"];
 			
-			NSString *preCreator = [selectedDict objectForKey:@"creatorCode"];
-			NSString *preType = [selectedDict objectForKey:@"typeCode"];
 			if (![preCreator isEqualToString:creatorCode]) {
-				[selectedDict setValue:creatorCode forKey:@"creatorCode"];
+				[selected_dict setValue:creatorCode forKey:@"creatorCode"];
 				_shouldUpdateIcon =  YES;
 			}
 			if (![preType isEqualToString:typeCode]) {
-				[selectedDict setValue:typeCode forKey:@"typeCode"];
+				[selected_dict setValue:typeCode forKey:@"typeCode"];
 				_shouldUpdateIcon =  YES;
 			}
+			
 			if (_shouldUpdateIcon) {
-				
-				[selectedDict setObject:[kindField stringValue] forKey:@"kind"];
+				[selected_dict setObject:new_kind forKey:@"kind"];
 				if (_updatedIcon == nil) {
 					[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
 				}
-				setupIcon(selectedDict, _updatedIcon);
-				[typeTemplatesController removeObject:selectedDict];
-				[typeTemplatesController insertObject:selectedDict atArrangedObjectIndex:[selectedIndexs firstIndex] ];
+				setupIcon(selected_dict, _updatedIcon);
+				[typeTemplatesController removeObject:selected_dict];
+				[typeTemplatesController insertObject:selected_dict atArrangedObjectIndex:insertion_index ];
+			}
+			else {
+				if (![new_kind isEqualToString:pre_kind]) {
+					[selected_dict setObject:new_kind forKey:@"kind"];
+					[typeTemplatesController removeObject:selected_dict];
+					[typeTemplatesController insertObject:selected_dict atArrangedObjectIndex:insertion_index ];
+				}
 			}
 		}
 	}
@@ -163,8 +173,23 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		NSString *resultPath = [panel filename];
 		NSFileManager *fileManager = [NSFileManager defaultManager];
 		NSDictionary *attInfo = [fileManager fileAttributesAtPath:resultPath traverseLink:YES];
-		[creatorCodeField setStringValue: OSTypeToNSString([attInfo objectForKey:NSFileHFSCreatorCode])];
-		[typeCodeField setStringValue: OSTypeToNSString([attInfo objectForKey:NSFileHFSTypeCode])];
+		NSString *creator_code = OSTypeToNSString([attInfo objectForKey:NSFileHFSCreatorCode]);
+		NSString *type_code = OSTypeToNSString([attInfo objectForKey:NSFileHFSTypeCode]);
+		[creatorCodeField setStringValue: creator_code];
+		[typeCodeField setStringValue: type_code];
+		
+		NSString *kind_string;
+		OSStatus err = LSCopyKindStringForTypeInfo(UTGetOSTypeFromString((CFStringRef)type_code),
+											UTGetOSTypeFromString((CFStringRef)creator_code), 
+											NULL,
+											(CFStringRef *)&kind_string);
+		if (err == noErr) {
+			[kindField setStringValue:kind_string];
+		}
+		else {
+			NSLog(@"Error in updateCurrentKind. error : %i", err);
+		}
+
 		[self updateIcon:self];
 	}
 }
