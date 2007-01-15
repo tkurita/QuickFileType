@@ -130,6 +130,15 @@
 			2C6E30830B5B516A005E8FBD /* PBXTextBookmark */ = 2C6E30830B5B516A005E8FBD /* PBXTextBookmark */;
 			2C6E30840B5B517A005E8FBD /* PBXTextBookmark */ = 2C6E30840B5B517A005E8FBD /* PBXTextBookmark */;
 			2C6E30850B5B517A005E8FBD /* PBXTextBookmark */ = 2C6E30850B5B517A005E8FBD /* PBXTextBookmark */;
+			2C6E309A0B5B5C3F005E8FBD /* PBXBookmark */ = 2C6E309A0B5B5C3F005E8FBD /* PBXBookmark */;
+			2C6E30A20B5B5D8C005E8FBD /* PBXTextBookmark */ = 2C6E30A20B5B5D8C005E8FBD /* PBXTextBookmark */;
+			2C6E30A50B5B5D8F005E8FBD /* PBXTextBookmark */ = 2C6E30A50B5B5D8F005E8FBD /* PBXTextBookmark */;
+			2C6E30A60B5B5D8F005E8FBD /* PBXTextBookmark */ = 2C6E30A60B5B5D8F005E8FBD /* PBXTextBookmark */;
+			2C6E30A70B5B5D8F005E8FBD /* PBXTextBookmark */ = 2C6E30A70B5B5D8F005E8FBD /* PBXTextBookmark */;
+			2C6E30A80B5B5D8F005E8FBD /* PBXTextBookmark */ = 2C6E30A80B5B5D8F005E8FBD /* PBXTextBookmark */;
+			2C6E30A90B5B5D8F005E8FBD /* PBXTextBookmark */ = 2C6E30A90B5B5D8F005E8FBD /* PBXTextBookmark */;
+			2C6E30AA0B5B5D8F005E8FBD /* PBXTextBookmark */ = 2C6E30AA0B5B5D8F005E8FBD /* PBXTextBookmark */;
+			2C6E30AC0B5B5D8F005E8FBD /* PBXTextBookmark */ = 2C6E30AC0B5B5D8F005E8FBD /* PBXTextBookmark */;
 			2CF1C2250B41507000EAB8DD = 2CF1C2250B41507000EAB8DD /* PBXTextBookmark */;
 			2CF1C2260B41507000EAB8DD = 2CF1C2260B41507000EAB8DD /* PBXTextBookmark */;
 			2CF1C2280B41507000EAB8DD = 2CF1C2280B41507000EAB8DD /* PBXTextBookmark */;
@@ -254,9 +263,9 @@
 	};
 	2C3FF9FD0A35F84400419FF3 /* History.txt */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1434, 1472}}";
-			sepNavSelRange = "{368, 0}";
-			sepNavVisRect = "{{0, 0}, {970, 600}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1434, 1520}}";
+			sepNavSelRange = "{249, 0}";
+			sepNavVisRect = "{{0, 0}, {693, 638}}";
 			sepNavWindowFrame = "{{178, 152}, {732, 767}}";
 		};
 	};
@@ -745,6 +754,90 @@
 		rType = 0;
 		vrLen = 638;
 		vrLoc = 2241;
+	};
+	2C6E309A0B5B5C3F005E8FBD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
+	};
+	2C6E30A20B5B5D8C005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */;
+		name = "AppController.m: 169";
+		rLen = 0;
+		rLoc = 5828;
+		rType = 0;
+		vrLen = 1122;
+		vrLoc = 4764;
+	};
+	2C6E30A50B5B5D8F005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
+		name = "History.txt: 21";
+		rLen = 0;
+		rLoc = 437;
+		rType = 0;
+		vrLen = 367;
+		vrLoc = 0;
+	};
+	2C6E30A60B5B5D8F005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */;
+		name = "AppController.m: 152";
+		rLen = 0;
+		rLoc = 5315;
+		rType = 0;
+		vrLen = 682;
+		vrLoc = 4843;
+	};
+	2C6E30A70B5B5D8F005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */;
+		name = "AppController.m: 152";
+		rLen = 0;
+		rLoc = 5315;
+		rType = 0;
+		vrLen = 692;
+		vrLoc = 4843;
+	};
+	2C6E30A80B5B5D8F005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
+		name = "History.txt: 21";
+		rLen = 0;
+		rLoc = 437;
+		rType = 0;
+		vrLen = 367;
+		vrLoc = 0;
+	};
+	2C6E30A90B5B5D8F005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */;
+		name = "AppController.m: 152";
+		rLen = 0;
+		rLoc = 5315;
+		rType = 0;
+		vrLen = 682;
+		vrLoc = 4843;
+	};
+	2C6E30AA0B5B5D8F005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */;
+		name = "[NSDocumentController sharedDocumentController];";
+		rLen = 48;
+		rLoc = 2331;
+		rType = 0;
+		vrLen = 638;
+		vrLoc = 2241;
+	};
+	2C6E30AC0B5B5D8F005E8FBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
+		name = "History.txt: 14";
+		rLen = 0;
+		rLoc = 249;
+		rType = 0;
+		vrLen = 917;
+		vrLoc = 0;
 	};
 	2C9B80B00A12DCC000A872A9 /* AppController.h */ = {
 		uiCtxt = {
