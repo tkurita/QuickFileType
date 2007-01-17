@@ -119,35 +119,29 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		else {
 			// update existing entry
 			id selected_dict = [contextInfo objectForKey:@"selectedDict"];
-			NSIndexSet *selected_indexs = [contextInfo objectForKey:@"selectedIndexes"];
-			unsigned int insertion_index = [selected_indexs firstIndex];
 			NSString *preCreator = [selected_dict objectForKey:@"creatorCode"];
 			NSString *preType = [selected_dict objectForKey:@"typeCode"];
 			NSString *pre_kind = [selected_dict objectForKey:@"kind"];
 			
 			if (![preCreator isEqualToString:creatorCode]) {
-				[selected_dict setValue:creatorCode forKey:@"creatorCode"];
+				[typeTemplatesController setValue:creatorCode forKeyPath:@"selection.creatorCode"];
 				_shouldUpdateIcon =  YES;
 			}
 			if (![preType isEqualToString:typeCode]) {
-				[selected_dict setValue:typeCode forKey:@"typeCode"];
+				[typeTemplatesController setValue:typeCode forKeyPath:@"selection.typeCode"];
 				_shouldUpdateIcon =  YES;
 			}
 			
 			if (_shouldUpdateIcon) {
-				[selected_dict setObject:new_kind forKey:@"kind"];
 				if (_updatedIcon == nil) {
 					[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
 				}
 				setupIcon(selected_dict, _updatedIcon);
-				[typeTemplatesController removeObject:selected_dict];
-				[typeTemplatesController insertObject:selected_dict atArrangedObjectIndex:insertion_index ];
+				[typeTemplatesController setValue:new_kind forKeyPath:@"selection.kind"];
 			}
 			else {
 				if (![new_kind isEqualToString:pre_kind]) {
-					[selected_dict setObject:new_kind forKey:@"kind"];
-					[typeTemplatesController removeObject:selected_dict];
-					[typeTemplatesController insertObject:selected_dict atArrangedObjectIndex:insertion_index ];
+					[typeTemplatesController setValue:new_kind forKeyPath:@"selection.kind"];
 				}
 			}
 		}
@@ -165,6 +159,10 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	if (iconData = [typeDict objectForKey:@"icon32"]) {
 		[iconField setImage: [NSUnarchiver unarchiveObjectWithData:iconData]];
 	}
+	else {
+		[iconField setImage: nil];
+	}
+	
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo

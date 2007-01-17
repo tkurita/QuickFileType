@@ -1,5 +1,7 @@
 = To do
 
+* favorite type の編集画面は binding を中心に処理するようにする
+* 新しい項目を作ったときの icon がおかしくなる？
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
 * コンテキストメニューを作る

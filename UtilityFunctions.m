@@ -36,6 +36,7 @@ NSImage *convertImageSize(NSImage *iconImage, int imgSize)
 	NSEnumerator *repEnum = [repArray objectEnumerator];
 	NSImageRep *imageRep;
 	NSSize targetSize = NSMakeSize(imgSize, imgSize);
+	NSImage *new_image;
 	BOOL hasTargetSize = NO;
 	while (imageRep = [repEnum nextObject]) {
 		if (NSEqualSizes([imageRep size],targetSize)) {
@@ -46,19 +47,21 @@ NSImage *convertImageSize(NSImage *iconImage, int imgSize)
 	
 	if (hasTargetSize) {
 		[iconImage setScalesWhenResized:NO];
-		[iconImage setSize:targetSize];
-#if useLog
+		new_image = [iconImage copy];
+		[new_image setSize:targetSize];
+		#if useLog
 		NSLog(@"have target size %i", imgSize);
-#endif
+		#endif
 	}
 	else {
-		//[iconImage setScalesWhenResized:NO];
-		[iconImage setSize:targetSize];
-#if useLog
+		[iconImage setScalesWhenResized:YES];
+		new_image = [iconImage copy];
+		[new_image setSize:targetSize];
+		#if useLog
 		NSLog(@"not have target size %i", imgSize);
-#endif
+		#endif
 	}
-	return iconImage;
+	return [new_image autorelease];
 }
 
 // related type infomation

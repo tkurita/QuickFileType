@@ -38,7 +38,7 @@
 		2CD94ABB0A8D92CB0029C487 /* DonationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */; };
 		2CD94ACA0A8D9D110029C487 /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */; };
 		2CE75EE10A1C01170005790B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE75EE00A1C01170005790B /* HFSTypeUtils.m */; };
-		2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBD70A4A501D00433884 /* localizable.strings */; };
+		2CFDDBD80A4A501D00433884 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBD70A4A501D00433884 /* Localizable.strings */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */; };
@@ -86,7 +86,7 @@
 		2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoolToStringTransformer.m; sourceTree = "<group>"; };
 		2C515CF20A42603B00A87E0C /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
 		2C515CF30A42603B00A87E0C /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
-		2C5ED1B30A47828F00036C85 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/localizable.strings; sourceTree = "<group>"; };
+		2C5ED1B30A47828F00036C85 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C9B80B00A12DCC000A872A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		2C9B80B10A12DCC000A872A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = GetFinderSelection.applescript; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				2C1EDBBC0A1A9C62000C2CB3 /* MCTWindow.nib */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				2C9B816B0A135A7600A872A9 /* FactorySetting.plist */,
-				2CFDDBD70A4A501D00433884 /* localizable.strings */,
+				2CFDDBD70A4A501D00433884 /* Localizable.strings */,
 				2C443E9C0B205E77003DA62E /* InfoPlist.strings */,
 			);
 			name = Resources;
@@ -280,7 +280,7 @@
 				2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */,
 				2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */,
 				2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */,
-				2CFDDBD80A4A501D00433884 /* localizable.strings in Resources */,
+				2CFDDBD80A4A501D00433884 /* Localizable.strings in Resources */,
 				2C030D980A946AB9005B592F /* HelpSetup.plist in Resources */,
 				2C443E9D0B205E77003DA62E /* InfoPlist.strings in Resources */,
 			);
@@ -359,12 +359,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2CFDDBD70A4A501D00433884 /* localizable.strings */ = {
+		2CFDDBD70A4A501D00433884 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2C5ED1B30A47828F00036C85 /* English */,
 			);
-			name = localizable.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
