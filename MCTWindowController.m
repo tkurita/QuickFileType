@@ -116,4 +116,17 @@
 	[aWindow setFrameUsingName:_frameName];
 }
 
+#pragma mark delegeta of NSSplitView
+- (float)splitView:(NSSplitView *)sender constrainMaxCoordinate:(float)proposedMax ofSubviewAt:(int)offset
+{
+	NSLog([NSString stringWithFormat:@"poropesedMax : %f, offset: %d", proposedMax, offset]);
+	return proposedMax;
+}
+
+- (float)splitView:(NSSplitView *)sender constrainSplitPosition:(float)proposedPosition ofSubviewAt:(int)offset
+{
+	NSLog([NSString stringWithFormat:@"proposedPosition : %f, offset: %d", proposedPosition, offset]);
+	return proposedPosition;
+}
+
 @end

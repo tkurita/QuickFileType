@@ -9,6 +9,7 @@
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
 = 2007-01-18
+* open panel は modeless で開いているはず
 * favorite type の編集画面は binding を中心に処理するようにする
 	いろいろふつうごうがあるのでやらない。
 * 新しい項目を作ったときの icon がおかしくなる？

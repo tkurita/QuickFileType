@@ -58,9 +58,9 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	NSAppleScript *getFinderSelection = [[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:&errorDict];
 	NSAppleEventDescriptor *scriptResult = [getFinderSelection executeAndReturnError:&errorDict];
 	if (errorDict != nil) {
-#if useLog
+		#if useLog
 		NSLog([errorDict description]);
-#endif
+		#endif
 		NSAlert *alert = [[NSAlert alloc] init];
 		[alert addButtonWithTitle:@"OK"];
 		[alert setMessageText:
