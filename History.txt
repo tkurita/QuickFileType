@@ -1,7 +1,5 @@
 = To do
 
-* favorite type の編集画面は binding を中心に処理するようにする
-* 新しい項目を作ったときの icon がおかしくなる？
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
 * コンテキストメニューを作る
@@ -10,6 +8,12 @@
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
+= 2007-01-18
+* favorite type の編集画面は binding を中心に処理するようにする
+	いろいろふつうごうがあるのでやらない。
+* 新しい項目を作ったときの icon がおかしくなる？
+	済み
+		
 = 2007-01-15
 * サービスメニューのサポート
 	* サービスメニューはFinder で選択項目が複数あると disable になるようだ

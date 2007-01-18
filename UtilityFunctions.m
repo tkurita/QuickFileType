@@ -61,7 +61,9 @@ NSImage *convertImageSize(NSImage *iconImage, int imgSize)
 		NSLog(@"not have target size %i", imgSize);
 		#endif
 	}
+	
 	return [new_image autorelease];
+	//return new_image;
 }
 
 // related type infomation

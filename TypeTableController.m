@@ -97,58 +97,6 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 }
 
 #pragma mark methods for actions
-- (void)didEndSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(id)contextInfo
-{
-	if (returnCode == NSOKButton) {
-		NSString *typeCode = removeHatenaType([typeCodeField stringValue]);
-		NSString *creatorCode = removeHatenaType([creatorCodeField stringValue]);
-		NSString *new_kind = [kindField stringValue];
-		
-		if (contextInfo == nil) {
-			// make new entry
-			id dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-				creatorCode, @"creatorCode",
-				typeCode, @"typeCode",
-				new_kind, @"kind", nil];
-			if (_updatedIcon == nil) {
-				[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
-			}
-			setupIcon(dict, _updatedIcon);
-			[typeTemplatesController addObject:dict];
-		}
-		else {
-			// update existing entry
-			id selected_dict = [contextInfo objectForKey:@"selectedDict"];
-			NSString *preCreator = [selected_dict objectForKey:@"creatorCode"];
-			NSString *preType = [selected_dict objectForKey:@"typeCode"];
-			NSString *pre_kind = [selected_dict objectForKey:@"kind"];
-			
-			if (![preCreator isEqualToString:creatorCode]) {
-				[typeTemplatesController setValue:creatorCode forKeyPath:@"selection.creatorCode"];
-				_shouldUpdateIcon =  YES;
-			}
-			if (![preType isEqualToString:typeCode]) {
-				[typeTemplatesController setValue:typeCode forKeyPath:@"selection.typeCode"];
-				_shouldUpdateIcon =  YES;
-			}
-			
-			if (_shouldUpdateIcon) {
-				if (_updatedIcon == nil) {
-					[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
-				}
-				setupIcon(selected_dict, _updatedIcon);
-				[typeTemplatesController setValue:new_kind forKeyPath:@"selection.kind"];
-			}
-			else {
-				if (![new_kind isEqualToString:pre_kind]) {
-					[typeTemplatesController setValue:new_kind forKeyPath:@"selection.kind"];
-				}
-			}
-		}
-	}
-	[sheet orderOut:self];
-	if (contextInfo != nil) [contextInfo release];
-}
 
 - (void)setupTemplateEditorFor:(NSDictionary *)typeDict
 {
@@ -163,6 +111,88 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 		[iconField setImage: nil];
 	}
 	
+}
+
+- (void)didEndEditFavorite:(NSWindow *)sheet returnCode:(int)returnCode  contextInfo:(NSDictionary *)selected_dict
+{
+	if (returnCode != NSOKButton) goto bail;
+	
+	NSString *type_code = removeHatenaType([typeCodeField stringValue]);
+	NSString *creator_code = removeHatenaType([creatorCodeField stringValue]);
+	NSString *new_kind = [kindField stringValue];
+
+	NSString *preCreator = [selected_dict objectForKey:@"creatorCode"];
+	NSString *preType = [selected_dict objectForKey:@"typeCode"];
+	NSString *pre_kind = [selected_dict objectForKey:@"kind"];
+	/*
+	NSString *preCreator = [typeTemplatesController valueForKeyPath:@"selection.creatorCode"];
+	NSString *preType = [typeTemplatesController valueForKeyPath:@"selection.typeCode"];
+	NSString *pre_kind = [typeTemplatesController valueForKeyPath:@"selection.kind"];
+	*/
+	
+	BOOL is_type_upedated = NO;
+	if (![preCreator isEqualToString:creator_code]) {
+		[typeTemplatesController setValue:creator_code forKeyPath:@"selection.creatorCode"];
+		is_type_upedated = YES;
+		_shouldUpdateIcon =  YES;
+	}
+	if (![preType isEqualToString:type_code]) {
+		[typeTemplatesController setValue:type_code forKeyPath:@"selection.typeCode"];
+		_shouldUpdateIcon =  YES;
+		is_type_upedated = YES;
+	}
+	
+	if (_shouldUpdateIcon) {
+		if (_updatedIcon == nil) {
+			[self setUpdatedIcon:iconForCreatorAndTypeString(creator_code, type_code)];
+		}
+		
+		[typeTemplatesController setValue:[NSArchiver archivedDataWithRootObject:convertImageSize(_updatedIcon, 16)]
+			forKeyPath:@"selection.icon16"];
+		[typeTemplatesController setValue:[NSArchiver archivedDataWithRootObject:convertImageSize(_updatedIcon, 32)]
+			forKeyPath:@"selection.icon32"];
+		
+		if (is_type_upedated) {
+			if ([new_kind isEqualToString:pre_kind]) {
+				OSStatus err = LSCopyKindStringForTypeInfo(UTGetOSTypeFromString((CFStringRef)type_code),
+									UTGetOSTypeFromString((CFStringRef)creator_code), 
+									NULL,
+									(CFStringRef *)&new_kind);
+				if (err != noErr) {
+					NSLog(@"Error to get kind string. error : %i", err);
+				}
+			}
+		}
+	}
+	
+	if (![new_kind isEqualToString:pre_kind]) {
+		[typeTemplatesController setValue:new_kind forKeyPath:@"selection.kind"];
+	}
+
+bail:
+	[sheet orderOut:self];
+}
+
+- (void)didEndNewFavorite:(NSWindow *)sheet returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
+{
+	if (returnCode != NSOKButton) goto bail;
+	
+	NSString *typeCode = removeHatenaType([typeCodeField stringValue]);
+	NSString *creatorCode = removeHatenaType([creatorCodeField stringValue]);
+	NSString *new_kind = [kindField stringValue];
+	
+	id dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+		creatorCode, @"creatorCode",
+		typeCode, @"typeCode",
+		new_kind, @"kind", nil];
+	if (_updatedIcon == nil) {
+		[self setUpdatedIcon:iconForCreatorAndTypeString(creatorCode, typeCode)];
+	}
+	setupIcon(dict, _updatedIcon);
+	[typeTemplatesController addObject:dict];
+
+bail:
+	[sheet orderOut:self];
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
@@ -208,7 +238,7 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	[NSApp beginSheet: typeTemplateEditor
 	   modalForWindow: [sender window]
 		modalDelegate: self
-	   didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+	   didEndSelector: @selector(didEndNewFavorite:returnCode:contextInfo:)
 		  contextInfo: nil];
 }
 
@@ -243,18 +273,17 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 {
 	_shouldUpdateIcon = NO;
 	[self setUpdatedIcon:nil];
+	
 	NSArray *selectedItems = [typeTemplatesController selectedObjects];
 	NSDictionary *selectedDict = [selectedItems objectAtIndex:0];
-	NSIndexSet *indexSet = [typeTemplatesController selectionIndexes];
 	
 	[self setupTemplateEditorFor:selectedDict];
-
 	[NSApp beginSheet: typeTemplateEditor
-		   modalForWindow: [sender window]
-			modalDelegate: self
-		   didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
-		  contextInfo: [[NSDictionary dictionaryWithObjectsAndKeys:selectedDict, @"selectedDict", indexSet, @"selectedIndexes", nil] retain]
-			];
+	   modalForWindow: [sender window]
+		modalDelegate: self
+	   didEndSelector: @selector(didEndEditFavorite:returnCode:contextInfo:)
+	  contextInfo: selectedDict
+		];
 }
 
 
