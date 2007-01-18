@@ -12,7 +12,13 @@
             ACTIONS = {cancelAction = id; okAction = id; }; 
             CLASS = MCTWindowController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {fileListController = id; fileTable = id; okButton = id; typeTableBox = id; }; 
+            OUTLETS = {
+                fileListController = id; 
+                fileTable = id; 
+                okButton = id; 
+                splitSubview = id; 
+                typeTableBox = id; 
+            }; 
             SUPERCLASS = NSWindowController; 
         }
     ); 

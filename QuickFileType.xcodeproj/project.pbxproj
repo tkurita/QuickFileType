@@ -21,6 +21,8 @@
 
 /* Begin PBXBuildFile section */
 		2C030D980A946AB9005B592F /* HelpSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C030D970A946AB9005B592F /* HelpSetup.plist */; };
+		2C10503E0B5F8535003C9F18 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1050380B5F8535003C9F18 /* RBSplitView.framework */; };
+		2C1050F70B5F9F21003C9F18 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C1050380B5F8535003C9F18 /* RBSplitView.framework */; };
 		2C1EDA940A19B208000C2CB3 /* TypeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EDA920A19B208000C2CB3 /* TypeTableController.m */; };
 		2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */; };
 		2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDBBC0A1A9C62000C2CB3 /* MCTWindow.nib */; };
@@ -54,6 +56,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2C1050F70B5F9F21003C9F18 /* RBSplitView.framework in CopyFiles */,
 				2CD94ACA0A8D9D110029C487 /* DonationReminder.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +75,7 @@
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C030D970A946AB9005B592F /* HelpSetup.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = HelpSetup.plist; sourceTree = "<group>"; };
+		2C1050380B5F8535003C9F18 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBSplitView.framework; path = ../RBSplitView/build/Release/RBSplitView.framework; sourceTree = SOURCE_ROOT; };
 		2C1EDA900A19B17C000C2CB3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/TypeTableView.nib; sourceTree = "<group>"; };
 		2C1EDA920A19B208000C2CB3 /* TypeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeTableController.m; sourceTree = "<group>"; };
 		2C1EDA930A19B208000C2CB3 /* TypeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeTableController.h; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				2CD94ABB0A8D92CB0029C487 /* DonationReminder.framework in Frameworks */,
+				2C10503E0B5F8535003C9F18 /* RBSplitView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +126,7 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C1050380B5F8535003C9F18 /* RBSplitView.framework */,
 				2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 			);
@@ -153,6 +159,7 @@
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				2C1050350B5F8511003C9F18 /* RBSplitView */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
 			);
@@ -221,6 +228,13 @@
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C1050350B5F8511003C9F18 /* RBSplitView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RBSplitView;
 			sourceTree = "<group>";
 		};
 		2C9B80BD0A12F62E00A872A9 /* Scripts */ = {
@@ -377,14 +391,21 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../DonationReminder/trunk/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../RBSplitView/build/Release\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../RBSplitView/build/Release\"";
 				PRODUCT_NAME = QuickFileType;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
@@ -401,12 +422,19 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../DonationReminder/trunk/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../RBSplitView/build/Release\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../RBSplitView/build/Release\"";
 				PRODUCT_NAME = QuickFileType;
 				WRAPPER_EXTENSION = app;
 			};

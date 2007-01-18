@@ -1,6 +1,8 @@
 #import "MCTWindowController.h"
 #import "HFSTypeUtils.h"
 #import "CTDocument.h"
+#import "RBSplitView/RBSplitView.h"
+#import "RBSplitView/RBSplitSubview.h"
 
 @implementation MCTWindowController
 
@@ -114,6 +116,16 @@
 	[fileTable setNextKeyView:favorites_table];
 	[aWindow center];
 	[aWindow setFrameUsingName:_frameName];
+	
+	float row_height = [fileTable rowHeight];
+	int nrows = [fileTable numberOfRows];
+	NSSize spacing = [fileTable intercellSpacing];
+	NSRect hframe =	[[fileTable headerView] frame];
+	float table_height = hframe.size.height + ((row_height + spacing.height)*(nrows)) +5;
+
+	float current_dimension = [splitSubview dimension];
+	if (table_height > current_dimension) table_height = current_dimension;
+	[splitSubview setDimension:table_height ];
 }
 
 #pragma mark delegeta of NSSplitView

@@ -6,6 +6,7 @@
 @interface MCTWindowController : NSWindowController
 {
     IBOutlet id fileListController;
+    IBOutlet id splitSubview;
     IBOutlet id fileTable;
     IBOutlet id typeTableBox;
 	IBOutlet id okButton;
