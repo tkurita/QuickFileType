@@ -31,6 +31,7 @@
 - (void)windowWillClose:(NSNotification *)aNotification
 {
 	[[aNotification object] saveFrameUsingName:_frameName];
+	[[NSUserDefaults standardUserDefaults] synchronize]; //window を閉じずに終了した時に必要
 	[self release];
 }
 

@@ -422,6 +422,9 @@
 
 - (void)windowWillClose:(NSNotification *)aNotification
 {
+#if useLog
+	NSLog(@"start windowWillClose in CTDocument");
+#endif
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setBool:([infoDrawer state] == NSDrawerOpenState) forKey:@"IsOpenInfoDrawer"];
 	[userDefaults setInteger:[collapseButton state] forKey:@"TableCollapseState"];
@@ -429,6 +432,7 @@
 	if (_isCollapsed) {
 		[userDefaults setObject:NSStringFromRect(_typeBoxFrame) forKey:@"TypeBoxFrame"];
 	}
+	[userDefaults synchronize]; //window を閉じずに終了した時に必要
 }
 
 #pragma mark override NSDocument
