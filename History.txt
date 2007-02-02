@@ -1,5 +1,12 @@
 = To do
 
+* bundle にもcreator と type を設定したい
+contents folder に PkgInfo をつくれば bundle にも creator と type を割り当てられるみたい
+Info.plist に
+CFBundleSignature-- creator
+CFBundlePackageType -- type
+を作っても効果はなかった
+
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
 * コンテキストメニューを作る
@@ -7,6 +14,11 @@
 
 = may not to do
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+= 2007-02-02
+Favorites Table の選択項目が保存が反映されない不具合を修正
+Binding の option で validates immedietory を ON にした
+
 
 = 2007-01-18
 * open panel は modeless で開いているはず
