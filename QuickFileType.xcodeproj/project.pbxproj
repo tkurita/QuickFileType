@@ -169,8 +169,8 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2C515C920A424EB400A87E0C /* BoolToStringTransformer.h */,
 				2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */,
+				2C515C920A424EB400A87E0C /* BoolToStringTransformer.h */,
 				2C9B80B00A12DCC000A872A9 /* AppController.h */,
 				2C9B80B10A12DCC000A872A9 /* AppController.m */,
 				2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */,
