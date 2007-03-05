@@ -226,12 +226,15 @@
 	}
 }
 
-- (void)setupNextKeyView
+- (void)setupNextKeyView:(NSWindow *)aWindow
 {
-	NSTableView *favorites_table = [_typeTableController favoritesTableView];
-	[[[[self windowControllers] lastObject] window] setInitialFirstResponder:favorites_table];
-	[typePopup setNextKeyView:favorites_table];
-	[favorites_table setNextKeyView:creatorPopup];
+#if useLog
+	NSLog(@"start setupNextKeyView");
+#endif
+	NSView *a_view = [[_typeTableController favoritesTableView] superview];	
+	[typePopup setNextKeyView:a_view];
+	[a_view setNextKeyView:creatorPopup];
+	[aWindow makeFirstResponder:a_view];
 }
 
 #pragma mark accessors for current values
@@ -448,6 +451,8 @@
 #if useLog
 	NSLog(@"start windowControllerDidLoadNib");
 #endif
+	[super windowControllerDidLoadNib:aController];
+
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSWindow *aWindow = [aController window];
 	// setup type box status
@@ -457,7 +462,7 @@
 		_typeBoxFrame = NSRectFromString([userDefaults objectForKey:@"TypeBoxFrame"]);
 	}
 	else {
-		[self setupNextKeyView];
+		[self setupNextKeyView:[aController window]];
 	}
 
 	// setup drawer status
@@ -473,16 +478,19 @@
 	//setup default button
 	NSString *defaultButtonName = [userDefaults stringForKey:@"DefaultButton"];
 	if ([defaultButtonName isEqualToString:@"Open"]) {
-		[okButton setKeyEquivalent:@""];
+		[okButton setKeyEquivalent:@"k"];
+		[okButton setKeyEquivalentModifierMask:NSCommandKeyMask];
 		[openButton setKeyEquivalent:@"\r"];
 		_defaultAction = @selector(openAction:);
 	}
 	else {
+		[openButton setKeyEquivalent:@"k"];
+		[openButton setKeyEquivalentModifierMask:NSCommandKeyMask];
 		_defaultAction = @selector(okAction:);
 	}
 	
 	[_typeTableController setDoubleAction:@selector(doDoubleAction:)];
-	[super windowControllerDidLoadNib:aController];
+	
 #if useLog
 	NSLog(@"end windowControllerDidLoadNib");
 #endif
@@ -564,12 +572,13 @@
 {
 	NSWindow *window = [[[self windowControllers] objectAtIndex:0] window];
 	NSRect windowFrame = [window frame];
-
 	if (! _isCollapsed){
 		NSTableView *favorites_table = [_typeTableController favoritesTableView];
+		
 		if ([[window firstResponder] isEqual:favorites_table]) {
-			[window makeFirstResponder:creatorPopup];
+			[window selectNextKeyView:[favorites_table superview]];
 		}
+		[[favorites_table superview] setNextKeyView:nil];
 		[typePopup setNextKeyView:creatorPopup];
 		_typeBoxFrame = [typeTableBox frame];
 		windowFrame.origin.y = windowFrame.origin.y + NSHeight(_typeBoxFrame);
@@ -584,7 +593,7 @@
 		windowFrame.size.height = NSHeight(windowFrame) + NSHeight(_typeBoxFrame);
 		[window setFrame:windowFrame display:YES animate:YES];
 		[typeTableBox setContentView:[_typeTableController view]];
-		[self setupNextKeyView];
+		[self setupNextKeyView:window];
 		_isCollapsed = NO;
 	}
 }

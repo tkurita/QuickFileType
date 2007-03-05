@@ -2,7 +2,7 @@
 #import "CTDocument.h"
 #import "MCTWindowController.h"
 #import "UtilityFunctions.h"
-#import "DonationReminder/DonationReminder.h"
+#import <DonationReminder/DonationReminder.h>
 
 #define useLog 0
 

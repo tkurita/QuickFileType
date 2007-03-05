@@ -1,19 +1,30 @@
 = To do
 
-* bundle にもcreator と type を設定したい
-contents folder に PkgInfo をつくれば bundle にも creator と type を割り当てられるみたい
-Info.plist に
-CFBundleSignature-- creator
-CFBundlePackageType -- type
-を作っても効果はなかった
 
+== その他
 * typeTemplate ではなく favorites という言葉を使うようにしよう。
 * Tool Tips を設定する
 * コンテキストメニューを作る
 
-
 = may not to do
+* bundle にもcreator と type を設定したい -- やめよう
+	contents folder に PkgInfo をつくれば bundle にも creator と type を割り当てられるみたい
+	Info.plist に
+	CFBundleSignature-- creator
+	CFBundlePackageType -- type
+	を作っても効果はなかった
+	
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+= 2007-03-05
+== key view loop がおかしい -- 修正
+* favorite table を initialFirstResponder にするのは間違っている（いなくなるかもしれない物だから）。
+* favorite table を makeFirstResponder すると、favorite table の nextKeyView が正しい値を返さなくなる。
+	* makeFirstResponder をしなければ、tab で creator popup に移動できる。
+* creator popup から shift-tab で favorite table に移動できたためしがない。
+* firstResponder の nextKeyView をいじるとおかしくなるようだ。
+* NSTableView ではなく、NSScrollView にたいして nextKeyView すればよいようだ
+
 
 = 2007-02-02
 Favorites Table の選択項目が保存が反映されない不具合を修正
