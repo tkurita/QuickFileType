@@ -31,6 +31,7 @@
 	NSString *_originalUTI;
 	NSString *_originalAppPath;
 	NSImage *_originalAppIcon;
+	NSDictionary *originalAttributes;
 	BOOL _ignoringCreatorForUTI;
 	BOOL _ignoringCreatorForExtension;
 	
@@ -49,7 +50,7 @@
 - (IBAction)collapseTypeTableBox:(id)sender;
 
 - (void)applyTypeTemplate:(id)sender;
-- (void)applyTypesFromDict:(NSDictionary *)typeDict;
+- (BOOL)applyTypesFromDict:(NSDictionary *)typeDict;
 
 - (void)setTypeCode:(NSString *)typeCode;
 - (void)setCreatorCode:(NSString *)creatorCode;

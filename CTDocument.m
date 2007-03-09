@@ -2,6 +2,7 @@
 #import "HFSTypeUtils.h"
 #import "BoolToStringTransformer.h"
 #import "UtilityFunctions.h"
+#include <unistd.h>
 
 #define useLog 0
 
@@ -85,31 +86,61 @@
 	[self setUserLSHandlersForExtensions:dict];
 }
 
-- (void)applyTypes
+- (BOOL)hasWritePermission {
+	int permission = access([[self fileName] fileSystemRepresentation], W_OK);
+	return (permission == 0);
+}
+
+- (BOOL)applyTypes
 {
 	NSMutableDictionary *attDict = [NSMutableDictionary dictionary];
-	NSFileManager *fileManager = [NSFileManager defaultManager]; 
+	
 	if (![_typeCode isEqualToString:_originalTypeCode]) {
 		[attDict setObject:StringToOSType(_typeCode) forKey:NSFileHFSTypeCode];
 	}
 	if (![_creatorCode isEqualToString:_originalCreatorCode]) {
 		[attDict setObject:StringToOSType(_creatorCode) forKey:NSFileHFSCreatorCode];
 	}
-	if ([attDict count] > 0)
-		[fileManager changeFileAttributes:attDict atPath:[self fileName]];	
+	
+	BOOL result = NO;
+	if ([attDict count] < 1) {
+		goto bail;
+	}
+	
+	NSFileManager *file_manager = [NSFileManager defaultManager]; 
+	result = [file_manager changeFileAttributes:attDict atPath:[self fileName]];
+
+	if (!result) {
+		NSString *reason;
+		if ([[originalAttributes objectForKey:NSFileImmutable] boolValue]) { 
+			reason = @"The file is locked.";
+			
+		}else if (![self hasWritePermission] ) {
+			reason = @"No permission.";
+			
+		}else {
+			reason = @"Unknown";
+		}
+		NSException *exception = [NSException exceptionWithName:@"ApplyTypesException"
+							reason:reason userInfo:nil];
+		@throw exception;
+	}
+
+bail:
+	return result;
 }
 
-- (void)applyTypesFromDict:(NSDictionary *)typeDict
+- (BOOL)applyTypesFromDict:(NSDictionary *)typeDict
 {
 	[self setCreatorCode:[typeDict objectForKey:@"creatorCode"]];
 	[self setTypeCode:[typeDict objectForKey:@"typeCode"]];	
-	[self applyTypes];
+	return [self applyTypes];
 }
 
-- (BOOL)setOriginalTypesFromFile:(NSString *)path
+- (BOOL)setOriginalTypesFromFile:(NSString *)path //obsolute
 {
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	NSDictionary *attInfo = [fileManager fileAttributesAtPath:path traverseLink:YES];
+	NSFileManager *file_manager = [NSFileManager defaultManager];
+	NSDictionary *attInfo = [file_manager fileAttributesAtPath:path traverseLink:YES];
 	if (![[attInfo objectForKey:NSFileType] isEqualTo:NSFileTypeRegular]) return NO;
 	
 	[self setOriginalCreatorCode: OSTypeToNSString([attInfo objectForKey:NSFileHFSCreatorCode])];
@@ -341,6 +372,20 @@
 }
 
 #pragma mark accessors for original values
+- (BOOL)storeAttributesForFile:(NSString *)path
+{
+	NSFileManager *file_manager = [NSFileManager defaultManager];
+	NSDictionary *att_info = [file_manager fileAttributesAtPath:path traverseLink:YES];
+	if (![[att_info objectForKey:NSFileType] isEqualTo:NSFileTypeRegular]) return NO;
+	
+	[originalAttributes release];
+	originalAttributes = [att_info retain];
+	
+	[self setOriginalCreatorCode: OSTypeToNSString([att_info objectForKey:NSFileHFSCreatorCode])];
+	[self setOriginalTypeCode: OSTypeToNSString([att_info objectForKey:NSFileHFSTypeCode])];
+	return YES;
+}
+
 - (void)setOriginalTypeCode:(NSString *)theType
 {
 	[theType retain];
@@ -517,7 +562,7 @@
 	[self setIconImg:[workspace iconForFile:absolutePath]];
 	
 	//setup original fileTypes
-	if (![self setOriginalTypesFromFile:absolutePath]) return NO;
+	if (![self storeAttributesForFile:absolutePath]) return NO;
 	
 	//setup original kind
 	NSString *kindString = nil;
@@ -612,10 +657,38 @@
 - (IBAction)okAction:(id)sender
 {
 	[[NSUserDefaults standardUserDefaults] setObject:@"OK" forKey:@"DefaultButton"];
-	[self saveTypeHistory];
-	[self applyTypes];
+	BOOL result;
+	@try {
+		result = [self applyTypes];
+	}
+	@catch (NSException *exception) {
+		if (! [[exception name] isEqualToString:@"ApplyTypesException"] ) {       
+			@throw;
+		}
+		
+		NSBeginAlertSheet(
+			NSLocalizedString(@"Can't change creator and type.",
+				@"Alert when can't apply types of single mode"),	// sheet message
+			@"OK",					// default button label
+			nil,					// no third button
+			nil,					// other button label
+			[sender window],		// window sheet is attached to
+			self,                   // we’ll be our own delegate
+			nil,					// did-end selector
+			nil,                   // no need for did-dismiss selector
+			nil,					// context info
+			NSLocalizedString([exception reason],
+				@"The reason not to be able to apply types"));		// additional text
+
+		return;
+	}
+	
+	if (result) {
+		[self saveTypeHistory];
+	}
 	[self close];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" object:self userInfo:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" 
+			object:self userInfo:nil];
 	
 }
 
