@@ -68,6 +68,14 @@
 		</dict>
 		<dict>
 			<key>CLASS</key>
+			<string>AltActionButton</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSButton</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
 			<string>FlipView</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>

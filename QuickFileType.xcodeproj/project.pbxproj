@@ -33,6 +33,7 @@
 		2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515CF30A42603B00A87E0C /* UtilityFunctions.m */; };
 		2C8AA32B0F14D9E7007F2A73 /* minus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C8AA3290F14D9E7007F2A73 /* minus.tiff */; };
 		2C8AA32C0F14D9E8007F2A73 /* plus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C8AA32A0F14D9E7007F2A73 /* plus.tiff */; };
+		2C8AA37F0F14E675007F2A73 /* AltActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AA37E0F14E675007F2A73 /* AltActionButton.m */; };
 		2C9B80B20A12DCC000A872A9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */; };
 		2C9B80DD0A12F7BB00A872A9 /* GetFinderSelection.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C9B816B0A135A7600A872A9 /* FactorySetting.plist */; };
@@ -95,6 +96,8 @@
 		2C5ED1B30A47828F00036C85 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C8AA3290F14D9E7007F2A73 /* minus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = minus.tiff; path = images/minus.tiff; sourceTree = "<group>"; };
 		2C8AA32A0F14D9E7007F2A73 /* plus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = plus.tiff; path = images/plus.tiff; sourceTree = "<group>"; };
+		2C8AA37D0F14E675007F2A73 /* AltActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AltActionButton.h; sourceTree = "<group>"; };
+		2C8AA37E0F14E675007F2A73 /* AltActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AltActionButton.m; sourceTree = "<group>"; };
 		2C9B80B00A12DCC000A872A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		2C9B80B10A12DCC000A872A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = GetFinderSelection.applescript; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				2C3ED7F10A3DBE4800E2938D /* FlipView.m */,
 				2C515CF20A42603B00A87E0C /* UtilityFunctions.h */,
 				2C515CF30A42603B00A87E0C /* UtilityFunctions.m */,
+				2C8AA37D0F14E675007F2A73 /* AltActionButton.h */,
+				2C8AA37E0F14E675007F2A73 /* AltActionButton.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				2C3ED7F20A3DBE4800E2938D /* FlipView.m in Sources */,
 				2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */,
 				2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */,
+				2C8AA37F0F14E675007F2A73 /* AltActionButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

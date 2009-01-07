@@ -2,6 +2,7 @@
 #import "HFSTypeUtils.h"
 #import "BoolToStringTransformer.h"
 #import "UtilityFunctions.h"
+#import "AltActionButton.h"
 #include <unistd.h>
 
 #define useLog 0
@@ -60,6 +61,11 @@
 #if useLog
 	NSLog(@"end awakeFromNib in CTDocument");
 #endif	
+}
+
+- (void)keyDown:(NSEvent *)event
+{
+	NSLog([event description]);
 }
 
 #pragma mark others
@@ -537,14 +543,14 @@ bail:
 	//setup default button
 	NSString *defaultButtonName = [userDefaults stringForKey:@"DefaultButton"];
 	if ([defaultButtonName isEqualToString:@"Open"]) {
-		[okButton setKeyEquivalent:@"k"];
-		[okButton setKeyEquivalentModifierMask:NSCommandKeyMask];
+		[okButton setKeyEquivalent:@""];
+		[okButton setAltButton:YES];
+		[okButton setKeyEquivalentModifierMask:0];
 		[openButton setKeyEquivalent:@"\r"];
 		_defaultAction = @selector(openAction:);
 	}
 	else {
-		[openButton setKeyEquivalent:@"k"];
-		[openButton setKeyEquivalentModifierMask:NSCommandKeyMask];
+		[openButton setAltButton:YES];
 		_defaultAction = @selector(okAction:);
 	}
 	
