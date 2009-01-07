@@ -1,55 +1,81 @@
-{
-    IBClasses = (
-        {
-            ACTIONS = {
-                applyTypeTemplate = id; 
-                cancelAction = id; 
-                chooseFromFile = id; 
-                collapseTypeTableBox = id; 
-                okAction = id; 
-                openAction = id; 
-                removeTypes = id; 
-                revert = id; 
-            }; 
-            CLASS = CTDocument; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                collapseButton = id; 
-                creatorPopup = id; 
-                infoDrawer = id; 
-                okButton = id; 
-                openButton = id; 
-                typePopup = id; 
-                typeTableBox = id; 
-            }; 
-            SUPERCLASS = NSDocument; 
-        }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {CLASS = FlipView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
-        {CLASS = OSTypeFormatter; LANGUAGE = ObjC; SUPERCLASS = NSFormatter; }, 
-        {
-            ACTIONS = {
-                applyTypeTemplate = id; 
-                cancelTemplateEditor = id; 
-                chooseFromFileForTemplate = id; 
-                editSelectedTemplate = id; 
-                insertNewTypeTemplate = id; 
-                okTemplateEditor = id; 
-            }; 
-            CLASS = TypeTableController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                applyButton = id; 
-                creatorTypeField = id; 
-                fileTypeField = id; 
-                kindField = id; 
-                typeTable = id; 
-                typeTableView = id; 
-                typeTemplateEditor = id; 
-                typeTemplatesController = id; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>CLASS</key>
+			<string>OSTypeFormatter</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSFormatter</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>applyTypeTemplate</key>
+				<string>id</string>
+				<key>cancelAction</key>
+				<string>id</string>
+				<key>chooseFromFile</key>
+				<string>id</string>
+				<key>collapseTypeTableBox</key>
+				<string>id</string>
+				<key>doDoubleAction</key>
+				<string>id</string>
+				<key>okAction</key>
+				<string>id</string>
+				<key>openAction</key>
+				<string>id</string>
+				<key>removeTypes</key>
+				<string>id</string>
+				<key>revert</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>CTDocument</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>collapseButton</key>
+				<string>id</string>
+				<key>creatorPopup</key>
+				<string>id</string>
+				<key>infoDrawer</key>
+				<string>id</string>
+				<key>okButton</key>
+				<string>id</string>
+				<key>openButton</key>
+				<string>id</string>
+				<key>typePopup</key>
+				<string>id</string>
+				<key>typeTableBox</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSDocument</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>FlipView</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSView</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>

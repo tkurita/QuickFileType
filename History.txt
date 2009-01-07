@@ -13,7 +13,20 @@
 	CFBundlePackageType -- type
 	を作っても効果はなかった
 	
+	バンドルの場合 Finder でアプリケーションを設定すると .LSOverride がバンドル内に作られる
+	ファイルタイプは BNDL として creator だけ設定できるようにする
+	
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+= 2009-01-07
+* ignoring creator type の状態がを正しく取得できていなかった不具合を修正
+* ignoring creator type を変更できるようにした。
+
+== To Do
+* com.apple.LaunchServices.plist に依存したコードの削除
+* TypeTable の選択項目が複数のウィンドウで共有されてしまう不具合を修正する。
+* なんとか、シフト+return を受け付けるようにしたい。
+* Sparkle を使った self-update 機能
 
 =2007-03-09
 変更できないときの警告メッセージをシート終了

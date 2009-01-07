@@ -175,10 +175,7 @@ bail:
 											UTGetOSTypeFromString((CFStringRef)_creatorCode),
 											(CFStringRef)_originalExtension,
 											   (CFStringRef *)&kindString);
-//	OSStatus err = LSCopyKindStringForTypeInfo(UTGetOSTypeFromString((CFStringRef)_typeCode),
-//											   UTGetOSTypeFromString((CFStringRef)_creatorCode),
-//											   NULL,
-//											   (CFStringRef *)&kindString);
+
 	if (err != noErr) {
 		NSLog(@"Error in updateCurrentKind. error : %i", err);
 		return;
@@ -190,7 +187,7 @@ bail:
 
 - (void)updateCurrentUTI
 {
-	if (_ignoringCreatorForUTI) return;
+	if (_ignoringCreatorForExtension || _ignoringCreatorForUTI) return;
 	
 	NSString *typeCode;
 	if (_userLSHandler == nil) {
@@ -266,6 +263,54 @@ bail:
 	[typePopup setNextKeyView:a_view];
 	[a_view setNextKeyView:creatorPopup];
 	[aWindow makeFirstResponder:a_view];
+}
+
+- (void)processOKAction
+{
+	[[NSUserDefaults standardUserDefaults] setObject:@"OK" forKey:@"DefaultButton"];
+	
+	BOOL result;
+	@try {
+		result = [self applyTypes];
+	}
+	@catch (NSException *exception) {
+		if (! [[exception name] isEqualToString:@"ApplyTypesException"] ) {       
+			@throw;
+		}
+		
+		NSBeginAlertSheet(
+						  NSLocalizedString(@"Can't change creator and type.",
+											@"Alert when can't apply types of single mode"),	// sheet message
+						  @"OK",					// default button label
+						  nil,					// no third button
+						  nil,					// other button label
+						  [self windowForSheet],		// window sheet is attached to
+						  self,                   // we’ll be our own delegate
+						  nil,					// did-end selector
+						  nil,                   // no need for did-dismiss selector
+						  nil,					// context info
+						  NSLocalizedString([exception reason],
+											@"The reason not to be able to apply types"));		// additional text
+		return;
+	}
+	
+	if (result) {
+		[self saveTypeHistory];
+	}
+	[self close];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" 
+														object:self userInfo:nil];	
+}
+
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+	if (returnCode != NSAlertDefaultReturn) return;
+	OSStatus err = LSSetHandlerOptionsForContentType ((CFStringRef)_originalUTI,  kLSHandlerOptionsDefault);
+	if (err != noErr) {
+		NSLog(@"Error in LSSetHandlerOptionsForContentType. error : %i", err);
+		return;
+	}
+	[self processOKAction];
 }
 
 #pragma mark accessors for current values
@@ -368,7 +413,8 @@ bail:
 
 - (id)ignoringCreatorForExtension
 {
-	return [NSNumber numberWithBool:(_userLSHandler != nil)];
+	//return [NSNumber numberWithBool:(_userLSHandler != nil)];
+	return [NSNumber numberWithBool:_ignoringCreatorForExtension];
 }
 
 #pragma mark accessors for original values
@@ -597,7 +643,11 @@ bail:
 	CFURLGetFSRef((CFURLRef)fURL, &fileRef);
 	NSString *theUTI = nil;
 	err = LSCopyItemAttribute(&fileRef, kLSRolesAll, kLSItemContentType, (CFTypeRef *)&theUTI );
-	_originalUTI = theUTI;
+	[self setOriginalUTI:theUTI];
+	LSHandlerOptions handlerOption = LSGetHandlerOptionsForContentType((CFStringRef)_originalUTI);
+	_ignoringCreatorForExtension = (handlerOption == kLSHandlerOptionsIgnoreCreator);
+	_ignoringCreatorForUTI = _ignoringCreatorForExtension;
+	[self setCurrentUTI:_originalUTI];
 	
 	//setup default application path
 	NSURL *appURL = nil;
@@ -654,42 +704,27 @@ bail:
 	[self close];
 }
 
+
 - (IBAction)okAction:(id)sender
 {
-	[[NSUserDefaults standardUserDefaults] setObject:@"OK" forKey:@"DefaultButton"];
-	BOOL result;
-	@try {
-		result = [self applyTypes];
-	}
-	@catch (NSException *exception) {
-		if (! [[exception name] isEqualToString:@"ApplyTypesException"] ) {       
-			@throw;
-		}
-		
+	if (_ignoringCreatorForExtension) {
 		NSBeginAlertSheet(
-			NSLocalizedString(@"Can't change creator and type.",
-				@"Alert when can't apply types of single mode"),	// sheet message
-			@"OK",					// default button label
-			nil,					// no third button
-			nil,					// other button label
-			[sender window],		// window sheet is attached to
-			self,                   // we’ll be our own delegate
-			nil,					// did-end selector
-			nil,                   // no need for did-dismiss selector
-			nil,					// context info
-			NSLocalizedString([exception reason],
-				@"The reason not to be able to apply types"));		// additional text
-
+						  [NSString stringWithFormat:
+						   NSLocalizedString(@"Do you make the extension \"%@\" respect creator types ?",
+											 @"Ask changing ignoring creator option"), _originalExtension],	// sheet message
+						  nil,					// default button label
+						  nil,					// no third button
+						  NSLocalizedString(@"Cancel", "Cancel button label"),	// other button label
+						  [self windowForSheet],	// window sheet is attached to
+						  self,                   // we’ll be our own delegate
+						  @selector(sheetDidEnd:returnCode:contextInfo:),	// did-end selector
+						  nil,                   // no need for did-dismiss selector
+						  nil,					// context info
+						  @"");		// additional text
 		return;
 	}
 	
-	if (result) {
-		[self saveTypeHistory];
-	}
-	[self close];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" 
-			object:self userInfo:nil];
-	
+	[self processOKAction];
 }
 
 - (IBAction)openAction:(id)sender
