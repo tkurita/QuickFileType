@@ -493,6 +493,7 @@ bail:
 	if (_isCollapsed) {
 		[userDefaults setObject:NSStringFromRect(_typeBoxFrame) forKey:@"TypeBoxFrame"];
 	}
+	[_typeTableController saveSettings];
 	[userDefaults synchronize]; //window を閉じずに終了した時に必要
 }
 

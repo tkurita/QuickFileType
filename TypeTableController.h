@@ -16,8 +16,10 @@
 	
 	id _owner;
 	SEL _applySelector;
-	BOOL _shouldUpdateIcon;
+	BOOL _shouldUpdateIcon;	
 	NSImage *_updatedIcon;
+	
+	NSIndexSet *selectedFavoriteIndexes;
 }
 - (IBAction)applyTypeTemplate:(id)sender;
 - (IBAction)cancelTemplateEditor:(id)sender;
@@ -28,6 +30,7 @@
 - (IBAction)updateIcon:(id)sender;
 
 - (id)initWithNibName:(NSString *)nibName owner:(id)owner;
+- (void)saveSettings;
 
 //accessors
 - (NSView *)view;

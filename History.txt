@@ -23,8 +23,8 @@
 * ignoring creator type を変更できるようにした。
 
 == To Do
-* com.apple.LaunchServices.plist に依存したコードの削除
-* TypeTable の選択項目が複数のウィンドウで共有されてしまう不具合を修正する。
+* com.apple.LaunchServices.plist に依存したコードの削除 -- 済み
+* TypeTable の選択項目が複数のウィンドウで共有されてしまう不具合を修正する。-- 済み
 * なんとか、シフト+return を受け付けるようにしたい。
 * Sparkle を使った self-update 機能
 
