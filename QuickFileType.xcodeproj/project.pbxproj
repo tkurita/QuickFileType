@@ -31,6 +31,8 @@
 		2C443E9D0B205E77003DA62E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C443E9C0B205E77003DA62E /* InfoPlist.strings */; };
 		2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */; };
 		2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515CF30A42603B00A87E0C /* UtilityFunctions.m */; };
+		2C8AA32B0F14D9E7007F2A73 /* minus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C8AA3290F14D9E7007F2A73 /* minus.tiff */; };
+		2C8AA32C0F14D9E8007F2A73 /* plus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C8AA32A0F14D9E7007F2A73 /* plus.tiff */; };
 		2C9B80B20A12DCC000A872A9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B80B10A12DCC000A872A9 /* AppController.m */; };
 		2C9B80DD0A12F7BB00A872A9 /* GetFinderSelection.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C9B816B0A135A7600A872A9 /* FactorySetting.plist */; };
@@ -91,6 +93,8 @@
 		2C515CF20A42603B00A87E0C /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
 		2C515CF30A42603B00A87E0C /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
 		2C5ED1B30A47828F00036C85 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C8AA3290F14D9E7007F2A73 /* minus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = minus.tiff; path = images/minus.tiff; sourceTree = "<group>"; };
+		2C8AA32A0F14D9E7007F2A73 /* plus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = plus.tiff; path = images/plus.tiff; sourceTree = "<group>"; };
 		2C9B80B00A12DCC000A872A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		2C9B80B10A12DCC000A872A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		2C9B80BC0A12F62800A872A9 /* GetFinderSelection.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = GetFinderSelection.applescript; sourceTree = "<group>"; };
@@ -159,6 +163,9 @@
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				2C8AA3280F14D9E6007F2A73 /* images */,
+				2C8AA3290F14D9E7007F2A73 /* minus.tiff */,
+				2C8AA32A0F14D9E7007F2A73 /* plus.tiff */,
 				2C1050350B5F8511003C9F18 /* RBSplitView */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
@@ -237,6 +244,13 @@
 			name = RBSplitView;
 			sourceTree = "<group>";
 		};
+		2C8AA3280F14D9E6007F2A73 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		2C9B80BD0A12F62E00A872A9 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +313,8 @@
 				2CFDDBD80A4A501D00433884 /* Localizable.strings in Resources */,
 				2C030D980A946AB9005B592F /* HelpSetup.plist in Resources */,
 				2C443E9D0B205E77003DA62E /* InfoPlist.strings in Resources */,
+				2C8AA32B0F14D9E7007F2A73 /* minus.tiff in Resources */,
+				2C8AA32C0F14D9E8007F2A73 /* plus.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

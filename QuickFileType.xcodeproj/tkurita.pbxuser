@@ -244,6 +244,9 @@
 			2C8AA3200F14D3C4007F2A73 /* PBXTextBookmark */ = 2C8AA3200F14D3C4007F2A73 /* PBXTextBookmark */;
 			2C8AA3230F14D3C4007F2A73 /* PBXTextBookmark */ = 2C8AA3230F14D3C4007F2A73 /* PBXTextBookmark */;
 			2C8AA3240F14D3C4007F2A73 /* PBXTextBookmark */ = 2C8AA3240F14D3C4007F2A73 /* PBXTextBookmark */;
+			2C8AA32D0F14D9F7007F2A73 /* PlistBookmark */ = 2C8AA32D0F14D9F7007F2A73 /* PlistBookmark */;
+			2C8AA32E0F14D9F7007F2A73 /* PBXTextBookmark */ = 2C8AA32E0F14D9F7007F2A73 /* PBXTextBookmark */;
+			2C8AA32F0F14D9F8007F2A73 /* PBXTextBookmark */ = 2C8AA32F0F14D9F8007F2A73 /* PBXTextBookmark */;
 			2C9CCBE20EE53BEA003A0345 = 2C9CCBE20EE53BEA003A0345 /* PBXTextBookmark */;
 			2C9CCBE30EE53BEA003A0345 = 2C9CCBE30EE53BEA003A0345 /* PBXTextBookmark */;
 			2C9CCBE40EE53BEA003A0345 = 2C9CCBE40EE53BEA003A0345 /* PBXTextBookmark */;
@@ -270,9 +273,9 @@
 	};
 	2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 966}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1008}}";
 			sepNavSelRange = "{1772, 0}";
-			sepNavVisRange = "{1170, 644}";
+			sepNavVisRange = "{824, 712}";
 			sepNavVisRect = "{{0, 48}, {677, 726}}";
 			sepNavWindowFrame = "{{498, 139}, {716, 799}}";
 		};
@@ -1602,6 +1605,38 @@
 		vrLoc = 0;
 	};
 	2C8AA3240F14D3C4007F2A73 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
+		name = "History.txt: 28";
+		rLen = 0;
+		rLoc = 685;
+		rType = 0;
+		vrLen = 1074;
+		vrLoc = 0;
+	};
+	2C8AA32D0F14D9F7007F2A73 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D15AC360486D014006FF6A4 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleVersion,
+		);
+		name = /Users/tkurita/Dev/Projects/QuickFileType/trunk/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	2C8AA32E0F14D9F7007F2A73 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */;
+		name = "CTDocument.h: 68";
+		rLen = 0;
+		rLoc = 1772;
+		rType = 0;
+		vrLen = 712;
+		vrLoc = 824;
+	};
+	2C8AA32F0F14D9F8007F2A73 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 2C3FF9FD0A35F84400419FF3 /* History.txt */;
 		name = "History.txt: 28";
