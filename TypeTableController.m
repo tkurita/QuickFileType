@@ -29,9 +29,8 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	self = [self init];
 	[NSBundle loadNibNamed:@"TypeTableView" owner:self];
 	_owner = owner;
-	selectedFavoriteIndexes = [[NSIndexSet indexSetWithIndex:
-							  [[NSUserDefaults standardUserDefaults] integerForKey:@"favoriteIndex"]] 
-								retain];
+	[self setSelectedFavoriteIndexes:[NSIndexSet indexSetWithIndex:
+							  [[NSUserDefaults standardUserDefaults] integerForKey:@"favoriteIndex"]]];
 	return self;
 }
 
@@ -55,6 +54,17 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 
 
 #pragma mark accessors
+- (NSIndexSet *)selectedFavoriteIndexes
+{
+	return selectedFavoriteIndexes;
+}
+
+- (void)setSelectedFavoriteIndexes:(NSIndexSet *)indexes
+{
+	[indexes retain];
+	[selectedFavoriteIndexes release];
+	selectedFavoriteIndexes = indexes;
+}
 - (id)typeTemplatesController
 {
 	return typeTemplatesController;

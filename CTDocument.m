@@ -63,11 +63,6 @@
 #endif	
 }
 
-- (void)keyDown:(NSEvent *)event
-{
-	NSLog([event description]);
-}
-
 #pragma mark others
 - (void)doDoubleAction:(id)sender
 {
