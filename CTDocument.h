@@ -21,8 +21,6 @@
 	NSImage *_currentAppIcon;
 	
 	NSImage *_iconImg;
-	NSDictionary *_userLSHandlersForExtensions;
-	NSDictionary *_userLSHandler;
 	
 	NSString *_originalCreatorCode;
 	NSString *_originalTypeCode;
@@ -68,7 +66,6 @@
 - (NSString *)originalUTI;
 - (NSString *)originalAppPath;
 
-- (void)setUserLSHandlersForExtensions:dict;
 - (void)doDoubleAction:(id)sender;
 
 @end

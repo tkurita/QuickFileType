@@ -69,23 +69,6 @@
 	[self performSelector:_defaultAction withObject:sender];
 }
 
-- (void)checkUserLaunchServiceSetting
-{
-	NSArray *userLSHandlers = [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.apple.LaunchServices"] objectForKey:@"LSHandlers"];
-	if (userLSHandlers == nil) return;
-	
-	NSEnumerator *enumerator = [userLSHandlers objectEnumerator];
-	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-	id handlerEntry;
-	while (handlerEntry = [enumerator nextObject]) {
-		if ([[handlerEntry objectForKey:@"LSHandlerContentTagClass"] isEqualToString:@"public.filename-extension"]) {
-			[dict setValue:handlerEntry forKey:[handlerEntry objectForKey:@"LSHandlerContentTag"]];
-		}
-	}
-	
-	[self setUserLSHandlersForExtensions:dict];
-}
-
 - (BOOL)hasWritePermission {
 	int permission = access([[self fileName] fileSystemRepresentation], W_OK);
 	return (permission == 0);
@@ -189,15 +172,7 @@ bail:
 {
 	if (_ignoringCreatorForExtension || _ignoringCreatorForUTI) return;
 	
-	NSString *typeCode;
-	if (_userLSHandler == nil) {
-		typeCode = _typeCode;
-	}
-	else {
-		typeCode = nil;
-	}
-		
-	[self setCurrentUTI:getUTIFromTags(typeCode, _originalExtension)];
+	[self setCurrentUTI:getUTIFromTags(_typeCode, _originalExtension)];
 	
 	LSHandlerOptions handlerOption = LSGetHandlerOptionsForContentType((CFStringRef)_currentUTI);
 	_ignoringCreatorForUTI = (handlerOption == kLSHandlerOptionsIgnoreCreator);
@@ -314,13 +289,6 @@ bail:
 }
 
 #pragma mark accessors for current values
-- (void)setUserLSHandlersForExtensions:dict
-{
-	[dict retain];
-	[_userLSHandlersForExtensions release];
-	_userLSHandlersForExtensions = dict;
-}
-
 - (void)setIconImg:(NSImage *)iconImg
 {
 	[iconImg retain];
@@ -413,7 +381,6 @@ bail:
 
 - (id)ignoringCreatorForExtension
 {
-	//return [NSNumber numberWithBool:(_userLSHandler != nil)];
 	return [NSNumber numberWithBool:_ignoringCreatorForExtension];
 }
 
@@ -600,8 +567,6 @@ bail:
 {
 	NSURL *fURL = [self fileURL];
 	OSStatus err;
-	//read user's Launch services setting
-	[self checkUserLaunchServiceSetting];
 	
 	//setup document icon image
 	NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
@@ -619,26 +584,6 @@ bail:
 	[self setOriginalExtension:[[fURL path] pathExtension]];
 	
 	//setup original UTI
-//	CFStringRef tagClass;
-//	NSString *tag;
-//	NSDictionary *userHandler;
-//	if (userHandler = [_userLSHandlersForExtensions objectForKey:_originalExtension]) {
-//		_userLSHandler = userHandler;
-//		tagClass = kUTTagClassFilenameExtension;
-//		tag = _originalExtension;
-//	}
-//	else if (isValidType(_originalTypeCode)) {
-//		tagClass = kUTTagClassOSType;
-//		tag = _originalTypeCode;
-//	}
-//	else {
-//		NSLog(@"no originalType Code");
-//		tagClass = kUTTagClassFilenameExtension;
-//		tag = _originalExtension;
-//		NSLog(tag);
-//	}
-//	_originalUTI = (NSString *)UTTypeCreatePreferredIdentifierForTag(tagClass, (CFStringRef)tag, CFSTR("public.data"));
-	
 	FSRef fileRef;
 	CFURLGetFSRef((CFURLRef)fURL, &fileRef);
 	NSString *theUTI = nil;
