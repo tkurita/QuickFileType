@@ -25,7 +25,7 @@
 == To Do
 * com.apple.LaunchServices.plist に依存したコードの削除 -- 済み
 * TypeTable の選択項目が複数のウィンドウで共有されてしまう不具合を修正する。-- 済み
-* なんとか、シフト+return を受け付けるようにしたい。
+* なんとか、シフト+return を受け付けるようにしたい。 -- 済み
 * Sparkle を使った self-update 機能
 
 =2007-03-09

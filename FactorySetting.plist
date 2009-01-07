@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>CreatorHistory</key>
@@ -21,7 +21,7 @@
 			<key>creatorCode</key>
 			<string>CARO</string>
 			<key>kind</key>
-			<string>Acrobat's PDF</string>
+			<string>Acrobat&apos;s PDF</string>
 			<key>typeCode</key>
 			<string>PDF </string>
 		</dict>
@@ -29,7 +29,7 @@
 			<key>creatorCode</key>
 			<string>prvw</string>
 			<key>kind</key>
-			<string>Preview's PDF</string>
+			<string>Preview&apos;s PDF</string>
 			<key>typeCode</key>
 			<string>PDF </string>
 		</dict>
@@ -37,7 +37,7 @@
 			<key>creatorCode</key>
 			<string>ToyS</string>
 			<key>kind</key>
-			<string>Script Editor's Script</string>
+			<string>Script Editor&apos;s Script</string>
 			<key>typeCode</key>
 			<string>osas</string>
 		</dict>
@@ -45,7 +45,7 @@
 			<key>creatorCode</key>
 			<string>asDB</string>
 			<key>kind</key>
-			<string>Script Debugger's Script</string>
+			<string>Script Debugger&apos;s Script</string>
 			<key>typeCode</key>
 			<string>osas</string>
 		</dict>
@@ -72,5 +72,7 @@
 		<string>msng</string>
 		<string>PDF </string>
 	</array>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
 </dict>
 </plist>
