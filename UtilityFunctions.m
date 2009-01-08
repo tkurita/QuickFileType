@@ -84,7 +84,10 @@ NSString *getUTIFromTags(NSString *typeString, NSString *extensionString)
 	else {
 #if useLog		
 		NSLog(@"no originalType Code");
-#endif		
+#endif	
+		if ([extensionString isEqualToString:@""] || (! extensionString)) {
+			return nil;
+		}
 		tagClass = kUTTagClassFilenameExtension;
 		tag = extensionString;
 	}

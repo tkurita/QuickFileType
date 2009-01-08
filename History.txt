@@ -18,6 +18,16 @@
 	
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
+= 2009-01-08
+* 拡張子と type code が UTI として競合する場合、拡張子が優先されるようだ。
+	* 拡張子がある場合は以下のようにする。
+	* original UTI が current UTI を confirm するときは、current UTI は original UTI とする。
+	* current UTI と original UTI が お互いにどちらか confirm しないときは、表示を赤くする。 -- 済み
+	* ツールチップでより詳細な説明を表示する。
+* type code は拡張子が無い場合に役に立つ？
+* 拡張子もタイプコードも無いような場合（Unix 実行ファイルなど）は UTI を求めない。 -- 済み
+	* ファイルからもとめた UTI を使うようにする。
+
 = 2009-01-07
 * ignoring creator type の状態がを正しく取得できていなかった不具合を修正
 * ignoring creator type を変更できるようにした。
@@ -26,7 +36,7 @@
 * com.apple.LaunchServices.plist に依存したコードの削除 -- 済み
 * TypeTable の選択項目が複数のウィンドウで共有されてしまう不具合を修正する。-- 済み
 * なんとか、シフト+return を受け付けるようにしたい。 -- 済み
-* Sparkle を使った self-update 機能
+* Sparkle を使った self-update 機能 -- 済み
 
 =2007-03-09
 変更できないときの警告メッセージをシート終了

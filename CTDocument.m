@@ -169,14 +169,33 @@ bail:
 	_currentKind = kindString;
 }
 
+- (void)updateCurrentUTITips
+{
+	if (!currentUTIColor || [currentUTIColor isEqualTo:[NSColor blackColor]]) {
+		[self setCurrentUTITips:NSLocalizedString(@"This UTI is determined by the type code.", @"")];
+	} else {
+		[self setCurrentUTITips:NSLocalizedString(@"This UTI for the type code conflicts with the UTI for the extension.", @"")];
+	}
+}
+
 - (void)updateCurrentUTI
 {
 	if (_ignoringCreatorForExtension || _ignoringCreatorForUTI) return;
 	
-	[self setCurrentUTI:getUTIFromTags(_typeCode, _originalExtension)];
+	NSString *uti;
+	if (! (uti = getUTIFromTags(_typeCode, _originalExtension))) return;
+	
+	if (UTTypeConformsTo((CFStringRef)uti, (CFStringRef)_originalUTI) || UTTypeConformsTo((CFStringRef)_originalUTI, (CFStringRef)uti)) {
+		[self setCurrentUTIColor:[NSColor blackColor]];
+	} else {
+		[self setCurrentUTIColor:[NSColor redColor]];
+	}
+	
+	[self setCurrentUTI:uti];
 	
 	LSHandlerOptions handlerOption = LSGetHandlerOptionsForContentType((CFStringRef)_currentUTI);
 	_ignoringCreatorForUTI = (handlerOption == kLSHandlerOptionsIgnoreCreator);
+	[self updateCurrentUTITips];
 }
 
 - (void)updateCurrentApp
@@ -290,6 +309,30 @@ bail:
 }
 
 #pragma mark accessors for current values
+- (void)setCurrentUTITips:(NSString *)tips
+{
+	[tips retain];
+	[currentUTITips release];
+	currentUTITips = tips;
+}
+
+- (NSString *)currentUTITips
+{
+	return currentUTITips;
+}
+
+- (void)setCurrentUTIColor:(NSColor *)color
+{
+	[color retain];
+	[currentUTIColor release];
+	currentUTIColor = color;
+}
+
+- (NSColor *)currentUTIColor
+{
+	return currentUTIColor;
+}
+
 - (void)setIconImg:(NSImage *)iconImg
 {
 	[iconImg retain];
@@ -583,7 +626,7 @@ bail:
 	[self setOriginalKind:[kindString autorelease]];
 	
 	//setup original extension;
-	[self setOriginalExtension:[[fURL path] pathExtension]];
+	[self setOriginalExtension:[absolutePath pathExtension]];
 	
 	//setup original UTI
 	FSRef fileRef;
@@ -595,6 +638,8 @@ bail:
 	_ignoringCreatorForExtension = (handlerOption == kLSHandlerOptionsIgnoreCreator);
 	_ignoringCreatorForUTI = _ignoringCreatorForExtension;
 	[self setCurrentUTI:_originalUTI];
+	[self setCurrentUTIColor:[NSColor blackColor]];
+	[self updateCurrentUTITips];
 	
 	//setup default application path
 	NSURL *appURL = nil;

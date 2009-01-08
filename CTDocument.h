@@ -19,6 +19,8 @@
 	NSString *_currentUTI;
 	NSString *_currentAppPath;
 	NSImage *_currentAppIcon;
+	NSColor *currentUTIColor;
+	NSString *currentUTITips;
 	
 	NSImage *_iconImg;
 	
@@ -67,5 +69,10 @@
 - (NSString *)originalAppPath;
 
 - (void)doDoubleAction:(id)sender;
+
+- (void)setCurrentUTIColor:(NSColor *)color;
+- (NSColor *)currentUTIColor;
+- (void)setCurrentUTITips:(NSString *)tips;
+- (NSString *)currentUTITips;
 
 @end
