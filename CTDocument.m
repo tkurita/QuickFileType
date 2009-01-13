@@ -3,6 +3,9 @@
 #import "BoolToStringTransformer.h"
 #import "UtilityFunctions.h"
 #import "AltActionButton.h"
+#import "NDResourceFork.h"
+#import "NSString+NDCarbonUtilities.h"
+
 #include <unistd.h>
 
 #define useLog 0
@@ -260,10 +263,41 @@ bail:
 	[aWindow makeFirstResponder:a_view];
 }
 
-- (void)processOKAction
+- (BOOL)showSheetToActivateCreator
 {
-	[[NSUserDefaults standardUserDefaults] setObject:@"OK" forKey:@"DefaultButton"];
+	NSMutableString* msg = [NSMutableString string];
+	if (_ignoringCreatorForExtension) {
+		[msg appendFormat: NSLocalizedString(@"Do you make the extension \"%@\" respect creator types ?",
+											 @"Ask changing ignoring creator option"), _originalExtension];
+	}
 	
+	if (hasUsroResource) {
+		if (_ignoringCreatorForExtension) [msg appendString:@"\n\n"];
+		[msg appendString:NSLocalizedString(@"Do you remove 'usro' resource ?", @"")];
+	}
+	
+	if ([msg length]) {
+		NSBeginAlertSheet(
+			  [NSString stringWithFormat:
+			   NSLocalizedString(@"The creator code will be ignored. Do your enable creator code ?",
+								 @"")],	// sheet message
+			  nil,					// default button label
+			  nil,					// no third button
+			  NSLocalizedString(@"Cancel", "Cancel button label"),	// other button label
+			  [self windowForSheet],	// window sheet is attached to
+			  self,                   // we’ll be our own delegate
+			  @selector(sheetDidEnd:returnCode:contextInfo:),	// did-end selector
+			  nil,                   // no need for did-dismiss selector
+			  nil,					// context info
+			  msg);		// additional text
+		return YES;
+	}
+	
+	return NO;
+}
+
+- (void)processOKAction
+{	
 	BOOL result;
 	@try {
 		result = [self applyTypes];
@@ -291,6 +325,9 @@ bail:
 	
 	if (result) {
 		[self saveTypeHistory];
+		if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultButton"] isEqualToString:@"Open"]) {
+			[[NSWorkspace sharedWorkspace] openURL:[self fileURL]];
+		}
 	}
 	[self close];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" 
@@ -299,12 +336,34 @@ bail:
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
-	if (returnCode != NSAlertDefaultReturn) return;
-	OSStatus err = LSSetHandlerOptionsForContentType ((CFStringRef)_originalUTI,  kLSHandlerOptionsDefault);
-	if (err != noErr) {
-		NSLog(@"Error in LSSetHandlerOptionsForContentType. error : %i", err);
-		return;
+	if (returnCode == NSAlertDefaultReturn) {
+		if (_ignoringCreatorForExtension) {
+			OSStatus err = LSSetHandlerOptionsForContentType ((CFStringRef)_originalUTI,  kLSHandlerOptionsDefault);
+			if (err != noErr) {
+				NSLog(@"Error in LSSetHandlerOptionsForContentType. error : %i", err);
+			}
+		}
+		
+		if (hasUsroResource) {
+			NDResourceFork* resfolk = [[NDResourceFork alloc] initForWritingAtURL:[self fileURL]];
+			if (resfolk) {
+				if (![resfolk removeType:'usro' Id:0]) {
+					NSLog(@"Fail to remove 'usro' resource");
+				}
+				if (![resfolk removeType:'icns' Id:-16455]) {
+					NSLog(@"Fail to remove 'icns' resource");
+				}				
+			} else {
+				NSLog(@"Fail to open resource folk");
+			}
+			[resfolk release];
+
+			[[[self fileURL] path] setFinderInfoFlags:0 mask:kHasCustomIcon 
+									 type:UTGetOSTypeFromString((CFStringRef)_typeCode)
+									creator:UTGetOSTypeFromString((CFStringRef)_creatorCode)];
+		}
 	}
+bail:
 	[self processOKAction];
 }
 
@@ -650,7 +709,16 @@ bail:
 	//setup current file type & creator type
 	[self setCreatorCode: _originalCreatorCode];
 	[self setTypeCode: _originalTypeCode];
-
+	
+	//resource fork
+	hasUsroResource = NO;
+	NDResourceFork* resfork = [NDResourceFork resourceForkForReadingAtPath:absolutePath];	
+	if (resfork) {
+		if ([resfork nameOfResourceType:'usro' Id:0]) {
+			hasUsroResource = YES;
+		}
+	}
+	
     return YES;
 }
 
@@ -699,34 +767,18 @@ bail:
 
 - (IBAction)okAction:(id)sender
 {
-	if (_ignoringCreatorForExtension) {
-		NSBeginAlertSheet(
-						  [NSString stringWithFormat:
-						   NSLocalizedString(@"Do you make the extension \"%@\" respect creator types ?",
-											 @"Ask changing ignoring creator option"), _originalExtension],	// sheet message
-						  nil,					// default button label
-						  nil,					// no third button
-						  NSLocalizedString(@"Cancel", "Cancel button label"),	// other button label
-						  [self windowForSheet],	// window sheet is attached to
-						  self,                   // we’ll be our own delegate
-						  @selector(sheetDidEnd:returnCode:contextInfo:),	// did-end selector
-						  nil,                   // no need for did-dismiss selector
-						  nil,					// context info
-						  @"");		// additional text
-		return;
+	[[NSUserDefaults standardUserDefaults] setObject:@"OK" forKey:@"DefaultButton"];
+	if (![self showSheetToActivateCreator]) {
+		[self processOKAction];
 	}
-	
-	[self processOKAction];
 }
 
 - (IBAction)openAction:(id)sender
 {
 	[[NSUserDefaults standardUserDefaults] setObject:@"Open" forKey:@"DefaultButton"];
-	[self saveTypeHistory];
-	[self applyTypes];
-	[[NSWorkspace sharedWorkspace] openURL:[self fileURL]];
-	[self close];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" object:self userInfo:nil];
+	if (![self showSheetToActivateCreator]) {
+		[self processOKAction];
+	}
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo

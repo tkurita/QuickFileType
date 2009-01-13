@@ -34,6 +34,7 @@
 	NSDictionary *originalAttributes;
 	BOOL _ignoringCreatorForUTI;
 	BOOL _ignoringCreatorForExtension;
+	BOOL hasUsroResource;
 	
 	TypeTableController *_typeTableController;
 	BOOL _isCollapsed;

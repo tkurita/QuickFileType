@@ -21,9 +21,9 @@
 = 2009-01-08
 * 拡張子と type code が UTI として競合する場合、拡張子が優先されるようだ。
 	* 拡張子がある場合は以下のようにする。
-	* original UTI が current UTI を confirm するときは、current UTI は original UTI とする。
+	* original UTI が current UTI を confirm するときは、current UTI は original UTI とする。-- やめ
 	* current UTI と original UTI が お互いにどちらか confirm しないときは、表示を赤くする。 -- 済み
-	* ツールチップでより詳細な説明を表示する。
+	* ツールチップでより詳細な説明を表示する。-- 済み
 * type code は拡張子が無い場合に役に立つ？
 * 拡張子もタイプコードも無いような場合（Unix 実行ファイルなど）は UTI を求めない。 -- 済み
 	* ファイルからもとめた UTI を使うようにする。
