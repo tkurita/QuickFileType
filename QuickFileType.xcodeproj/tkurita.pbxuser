@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 2C5CA59D0A12D84200AD6E75 /* QuickFileType */;
 		activeTarget = 8D15AC270486D014006FF6A4 /* QuickFileType */;
 		addToTargets = (
@@ -142,6 +142,14 @@
 			2C8778B00F1F792200B11CE5 /* PBXTextBookmark */ = 2C8778B00F1F792200B11CE5 /* PBXTextBookmark */;
 			2C8778B10F1F792200B11CE5 /* PBXTextBookmark */ = 2C8778B10F1F792200B11CE5 /* PBXTextBookmark */;
 			2C8778B20F1F792200B11CE5 /* PBXTextBookmark */ = 2C8778B20F1F792200B11CE5 /* PBXTextBookmark */;
+			2C8778C00F1F7D1700B11CE5 /* PBXTextBookmark */ = 2C8778C00F1F7D1700B11CE5 /* PBXTextBookmark */;
+			2C8778C10F1F7D1700B11CE5 /* PBXTextBookmark */ = 2C8778C10F1F7D1700B11CE5 /* PBXTextBookmark */;
+			2C8778C20F1F7D1700B11CE5 /* PlistBookmark */ = 2C8778C20F1F7D1700B11CE5 /* PlistBookmark */;
+			2C8778C30F1F7D1700B11CE5 /* PlistBookmark */ = 2C8778C30F1F7D1700B11CE5 /* PlistBookmark */;
+			2C8778C40F1F7D1700B11CE5 /* PBXTextBookmark */ = 2C8778C40F1F7D1700B11CE5 /* PBXTextBookmark */;
+			2C8778C50F1F7D1700B11CE5 /* PBXTextBookmark */ = 2C8778C50F1F7D1700B11CE5 /* PBXTextBookmark */;
+			2C8778C60F1F7D1700B11CE5 /* PlistBookmark */ = 2C8778C60F1F7D1700B11CE5 /* PlistBookmark */;
+			2C8778C70F1F7D1700B11CE5 /* PlistBookmark */ = 2C8778C70F1F7D1700B11CE5 /* PlistBookmark */;
 			2CB98BEC0F1E4C750075692D = 2CB98BEC0F1E4C750075692D /* PBXTextBookmark */;
 			2CB98BED0F1E4C750075692D = 2CB98BED0F1E4C750075692D /* PBXTextBookmark */;
 			2CB98C0D0F1F14EB0075692D = 2CB98C0D0F1F14EB0075692D /* PBXTextBookmark */;
@@ -270,8 +278,8 @@
 	2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {691, 3178}}";
-			sepNavSelRange = "{451, 0}";
-			sepNavVisRange = "{155, 485}";
+			sepNavSelRange = "{291, 26}";
+			sepNavVisRange = "{156, 536}";
 			sepNavVisRect = "{{0, 1524}, {728, 653}}";
 			sepNavWindowFrame = "{{55, 189}, {721, 603}}";
 		};
@@ -527,6 +535,92 @@
 		rType = 0;
 		vrLen = 485;
 		vrLoc = 155;
+	};
+	2C8778C00F1F7D1700B11CE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */;
+		name = "MCTWindowController.m: 16";
+		rLen = 26;
+		rLoc = 291;
+		rType = 0;
+		vrLen = 536;
+		vrLoc = 156;
+	};
+	2C8778C10F1F7D1700B11CE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CC01E510F1CD63A003DF3C8 /* NDResourceFork.h */;
+		name = "NDResourceFork.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 940;
+		vrLoc = 0;
+	};
+	2C8778C20F1F7D1700B11CE5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 2C030D970A946AB9005B592F /* HelpSetup.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/tkurita/Dev/Projects/QuickFileType/QuickFileType/trunk/HelpSetup.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	2C8778C30F1F7D1700B11CE5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D15AC360486D014006FF6A4 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleVersion,
+		);
+		name = /Users/tkurita/Dev/Projects/QuickFileType/QuickFileType/trunk/Info.plist;
+		rLen = 3;
+		rLoc = 0;
+	};
+	2C8778C40F1F7D1700B11CE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */;
+		name = "MCTWindowController.m: 16";
+		rLen = 26;
+		rLoc = 291;
+		rType = 0;
+		vrLen = 536;
+		vrLoc = 156;
+	};
+	2C8778C50F1F7D1700B11CE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CC01E510F1CD63A003DF3C8 /* NDResourceFork.h */;
+		name = "NDResourceFork.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 940;
+		vrLoc = 0;
+	};
+	2C8778C60F1F7D1700B11CE5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 2C030D970A946AB9005B592F /* HelpSetup.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/tkurita/Dev/Projects/QuickFileType/QuickFileType/trunk/HelpSetup.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	2C8778C70F1F7D1700B11CE5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D15AC360486D014006FF6A4 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleVersion,
+		);
+		name = /Users/tkurita/Dev/Projects/QuickFileType/QuickFileType/trunk/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
 	};
 	2C8AA37D0F14E675007F2A73 /* AltActionButton.h */ = {
 		uiCtxt = {
@@ -1046,6 +1140,14 @@
 		lineNumber = 340;
 		modificationTime = 253513612.853729;
 		state = 1;
+	};
+	2CC01E510F1CD63A003DF3C8 /* NDResourceFork.h */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = Discussion;\n            r = \"{22247, 14}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{22274, 8}\";\n            s = 1;\n        },\n                {\n            l = result;\n            r = \"{22457, 10}\";\n            s = 1;\n        },\n                {\n            l = Discussion;\n            r = \"{22687, 14}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{22714, 8}\";\n            s = 1;\n        },\n                {\n            l = result;\n            r = \"{22948, 10}\";\n            s = 1;\n        },\n                {\n            l = Discussion;\n            r = \"{23182, 14}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{23210, 8}\";\n            s = 1;\n        },\n                {\n            l = result;\n            r = \"{23393, 10}\";\n            s = 1;\n        },\n                {\n            l = Discussion;\n            r = \"{23629, 14}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{23657, 8}\";\n            s = 1;\n        },\n                {\n            l = result;\n            r = \"{23891, 10}\";\n            s = 1;\n        },\n                {\n            l = Discussion;\n            r = \"{24141, 14}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24168, 8}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24190, 8}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24210, 8}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24232, 8}\";\n            s = 1;\n        },\n                {\n            l = result;\n            r = \"{24250, 10}\";\n            s = 1;\n        },\n                {\n            l = Discussion;\n            r = \"{24491, 14}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24519, 8}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24541, 8}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24561, 8}\";\n            s = 1;\n        },\n                {\n            l = disc;\n            r = \"{24583, 8}\";\n            s = 1;\n        },\n                {\n            l = result;\n            r = \"{24601, 10}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 24725}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {2178, 5054}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 940}";
+		};
 	};
 	2CE2C6CE0A4674F300D56041 /* TypeTableController.m:119 */ = {
 		isa = PBXFileBreakpoint;
