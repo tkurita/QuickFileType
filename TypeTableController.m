@@ -143,11 +143,6 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	NSString *preCreator = [selected_dict objectForKey:@"creatorCode"];
 	NSString *preType = [selected_dict objectForKey:@"typeCode"];
 	NSString *pre_kind = [selected_dict objectForKey:@"kind"];
-	/*
-	NSString *preCreator = [typeTemplatesController valueForKeyPath:@"selection.creatorCode"];
-	NSString *preType = [typeTemplatesController valueForKeyPath:@"selection.typeCode"];
-	NSString *pre_kind = [typeTemplatesController valueForKeyPath:@"selection.kind"];
-	*/
 	
 	BOOL is_type_upedated = NO;
 	if (![preCreator isEqualToString:creator_code]) {

@@ -105,56 +105,6 @@
 	} 
 }
 
-
-/*
-- (IBAction)okAction:(id)sender
-{
-	NSDictionary *typeDict = [_typeTableController selectedTypes];
-	if (! typeDict) return;
-	
-	NSEnumerator *doc_enum = [_documentArray objectEnumerator];
-	CTDocument *doc;
-	BOOL exists_error = NO;
-	NSMutableArray *doc_success = [NSMutableArray array];
-	NSMutableString *error_msg = [NSMutableString string];
-	while (doc = [doc_enum nextObject]) {
-		@try {
-			[doc applyTypesFromDict:typeDict];
-			[doc_success addObject:doc];
-		}
-		@catch (NSException *exception) {
-			if (! [[exception name] isEqualToString:@"ApplyTypesException"] ) {       
-				@throw;
-			}
-			[error_msg appendString:NSLocalizedString([exception reason],@"")];
-			[error_msg appendString:@"\n"];
-			[error_msg appendString:[doc fileName]];
-			[error_msg appendString:@"\n"];
-			exists_error = YES;
-		}
-	}
-	
-	if (exists_error) {
-		[fileListController removeObjects:doc_success];
-		NSBeginAlertSheet(
-		NSLocalizedString(@"Can't change creator and type.",
-			@"Alert when can't apply types of single mode"),	// sheet message
-		@"OK",					// default button label
-		nil,					// no third button
-		nil,					// other button label
-		[sender window],		// window sheet is attached to
-		self,                   // we’ll be our own delegate
-		nil,					// did-end selector
-		nil,                   // no need for did-dismiss selector
-		nil,					// context info
-		error_msg);				// additional text
-	}
-	else {
-		[self close];
-	}
-}
-*/
-
 - (void) dealloc {
 	[_typeTableController release];
 	[docEnumerator release];

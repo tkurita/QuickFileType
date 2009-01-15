@@ -214,7 +214,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>2CB98CDE0F1F2D010075692D</string>
+						<string>2CB98CFB0F1F2E480075692D</string>
 						<key>history</key>
 						<array>
 							<string>2CB98CBD0F1F2CDF0075692D</string>
@@ -325,8 +325,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>44</integer>
-									<integer>34</integer>
+									<integer>18</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -402,7 +402,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Localizable.strings</string>
+								<string>TypeTableController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -410,22 +410,24 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Localizable.strings</string>
+										<string>TypeTableController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2CB98CDB0F1F2D010075692D</string>
+										<string>2CB98CFA0F1F2E480075692D</string>
 										<key>history</key>
 										<array>
-											<string>2CB98C260F1F1B080075692D</string>
 											<string>2CB98C270F1F1B080075692D</string>
 											<string>2CB98C5D0F1F224F0075692D</string>
-											<string>2CB98C5E0F1F224F0075692D</string>
-											<string>2CB98C5F0F1F224F0075692D</string>
 											<string>2CB98C610F1F224F0075692D</string>
-											<string>2CB98C8A0F1F292F0075692D</string>
 											<string>2CB98CB90F1F2CDF0075692D</string>
-											<string>2CB98CDA0F1F2D010075692D</string>
+											<string>2CB98CED0F1F2E480075692D</string>
+											<string>2CB98CEE0F1F2E480075692D</string>
+											<string>2CB98CEF0F1F2E480075692D</string>
+											<string>2CB98CF00F1F2E480075692D</string>
+											<string>2CB98CF10F1F2E480075692D</string>
+											<string>2CB98CF20F1F2E480075692D</string>
+											<string>2CB98CF30F1F2E480075692D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -438,6 +440,12 @@
 											<string>2CB98C670F1F224F0075692D</string>
 											<string>2CB98C680F1F224F0075692D</string>
 											<string>2CB98C690F1F224F0075692D</string>
+											<string>2CB98CF40F1F2E480075692D</string>
+											<string>2CB98CF50F1F2E480075692D</string>
+											<string>2CB98CF60F1F2E480075692D</string>
+											<string>2CB98CF70F1F2E480075692D</string>
+											<string>2CB98CF80F1F2E480075692D</string>
+											<string>2CB98CF90F1F2E480075692D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

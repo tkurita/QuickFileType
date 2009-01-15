@@ -47,8 +47,6 @@
     if (self) {
 		_isCollapsed = NO;
 		finderFlags = 0;
-        // Add your subclass-specific initialization here.
-        // If an error occurs here, send a [self release] message and return nil.
     
     }
     return self;
@@ -101,11 +99,6 @@
 		}else {
 			reason = @"Unknown";
 		}
-		/*
-		NSException *exception = [NSException exceptionWithName:@"ApplyTypesException"
-							reason:reason userInfo:nil];
-		@throw exception;
-		*/
 		*error = [NSError errorWithDomain:@"QuickFileTypeErrorDomain" code:0 
 					 userInfo:[NSDictionary dictionaryWithObject:NSLocalizedString(reason, @"")
 											  forKey:NSLocalizedDescriptionKey]];
@@ -114,14 +107,6 @@
 bail:
 	return result;
 }
-/*
-- (BOOL)applyTypesFromDict:(NSDictionary *)typeDict
-{
-	[self setCreatorCode:[typeDict objectForKey:@"creatorCode"]];
-	[self setTypeCode:[typeDict objectForKey:@"typeCode"]];	
-	return [self applyTypes];
-}
-*/
 
 - (BOOL)setOriginalTypesFromFile:(NSString *)path //obsolute
 {
@@ -272,41 +257,6 @@ bail:
 	NSError *error = nil;
 	[self applyTypesReturningError:&error];
 	[modalDelegate didEndApplyTypesForDoc:self error:error];
-	/*
-	 @try {
-	 result = [self applyTypesWithError:&error];
-	 }
-	 @catch (NSException *exception) {
-	 if (! [[exception name] isEqualToString:@"ApplyTypesException"] ) {       
-	 @throw;
-	 }
-	 
-	 NSBeginAlertSheet(
-	 NSLocalizedString(@"Can't change creator and type.",
-	 @"Alert when can't apply types of single mode"),	// sheet message
-	 @"OK",					// default button label
-	 nil,					// no third button
-	 nil,					// other button label
-	 [self windowForSheet],		// window sheet is attached to
-	 self,                   // we’ll be our own delegate
-	 nil,					// did-end selector
-	 nil,                   // no need for did-dismiss selector
-	 nil,					// context info
-	 NSLocalizedString([exception reason],
-	 @"The reason not to be able to apply types"));		// additional text
-	 return;
-	 }
-	 
-	 if (result) {
-	 [self saveTypeHistory];
-	 if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultButton"] isEqualToString:@"Open"]) {
-	 [[NSWorkspace sharedWorkspace] openURL:[self fileURL]];
-	 }
-	 }
-	 [self close];
-	 [[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" 
-	 object:self userInfo:nil];
-	 */
 }
 
 - (void)performApplyTypes
