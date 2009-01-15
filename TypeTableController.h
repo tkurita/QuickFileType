@@ -37,7 +37,7 @@
 - (NSTableView *)favoritesTableView;
 
 - (void)hideApplyButton;
-- (NSDictionary *)getSelection;
+- (NSDictionary *)selectedTypes;
 - (void)setApplyTemplate:(SEL)selector;
 - (void)setDoubleAction:(SEL)selector;
 - (id)typeTemplatesController;

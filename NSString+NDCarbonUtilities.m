@@ -166,11 +166,9 @@
 
 	if( [self getFSRef:&theFSRef] && FSGetCatalogInfo ( &theFSRef, kFSCatInfoFinderInfo, &theCatalogInfo, NULL, NULL, NULL ) == noErr )
 	{
-		printf("flags %x\n", aFlags);
-		theInfo->fdFlags = (aFlags & aMask) | (theInfo->fdFlags & !aMask);
+		theInfo->fdFlags = (aFlags & aMask) | (theInfo->fdFlags & ~aMask); // fix by tkurita
 		theInfo->fdType = aType;
 		theInfo->fdCreator = aCreator;
-		printf("flags %x\n", aFlags);
 		theResult = FSSetCatalogInfo( &theFSRef, kFSCatInfoFinderInfo, &theCatalogInfo ) == noErr;
 	}
 

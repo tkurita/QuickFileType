@@ -2,8 +2,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TypeTableController.h"
+#import "ApplyTypesProtocol.h"
 
-@interface CTDocument : NSDocument
+@interface CTDocument : NSDocument <ApplyTypesProtocol>
 {
     IBOutlet id creatorPopup;
     IBOutlet id typePopup;
@@ -35,12 +36,15 @@
 	BOOL _ignoringCreatorForUTI;
 	BOOL _ignoringCreatorForExtension;
 	BOOL hasUsroResource;
+	UInt16 finderFlags;
 	
 	TypeTableController *_typeTableController;
 	BOOL _isCollapsed;
 	NSRect _typeBoxFrame;
 	NSString *_frameName;
 	SEL _defaultAction;
+	id<ApplyTypesProtocol> modalDelegate;
+	BOOL enableCreator;
 }
 - (IBAction)openAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;
@@ -51,7 +55,6 @@
 - (IBAction)collapseTypeTableBox:(id)sender;
 
 - (void)applyTypeTemplate:(id)sender;
-- (BOOL)applyTypesFromDict:(NSDictionary *)typeDict;
 
 - (void)setTypeCode:(NSString *)typeCode;
 - (void)setCreatorCode:(NSString *)creatorCode;
@@ -76,4 +79,6 @@
 - (void)setCurrentUTITips:(NSString *)tips;
 - (NSString *)currentUTITips;
 
+- (void)applyTypeDict:(NSDictionary *)typeDict modalDelegate:(id<ApplyTypesProtocol>)delegate;
+- (void)applyTypesWithModalDelegate:(id<ApplyTypesProtocol>)delegate;
 @end

@@ -86,7 +86,7 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	[applyButton setHidden:YES];
 }
 
-- (NSDictionary *)getSelection
+- (NSDictionary *)selectedTypes
 {
 	int selectedInd = [typeTable selectedRow];
 	

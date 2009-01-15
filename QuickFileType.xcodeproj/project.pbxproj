@@ -116,6 +116,7 @@
 		2C9B83E40A147E4400A872A9 /* OSTypeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTypeTransformer.m; sourceTree = "<group>"; };
 		2CACFEB60A36F26000748AC9 /* CTDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDocumentController.h; sourceTree = "<group>"; };
 		2CACFEB70A36F26000748AC9 /* CTDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDocumentController.m; sourceTree = "<group>"; };
+		2CB98C1F0F1F18260075692D /* ApplyTypesProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyTypesProtocol.h; sourceTree = "<group>"; };
 		2CC01D1C0F1B8BCD003DF3C8 /* NSString+NDCarbonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NDCarbonUtilities.m"; sourceTree = "<group>"; };
 		2CC01D1D0F1B8BCD003DF3C8 /* NSString+NDCarbonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NDCarbonUtilities.h"; sourceTree = "<group>"; };
 		2CC01E500F1CD63A003DF3C8 /* NDResourceFork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDResourceFork.m; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 				2C515CF30A42603B00A87E0C /* UtilityFunctions.m */,
 				2C8AA37D0F14E675007F2A73 /* AltActionButton.h */,
 				2C8AA37E0F14E675007F2A73 /* AltActionButton.m */,
+				2CB98C1F0F1F18260075692D /* ApplyTypesProtocol.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

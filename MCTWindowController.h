@@ -2,8 +2,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TypeTableController.h"
+#import "ApplyTypesProtocol.h"
 
-@interface MCTWindowController : NSWindowController
+@interface MCTWindowController : NSWindowController <ApplyTypesProtocol>
 {
     IBOutlet id fileListController;
     IBOutlet id splitSubview;
@@ -15,6 +16,10 @@
 	NSMutableArray *_documentArray;
 	
 	NSString *_frameName;
+	NSEnumerator *docEnumerator;
+	NSMutableArray *processedUTIs;
+	NSMutableArray *processedDocuments;
+	NSMutableString *errorMessage;
 }
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)okAction:(id)sender;

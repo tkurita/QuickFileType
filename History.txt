@@ -18,6 +18,15 @@
 	
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
+= 2009-01-14
+CTDocument の
+
+- (void)applyTypes:(NSDictionary *)typeDict processedUTIs:(NSMutableArray *)processedUTIs
+				modalDelegate:(id)delegate didEndSelector:selector
+
+が未実装。でも、この method の仕様ではうまくいかないかも。
+deletaget と didEndSelector ではなく、NSInvocation をつかったらどうか？
+				
 = 2009-01-08
 * 拡張子と type code が UTI として競合する場合、拡張子が優先されるようだ。
 	* 拡張子がある場合は以下のようにする。

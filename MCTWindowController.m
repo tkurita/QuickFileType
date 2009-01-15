@@ -6,6 +6,86 @@
 
 @implementation MCTWindowController
 
+#pragma mark ApplyTypesProtocol
+
+- (NSWindow *)windowForSheet
+{
+	return [self window];
+}
+
+- (BOOL)shouldRespectCreatorForUTI:(NSString *)uti
+{
+	return ![processedUTIs containsObject:uti];
+}
+
+- (void)didEndApplyTypesForDoc:(CTDocument *)doc error:(NSError *)error
+{
+	if (error) {
+		[errorMessage appendString:[error localizedDescription]];
+		[errorMessage appendString:@"\n"];
+		[errorMessage appendString:[[doc fileURL] path]];
+		[errorMessage appendString:@"\n"];
+	} else {
+		[processedDocuments addObject:doc];
+	}
+	
+	doc = [docEnumerator nextObject];
+	if (doc) {
+		NSDictionary *typeDict = [_typeTableController selectedTypes];
+		if (!typeDict) return;
+		[doc applyTypeDict:typeDict modalDelegate:self];
+	} else {
+		if ([errorMessage length]) {
+			[fileListController removeObjects:processedDocuments];
+			NSBeginAlertSheet(
+				  NSLocalizedString(@"Can't change creator and type.",
+									@"Alert when can't apply types of single mode"),	// sheet message
+				  @"OK",					// default button label
+				  nil,					// no third button
+				  nil,					// other button label
+				  [self window],		// window sheet is attached to
+				  self,                   // we’ll be our own delegate
+				  nil,					// did-end selector
+				  nil,                   // no need for did-dismiss selector
+				  nil,					// context info
+				  errorMessage);				// additional text
+			
+		} else {
+			[self close];
+		}
+	}
+}
+
+#pragma mark accessors
+- (void)setDocEnumerator:(NSEnumerator *)enumerator
+{
+	[enumerator retain];
+	[docEnumerator release];
+	docEnumerator = enumerator;
+}
+
+- (void)setProcessedUTIs:(NSMutableArray *)array
+{
+	[array retain];
+	[processedUTIs release];
+	processedUTIs = array;
+}
+
+- (void)setProcessedDocuments:(NSMutableArray *)array
+{
+	[array retain];
+	[processedDocuments release];
+	processedDocuments = array;
+}
+
+- (void)setErrorMessage:(NSMutableString *)string
+{
+	[string retain];
+	[errorMessage release];
+	errorMessage = string;
+}
+
+#pragma mark actions
 - (IBAction)cancelAction:(id)sender
 {
 	[self close];
@@ -13,7 +93,23 @@
 
 - (IBAction)okAction:(id)sender
 {
-	NSDictionary *typeDict = [_typeTableController getSelection];
+	[self setDocEnumerator:[_documentArray objectEnumerator]];
+	[self setProcessedUTIs:[NSMutableArray array]];
+	[self setProcessedDocuments:[NSMutableArray array]];
+	[self setErrorMessage:[NSMutableString string]];
+	NSDictionary *typeDict = [_typeTableController selectedTypes];
+	if (!typeDict) return;
+	CTDocument *doc = [docEnumerator nextObject];
+	if (doc) {
+		[doc applyTypeDict:typeDict modalDelegate:self];
+	} 
+}
+
+
+/*
+- (IBAction)okAction:(id)sender
+{
+	NSDictionary *typeDict = [_typeTableController selectedTypes];
 	if (! typeDict) return;
 	
 	NSEnumerator *doc_enum = [_documentArray objectEnumerator];
@@ -57,10 +153,15 @@
 		[self close];
 	}
 }
+*/
 
 - (void) dealloc {
 	[_typeTableController release];
+	[docEnumerator release];
 	[_documentArray release];
+	[processedDocuments release];
+	[processedUTIs release];
+	[errorMessage release];
 	[super dealloc];
 }
 

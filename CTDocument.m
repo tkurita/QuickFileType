@@ -46,6 +46,7 @@
     self = [super init];
     if (self) {
 		_isCollapsed = NO;
+		finderFlags = 0;
         // Add your subclass-specific initialization here.
         // If an error occurs here, send a [self release] message and return nil.
     
@@ -78,25 +79,17 @@
 	return (permission == 0);
 }
 
-- (BOOL)applyTypes
+- (BOOL)applyTypesReturningError:(NSError **)error
 {
-	NSMutableDictionary *attDict = [NSMutableDictionary dictionary];
-	
-	if (![_typeCode isEqualToString:_originalTypeCode]) {
-		[attDict setObject:StringToOSType(_typeCode) forKey:NSFileHFSTypeCode];
-	}
-	if (![_creatorCode isEqualToString:_originalCreatorCode]) {
-		[attDict setObject:StringToOSType(_creatorCode) forKey:NSFileHFSCreatorCode];
-	}
-	
 	BOOL result = NO;
-	if ([attDict count] < 1) {
+	if (finderFlags || ![_typeCode isEqualToString:_originalTypeCode] || ![_creatorCode isEqualToString:_originalCreatorCode]) {
+		result = [[[self fileURL] path] setFinderInfoFlags:0 mask:finderFlags 
+											 type:UTGetOSTypeFromString((CFStringRef)_typeCode)
+										  creator:UTGetOSTypeFromString((CFStringRef)_creatorCode)];
+	} else {
 		goto bail;
 	}
 	
-	NSFileManager *file_manager = [NSFileManager defaultManager]; 
-	result = [file_manager changeFileAttributes:attDict atPath:[self fileName]];
-
 	if (!result) {
 		NSString *reason;
 		if ([[originalAttributes objectForKey:NSFileImmutable] boolValue]) { 
@@ -108,21 +101,27 @@
 		}else {
 			reason = @"Unknown";
 		}
+		/*
 		NSException *exception = [NSException exceptionWithName:@"ApplyTypesException"
 							reason:reason userInfo:nil];
 		@throw exception;
+		*/
+		*error = [NSError errorWithDomain:@"QuickFileTypeErrorDomain" code:0 
+					 userInfo:[NSDictionary dictionaryWithObject:NSLocalizedString(reason, @"")
+											  forKey:NSLocalizedDescriptionKey]];
 	}
 
 bail:
 	return result;
 }
-
+/*
 - (BOOL)applyTypesFromDict:(NSDictionary *)typeDict
 {
 	[self setCreatorCode:[typeDict objectForKey:@"creatorCode"]];
 	[self setTypeCode:[typeDict objectForKey:@"typeCode"]];	
 	return [self applyTypes];
 }
+*/
 
 - (BOOL)setOriginalTypesFromFile:(NSString *)path //obsolute
 {
@@ -148,7 +147,7 @@ bail:
 
 - (void)applyTypeTemplate:(id)sender
 {
-	id selection = [_typeTableController getSelection];
+	id selection = [_typeTableController selectedTypes];
 	if (selection == nil) return;
 	
 	[self setCreatorCode:[selection objectForKey:@"creatorCode"]];
@@ -263,82 +262,113 @@ bail:
 	[aWindow makeFirstResponder:a_view];
 }
 
-- (BOOL)showSheetToActivateCreator
+- (BOOL)shouldRespectCreatorForUTI:(NSString *)uti
+{
+	return YES;
+}
+
+- (void)processApplyTypes;
+{	
+	NSError *error = nil;
+	[self applyTypesReturningError:&error];
+	[modalDelegate didEndApplyTypesForDoc:self error:error];
+	/*
+	 @try {
+	 result = [self applyTypesWithError:&error];
+	 }
+	 @catch (NSException *exception) {
+	 if (! [[exception name] isEqualToString:@"ApplyTypesException"] ) {       
+	 @throw;
+	 }
+	 
+	 NSBeginAlertSheet(
+	 NSLocalizedString(@"Can't change creator and type.",
+	 @"Alert when can't apply types of single mode"),	// sheet message
+	 @"OK",					// default button label
+	 nil,					// no third button
+	 nil,					// other button label
+	 [self windowForSheet],		// window sheet is attached to
+	 self,                   // we’ll be our own delegate
+	 nil,					// did-end selector
+	 nil,                   // no need for did-dismiss selector
+	 nil,					// context info
+	 NSLocalizedString([exception reason],
+	 @"The reason not to be able to apply types"));		// additional text
+	 return;
+	 }
+	 
+	 if (result) {
+	 [self saveTypeHistory];
+	 if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultButton"] isEqualToString:@"Open"]) {
+	 [[NSWorkspace sharedWorkspace] openURL:[self fileURL]];
+	 }
+	 }
+	 [self close];
+	 [[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" 
+	 object:self userInfo:nil];
+	 */
+}
+
+- (void)performApplyTypes
 {
 	NSMutableString* msg = [NSMutableString string];
-	if (_ignoringCreatorForExtension) {
-		[msg appendFormat: NSLocalizedString(@"Do you make the extension \"%@\" respect creator types ?",
-											 @"Ask changing ignoring creator option"), _originalExtension];
+	if (_ignoringCreatorForExtension && [modalDelegate shouldRespectCreatorForUTI:_originalUTI]) {
+		[msg appendFormat: NSLocalizedString(@"The extension \"%@\" will respect creator code.",
+											 @""), _originalExtension];
+		enableCreator = YES;
+	} else {
+		enableCreator = NO;
 	}
 	
 	if (hasUsroResource) {
 		if (_ignoringCreatorForExtension) [msg appendString:@"\n\n"];
-		[msg appendString:NSLocalizedString(@"Do you remove 'usro' resource ?", @"")];
+		[msg appendString:NSLocalizedString(@"'usro' resource will be removed.", @"")];
 	}
 	
 	if ([msg length]) {
 		NSBeginAlertSheet(
 			  [NSString stringWithFormat:
-			   NSLocalizedString(@"The creator code will be ignored. Do your enable creator code ?",
-								 @"")],	// sheet message
+				   NSLocalizedString(@"\"%@\" is ignoring creator code.\n Do you make creator code enable ?", @""),
+								 [[[self fileURL] path] lastPathComponent] ],	// sheet message
 			  nil,					// default button label
 			  nil,					// no third button
 			  NSLocalizedString(@"Cancel", "Cancel button label"),	// other button label
-			  [self windowForSheet],	// window sheet is attached to
+			  [modalDelegate windowForSheet],	// window sheet is attached to
 			  self,                   // we’ll be our own delegate
 			  @selector(sheetDidEnd:returnCode:contextInfo:),	// did-end selector
 			  nil,                   // no need for did-dismiss selector
 			  nil,					// context info
 			  msg);		// additional text
-		return YES;
+	} else {
+	 [self processApplyTypes];
 	}
-	
-	return NO;
 }
 
-- (void)processOKAction
-{	
-	BOOL result;
-	@try {
-		result = [self applyTypes];
-	}
-	@catch (NSException *exception) {
-		if (! [[exception name] isEqualToString:@"ApplyTypesException"] ) {       
-			@throw;
-		}
-		
-		NSBeginAlertSheet(
-						  NSLocalizedString(@"Can't change creator and type.",
-											@"Alert when can't apply types of single mode"),	// sheet message
-						  @"OK",					// default button label
-						  nil,					// no third button
-						  nil,					// other button label
-						  [self windowForSheet],		// window sheet is attached to
-						  self,                   // we’ll be our own delegate
-						  nil,					// did-end selector
-						  nil,                   // no need for did-dismiss selector
-						  nil,					// context info
-						  NSLocalizedString([exception reason],
-											@"The reason not to be able to apply types"));		// additional text
+- (void)didEndApplyTypesForDoc:(CTDocument *)doc error:(NSError *)error
+{
+	if (error) {
+		[self presentError:error
+			modalForWindow:[self windowForSheet]
+			delegate:nil didPresentSelector:nil contextInfo:nil];
 		return;
 	}
 	
-	if (result) {
-		[self saveTypeHistory];
-		if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultButton"] isEqualToString:@"Open"]) {
-			[[NSWorkspace sharedWorkspace] openURL:[self fileURL]];
-		}
+	[self saveTypeHistory];
+	if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultButton"] isEqualToString:@"Open"]) {
+		[[NSWorkspace sharedWorkspace] openURL:[self fileURL]];
 	}
+
 	[self close];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"CTDocumentCloseNotification" 
-														object:self userInfo:nil];	
+														object:self userInfo:nil];
 }
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
 	if (returnCode == NSAlertDefaultReturn) {
-		if (_ignoringCreatorForExtension) {
-			OSStatus err = LSSetHandlerOptionsForContentType ((CFStringRef)_originalUTI,  kLSHandlerOptionsDefault);
+		if (enableCreator) {
+			OSStatus err = LSSetHandlerOptionsForContentType((CFStringRef)_originalUTI, 
+															 kLSHandlerOptionsDefault);
 			if (err != noErr) {
 				NSLog(@"Error in LSSetHandlerOptionsForContentType. error : %i", err);
 			}
@@ -357,14 +387,24 @@ bail:
 				NSLog(@"Fail to open resource folk");
 			}
 			[resfolk release];
-
-			[[[self fileURL] path] setFinderInfoFlags:0 mask:kHasCustomIcon 
-									 type:UTGetOSTypeFromString((CFStringRef)_typeCode)
-									creator:UTGetOSTypeFromString((CFStringRef)_creatorCode)];
+			finderFlags = kHasCustomIcon;			
 		}
 	}
 bail:
-	[self processOKAction];
+	[self processApplyTypes];
+}
+
+- (void)applyTypesWithModalDelegate:(id<ApplyTypesProtocol>)delegate
+{
+	modalDelegate = delegate;
+	[self performApplyTypes];	
+}
+
+- (void)applyTypeDict:(NSDictionary *)typeDict modalDelegate:(id<ApplyTypesProtocol>)delegate
+{
+	[self setCreatorCode:[typeDict objectForKey:@"creatorCode"]];
+	[self setTypeCode:[typeDict objectForKey:@"typeCode"]];	
+	[self applyTypesWithModalDelegate:delegate];
 }
 
 #pragma mark accessors for current values
@@ -768,17 +808,14 @@ bail:
 - (IBAction)okAction:(id)sender
 {
 	[[NSUserDefaults standardUserDefaults] setObject:@"OK" forKey:@"DefaultButton"];
-	if (![self showSheetToActivateCreator]) {
-		[self processOKAction];
-	}
+	[self applyTypesWithModalDelegate:self];
 }
 
 - (IBAction)openAction:(id)sender
 {
 	[[NSUserDefaults standardUserDefaults] setObject:@"Open" forKey:@"DefaultButton"];
-	if (![self showSheetToActivateCreator]) {
-		[self processOKAction];
-	}
+	modalDelegate = self;
+	[self applyTypesWithModalDelegate:self];
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
