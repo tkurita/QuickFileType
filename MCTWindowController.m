@@ -15,7 +15,12 @@
 
 - (BOOL)shouldRespectCreatorForUTI:(NSString *)uti
 {
-	return ![processedUTIs containsObject:uti];
+	if ([processedUTIs containsObject:uti]) {
+		return NO;
+	} else {
+		[processedUTIs addObject:uti];
+		return YES;
+	}
 }
 
 - (void)didEndApplyTypesForDoc:(CTDocument *)doc error:(NSError *)error
