@@ -46,7 +46,7 @@
     self = [super init];
     if (self) {
 		_isCollapsed = NO;
-		finderFlags = 0;
+		disableFinderFlagMask = 0;
     
     }
     return self;
@@ -80,8 +80,8 @@
 - (BOOL)applyTypesReturningError:(NSError **)error
 {
 	BOOL result = NO;
-	if (finderFlags || ![_typeCode isEqualToString:_originalTypeCode] || ![_creatorCode isEqualToString:_originalCreatorCode]) {
-		result = [[[self fileURL] path] setFinderInfoFlags:0 mask:finderFlags 
+	if (disableFinderFlagMask || ![_typeCode isEqualToString:_originalTypeCode] || ![_creatorCode isEqualToString:_originalCreatorCode]) {
+		result = [[[self fileURL] path] setFinderInfoFlags:0 mask:disableFinderFlagMask 
 											 type:UTGetOSTypeFromString((CFStringRef)_typeCode)
 										  creator:UTGetOSTypeFromString((CFStringRef)_creatorCode)];
 	} else {
@@ -325,7 +325,7 @@ bail:
 		}
 		
 		if (hasUsroResource) {
-			NDResourceFork* resfolk = [[NDResourceFork alloc] initForWritingAtURL:[self fileURL]];
+			NDResourceFork* resfolk = [NDResourceFork resourceForkForWritingAtURL:[self fileURL]];
 			if (resfolk) {
 				if (![resfolk removeType:'usro' Id:0]) {
 					NSLog(@"Fail to remove 'usro' resource");
@@ -333,11 +333,11 @@ bail:
 				if (![resfolk removeType:'icns' Id:-16455]) {
 					NSLog(@"Fail to remove 'icns' resource");
 				}				
+				[resfolk closeFile];
+				disableFinderFlagMask = kHasCustomIcon;
 			} else {
 				NSLog(@"Fail to open resource folk");
 			}
-			[resfolk release];
-			finderFlags = kHasCustomIcon;			
 		}
 	}
 bail:
@@ -707,6 +707,7 @@ bail:
 		if ([resfork nameOfResourceType:'usro' Id:0]) {
 			hasUsroResource = YES;
 		}
+		[resfork closeFile];
 	}
 	
     return YES;

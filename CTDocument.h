@@ -36,7 +36,7 @@
 	BOOL _ignoringCreatorForUTI;
 	BOOL _ignoringCreatorForExtension;
 	BOOL hasUsroResource;
-	UInt16 finderFlags;
+	UInt16 disableFinderFlagMask;
 	
 	TypeTableController *_typeTableController;
 	BOOL _isCollapsed;
