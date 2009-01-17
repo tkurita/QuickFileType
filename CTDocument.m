@@ -332,7 +332,7 @@ bail:
 				}
 				if ([resfolk removeType:'icns' Id:-16455]) {
 					disableFinderFlagMask = kHasCustomIcon;
-				}
+				} else {
 					NSLog(@"Fail to remove 'icns' resource");
 				}				
 				[resfolk closeFile];
