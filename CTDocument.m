@@ -330,11 +330,13 @@ bail:
 				if (![resfolk removeType:'usro' Id:0]) {
 					NSLog(@"Fail to remove 'usro' resource");
 				}
-				if (![resfolk removeType:'icns' Id:-16455]) {
+				if ([resfolk removeType:'icns' Id:-16455]) {
+					disableFinderFlagMask = kHasCustomIcon;
+				}
 					NSLog(@"Fail to remove 'icns' resource");
 				}				
 				[resfolk closeFile];
-				disableFinderFlagMask = kHasCustomIcon;
+				
 			} else {
 				NSLog(@"Fail to open resource folk");
 			}
