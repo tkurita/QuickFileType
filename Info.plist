@@ -22,7 +22,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
-			<true/>
+			<false/>
 			<key>NSDocumentClass</key>
 			<string>CTDocument</string>
 		</dict>

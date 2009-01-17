@@ -183,6 +183,12 @@
 			2CF6A28F0F21A23B0013F679 = 2CF6A28F0F21A23B0013F679 /* PBXTextBookmark */;
 			2CF6A2900F21A23B0013F679 = 2CF6A2900F21A23B0013F679 /* PBXTextBookmark */;
 			2CF6A2A70F21A2810013F679 /* PBXTextBookmark */ = 2CF6A2A70F21A2810013F679 /* PBXTextBookmark */;
+			2CF6A2AF0F21A9FE0013F679 /* PBXTextBookmark */ = 2CF6A2AF0F21A9FE0013F679 /* PBXTextBookmark */;
+			2CF6A2B00F21A9FE0013F679 /* PBXTextBookmark */ = 2CF6A2B00F21A9FE0013F679 /* PBXTextBookmark */;
+			2CF6A2B10F21A9FE0013F679 /* PBXTextBookmark */ = 2CF6A2B10F21A9FE0013F679 /* PBXTextBookmark */;
+			2CF6A2B20F21A9FE0013F679 /* PBXTextBookmark */ = 2CF6A2B20F21A9FE0013F679 /* PBXTextBookmark */;
+			2CF6A2B30F21A9FE0013F679 /* PBXTextBookmark */ = 2CF6A2B30F21A9FE0013F679 /* PBXTextBookmark */;
+			2CF6A2B40F21A9FE0013F679 /* PBXTextBookmark */ = 2CF6A2B40F21A9FE0013F679 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 2C5CA5A80A12D86300AD6E75 /* Source Control */;
 		userBuildSettings = {
@@ -190,9 +196,9 @@
 	};
 	2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {702, 11130}}";
-			sepNavSelRange = "{10184, 0}";
-			sepNavVisRange = "{9596, 783}";
+			sepNavIntBoundsRect = "{{0, 0}, {702, 11256}}";
+			sepNavSelRange = "{8504, 8}";
+			sepNavVisRange = "{7894, 990}";
 			sepNavVisRect = "{{0, 8083}, {728, 653}}";
 			sepNavWindowFrame = "{{617, 108}, {705, 802}}";
 		};
@@ -445,9 +451,9 @@
 	};
 	2C5ED1B30A47828F00036C85 /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1028, 384}}";
-			sepNavSelRange = "{1025, 0}";
-			sepNavVisRect = "{{0, 0}, {866, 384}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1028, 350}}";
+			sepNavSelRange = "{1103, 8}";
+			sepNavVisRect = "{{0, 0}, {711, 350}}";
 			sepNavWindowFrame = "{{649, 149}, {732, 767}}";
 		};
 	};
@@ -1213,7 +1219,7 @@
 		isa = PBXTextBookmark;
 		fRef = 2CF6A28E0F21A23B0013F679 /* Localizable.strings */;
 		rLen = 0;
-		rLoc = 2147483636;
+		rLoc = 2147483625;
 		rType = 0;
 	};
 	2CF6A28E0F21A23B0013F679 /* Localizable.strings */ = {
@@ -1238,7 +1244,7 @@
 		fRef = 2CF6A2910F21A23B0013F679 /* Localizable.strings */;
 		name = "(null): 20";
 		rLen = 0;
-		rLoc = 926;
+		rLoc = 915;
 		rType = 0;
 		vrLen = 928;
 		vrLoc = 0;
@@ -1250,9 +1256,9 @@
 		path = /Users/tkurita/Dev/AppleGlot/_NewLoc/QuickFileType.app/Contents/Resources/Japanese.lproj/Localizable.strings;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1018, 353}}";
-			sepNavSelRange = "{915, 0}";
-			sepNavVisRect = "{{0, 0}, {711, 350}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1018, 372}}";
+			sepNavSelRange = "{325, 0}";
+			sepNavVisRect = "{{0, 22}, {711, 350}}";
 		};
 	};
 	2CF6A2A70F21A2810013F679 /* PBXTextBookmark */ = {
@@ -1264,6 +1270,66 @@
 		rType = 0;
 		vrLen = 928;
 		vrLoc = 0;
+	};
+	2CF6A2AF0F21A9FE0013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */;
+		name = "CTDocument.h: 30";
+		rLen = 0;
+		rLoc = 644;
+		rType = 0;
+		vrLen = 605;
+		vrLoc = 302;
+	};
+	2CF6A2B00F21A9FE0013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
+		name = "CTDocument.m: 285";
+		rLen = 8;
+		rLoc = 8504;
+		rType = 0;
+		vrLen = 990;
+		vrLoc = 7894;
+	};
+	2CF6A2B10F21A9FE0013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C5ED1B30A47828F00036C85 /* English */;
+		name = "\"Cancel\"";
+		rLen = 8;
+		rLoc = 1103;
+		rType = 0;
+		vrLen = 1112;
+		vrLoc = 0;
+	};
+	2CF6A2B20F21A9FE0013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF6A2910F21A23B0013F679 /* Localizable.strings */;
+		name = "Localizable.strings: 10";
+		rLen = 0;
+		rLoc = 325;
+		rType = 0;
+		vrLen = 928;
+		vrLoc = 0;
+	};
+	2CF6A2B30F21A9FE0013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C5ED1B30A47828F00036C85 /* English */;
+		name = "\"Cancel\"";
+		rLen = 8;
+		rLoc = 1103;
+		rType = 0;
+		vrLen = 1112;
+		vrLoc = 0;
+	};
+	2CF6A2B40F21A9FE0013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF6A2910F21A23B0013F679 /* Localizable.strings */;
+		name = "Localizable.strings: 10";
+		rLen = 0;
+		rLoc = 325;
+		rType = 0;
+		vrLen = 913;
+		vrLoc = 35;
 	};
 	8D15AC270486D014006FF6A4 /* QuickFileType */ = {
 		activeExec = 0;
