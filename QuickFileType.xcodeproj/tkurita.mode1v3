@@ -270,8 +270,6 @@
 								<string>2C9B80BD0A12F62E00A872A9</string>
 								<string>19C28FB0FE9D524F11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>2CF6A2360F2166310013F679</string>
-								<string>2CF6A2370F2166310013F679</string>
 								<string>1C37FAAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -355,7 +353,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CTDocument.m</string>
+								<string>Localizable.strings</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -363,14 +361,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CTDocument.m</string>
+										<string>Localizable.strings</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2CF6A2840F219FC60013F679</string>
+										<string>2CF6A2A70F21A2810013F679</string>
 										<key>history</key>
 										<array>
-											<string>2CB98C270F1F1B080075692D</string>
 											<string>2CB98C5D0F1F224F0075692D</string>
 											<string>2CB98C610F1F224F0075692D</string>
 											<string>2CB98CB90F1F2CDF0075692D</string>
@@ -387,16 +384,12 @@
 											<string>2CF6A2780F219FC60013F679</string>
 											<string>2CF6A2790F219FC60013F679</string>
 											<string>2CF6A27A0F219FC60013F679</string>
-											<string>2CF6A27B0F219FC60013F679</string>
-										</array>
-										<key>nextStack</key>
-										<array>
-											<string>2CF6A2830F219FC60013F679</string>
+											<string>2CF6A28C0F21A23B0013F679</string>
+											<string>2CF6A2900F21A23B0013F679</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>2CB98BEC0F1E4C750075692D</string>
-											<string>2CB98C2B0F1F1B080075692D</string>
 											<string>2CB98C2C0F1F1B080075692D</string>
 											<string>2CB98C650F1F224F0075692D</string>
 											<string>2CB98C670F1F224F0075692D</string>
@@ -410,11 +403,9 @@
 											<string>2CF6A23E0F2166310013F679</string>
 											<string>2CF6A27C0F219FC60013F679</string>
 											<string>2CF6A27D0F219FC60013F679</string>
-											<string>2CF6A27E0F219FC60013F679</string>
-											<string>2CF6A27F0F219FC60013F679</string>
-											<string>2CF6A2800F219FC60013F679</string>
 											<string>2CF6A2810F219FC60013F679</string>
 											<string>2CF6A2820F219FC60013F679</string>
+											<string>2CF6A28F0F21A23B0013F679</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -473,9 +464,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2CF6A1DF0F20A2850013F679</string>
+				<string>2CF6A2A80F21A2810013F679</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>2CF6A1E00F20A2850013F679</string>
+				<string>2CF6A2A90F21A2810013F679</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
@@ -621,10 +612,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>2C8AA2560F14A26F007F2A73</string>
 		<string>/Users/tkurita/Dev/Projects/QuickFileType/QuickFileType/trunk/QuickFileType.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
