@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 2C5CA59D0A12D84200AD6E75 /* QuickFileType */;
 		activeTarget = 8D15AC270486D014006FF6A4 /* QuickFileType */;
 		addToTargets = (
@@ -219,6 +219,11 @@
 			2CF6A24B0F2187A70013F679 /* PBXTextBookmark */ = 2CF6A24B0F2187A70013F679 /* PBXTextBookmark */;
 			2CF6A24D0F21896D0013F679 /* PBXTextBookmark */ = 2CF6A24D0F21896D0013F679 /* PBXTextBookmark */;
 			2CF6A24E0F21896D0013F679 /* PBXTextBookmark */ = 2CF6A24E0F21896D0013F679 /* PBXTextBookmark */;
+			2CF6A2620F219DF90013F679 /* PBXTextBookmark */ = 2CF6A2620F219DF90013F679 /* PBXTextBookmark */;
+			2CF6A2630F219DF90013F679 /* PBXTextBookmark */ = 2CF6A2630F219DF90013F679 /* PBXTextBookmark */;
+			2CF6A2640F219DF90013F679 /* PBXTextBookmark */ = 2CF6A2640F219DF90013F679 /* PBXTextBookmark */;
+			2CF6A2650F219DF90013F679 /* PBXTextBookmark */ = 2CF6A2650F219DF90013F679 /* PBXTextBookmark */;
+			2CF6A2660F219DF90013F679 /* PBXTextBookmark */ = 2CF6A2660F219DF90013F679 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 2C5CA5A80A12D86300AD6E75 /* Source Control */;
 		userBuildSettings = {
@@ -235,9 +240,9 @@
 	};
 	2A37F4AEFDCFA73011CA2CEA /* CTDocument.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1190}}";
-			sepNavSelRange = "{936, 0}";
-			sepNavVisRange = "{557, 756}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 1274}}";
+			sepNavSelRange = "{644, 0}";
+			sepNavVisRange = "{302, 605}";
 			sepNavVisRect = "{{0, 48}, {677, 726}}";
 			sepNavWindowFrame = "{{498, 139}, {716, 799}}";
 		};
@@ -370,9 +375,9 @@
 	};
 	2C443E960B205E64003DA62E /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {748, 473}}";
+			sepNavIntBoundsRect = "{{0, 0}, {711, 350}}";
 			sepNavSelRange = "{37, 0}";
-			sepNavVisRect = "{{0, 0}, {748, 473}}";
+			sepNavVisRect = "{{0, 0}, {711, 350}}";
 			sepNavWindowFrame = "{{38, 210}, {888, 702}}";
 		};
 	};
@@ -481,9 +486,9 @@
 	};
 	2C5ED1B30A47828F00036C85 /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1028, 327}}";
-			sepNavSelRange = "{692, 0}";
-			sepNavVisRect = "{{0, 0}, {711, 327}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1028, 384}}";
+			sepNavSelRange = "{1025, 33}";
+			sepNavVisRect = "{{0, 0}, {866, 384}}";
 			sepNavWindowFrame = "{{649, 149}, {732, 767}}";
 		};
 	};
@@ -854,7 +859,7 @@
 		fRef = 2C5ED1B30A47828F00036C85 /* English */;
 		name = "English: 20";
 		rLen = 0;
-		rLoc = 1021;
+		rLoc = 1025;
 		rType = 0;
 		vrLen = 1091;
 		vrLoc = 0;
@@ -971,7 +976,7 @@
 		fRef = 2C5ED1B30A47828F00036C85 /* English */;
 		name = "English: 17";
 		rLen = 0;
-		rLoc = 692;
+		rLoc = 798;
 		rType = 0;
 		vrLen = 1091;
 		vrLoc = 0;
@@ -1282,9 +1287,9 @@
 	};
 	2CF6A1E60F20A2950013F679 /* NSString+NDCarbonUtilities.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {895, 4438}}";
-			sepNavSelRange = "{2467, 0}";
-			sepNavVisRange = "{2027, 557}";
+			sepNavIntBoundsRect = "{{0, 0}, {895, 4802}}";
+			sepNavSelRange = "{2479, 0}";
+			sepNavVisRange = "{2021, 546}";
 		};
 	};
 	2CF6A1F20F20A2F80013F679 /* PBXTextBookmark */ = {
@@ -1669,6 +1674,53 @@
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 757;
+	};
+	2CF6A2620F219DF90013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF6A1E60F20A2950013F679 /* NSString+NDCarbonUtilities.m */;
+		name = "NSString+NDCarbonUtilities.m: 84";
+		rLen = 0;
+		rLoc = 2479;
+		rType = 0;
+		vrLen = 546;
+		vrLoc = 2021;
+	};
+	2CF6A2630F219DF90013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
+		name = "CTDocument.m: 49";
+		rLen = 0;
+		rLoc = 997;
+		rType = 0;
+		vrLen = 615;
+		vrLoc = 757;
+	};
+	2CF6A2640F219DF90013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C5ED1B30A47828F00036C85 /* English */;
+		rLen = 0;
+		rLoc = 1025;
+		rType = 0;
+	};
+	2CF6A2650F219DF90013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */;
+		name = "CTDocument.m: 49";
+		rLen = 0;
+		rLoc = 997;
+		rType = 0;
+		vrLen = 615;
+		vrLoc = 757;
+	};
+	2CF6A2660F219DF90013F679 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C5ED1B30A47828F00036C85 /* English */;
+		name = "\"Do you remove 'usro' resource ?\"";
+		rLen = 0;
+		rLoc = 1025;
+		rType = 0;
+		vrLen = 1162;
+		vrLoc = 0;
 	};
 	8D15AC270486D014006FF6A4 /* QuickFileType */ = {
 		activeExec = 0;

@@ -263,8 +263,8 @@ bail:
 {
 	NSMutableString* msg = [NSMutableString string];
 	if (_ignoringCreatorForExtension && [modalDelegate shouldRespectCreatorForUTI:_originalUTI]) {
-		[msg appendFormat: NSLocalizedString(@"The extension \"%@\" will respect creator code.",
-											 @""), _originalExtension];
+		[msg appendFormat: NSLocalizedString(@"Creator codes will be enabled for the UTI \"%@\".",
+											 @""), _originalUTI];
 		enableCreator = YES;
 	} else {
 		enableCreator = NO;
@@ -272,7 +272,7 @@ bail:
 	
 	if (hasUsroResource) {
 		if (_ignoringCreatorForExtension) [msg appendString:@"\n\n"];
-		[msg appendString:NSLocalizedString(@"'usro' resource will be removed.", @"")];
+		[msg appendString:NSLocalizedString(@"'usro' resource will removed.", @"")];
 	}
 	
 	if ([msg length]) {
