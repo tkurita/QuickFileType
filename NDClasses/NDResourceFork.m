@@ -593,7 +593,7 @@ static BOOL setAttributesFunction( Handle aResHandle, ResType aType, NSString * 
 /*
 	- writeToResourceForkURL:type:Id:name:
  */
-- (BOOL)writeToResourceForkURL:(NSURL *)aURL type:(ResType)aType Id:(int)anId name:(NSString *)aName
+- (BOOL)writeToResourceForkURL:(NSURL *)aURL type:(ResType)aType Id:(ResID)anId name:(NSString *)aName //fixed by tkurita
 {
 	BOOL				theResult = NO;
 	NDResourceFork		* theResourceFork = [[NDResourceFork alloc] initForWritingAtURL:aURL];
@@ -609,7 +609,7 @@ static BOOL setAttributesFunction( Handle aResHandle, ResType aType, NSString * 
 /*
 	- writeToResourceForkFile:ype:Id:name:
  */
-- (BOOL)writeToResourceForkFile:(NSString *)aPath type:(ResType)aType Id:(int)anId name:(NSString *)aName
+- (BOOL)writeToResourceForkFile:(NSString *)aPath type:(ResType)aType Id:(ResID)anId name:(NSString *)aName //fix by tkurita
 {
 	BOOL				theResult = NO;
 	NDResourceFork		* theResourceFork = [[NDResourceFork alloc] initForWritingAtPath:aPath];

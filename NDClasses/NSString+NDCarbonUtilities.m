@@ -25,6 +25,10 @@
 
 #import "NSString+NDCarbonUtilities.h"
 
+#if (MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_4) // for Mac OS X 10.4 Compatibility by tkurita
+	#define NSMakeCollectable(x) (NSString *)x 
+#endif
+
 /*
  * class implementation NSString (NDCarbonUtilities)
  */
