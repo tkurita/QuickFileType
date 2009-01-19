@@ -46,6 +46,8 @@
 				<string>id</string>
 				<key>infoDrawer</key>
 				<string>id</string>
+				<key>modalDelegate</key>
+				<string>id</string>
 				<key>okButton</key>
 				<string>id</string>
 				<key>openButton</key>
