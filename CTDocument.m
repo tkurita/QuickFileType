@@ -172,7 +172,9 @@ bail:
 	NSString *uti;
 	if (! (uti = getUTIFromTags(_typeCode, _originalExtension))) return;
 	
-	if (UTTypeConformsTo((CFStringRef)uti, (CFStringRef)_originalUTI) || UTTypeConformsTo((CFStringRef)_originalUTI, (CFStringRef)uti)) {
+	if (UTTypeConformsTo((CFStringRef)uti, (CFStringRef)_originalUTI) 
+			|| UTTypeConformsTo((CFStringRef)_originalUTI, (CFStringRef)uti)
+			|| [_originalUTI hasPrefix:@"dyn."]) {
 		[self setCurrentUTIColor:[NSColor blackColor]];
 	} else {
 		[self setCurrentUTIColor:[NSColor redColor]];
