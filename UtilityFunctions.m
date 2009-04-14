@@ -21,12 +21,16 @@ NSImage *iconForCreatorAndType(OSType creatorCode, OSType typeCode)
     err = IconRefToIconFamily(icon, kSelectorAllAvailableData, &fam);
     NSCAssert(err == noErr, @"can't get icon family from icon ref");
 	
-    err = ReleaseIconRef(icon);
-    NSCAssert(err == noErr, @"can't release icon ref");
+	Size icon_size = fam[0]->resourceSize;
+	// IconFamilyHandle is always big-endian
+	icon_size = CFSwapInt32BigToHost(icon_size);
 	
-    imageData = [NSData dataWithBytes: *fam length: fam[0]->resourceSize];
+    imageData = [NSData dataWithBytes: *fam length: icon_size];
     NSCAssert(imageData != nil, @"can't make NSData from icon data");
 	
+	err = ReleaseIconRef(icon);
+    NSCAssert(err == noErr, @"can't release icon ref");
+
     return [[[NSImage alloc] initWithData:imageData] autorelease];
 }
 
