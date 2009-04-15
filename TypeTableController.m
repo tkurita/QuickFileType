@@ -33,6 +33,7 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	if (findex != NSNotFound) {
 		NSIndexSet *indexset = [NSIndexSet indexSetWithIndex:findex];
 		[self setSelectedFavoriteIndexes:indexset];
+		[typeTable scrollRowToVisible:[typeTemplatesController selectionIndex]];
 	}
 	return self;
 }
@@ -208,7 +209,7 @@ bail:
 	setupIcon(dict, _updatedIcon);
 	[typeTemplatesController addObject:dict];
 	[typeTemplatesController setSelectedObjects:[NSArray arrayWithObject:dict]];
-
+	[typeTable scrollRowToVisible:[typeTemplatesController selectionIndex]];
 bail:
 	[sheet orderOut:self];
 }
