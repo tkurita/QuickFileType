@@ -2,7 +2,7 @@
 #import "HFSTypeUtils.h"
 #import "UtilityFunctions.h"
 
-#define useLog 0
+#define useLog 1
 
 NSString *removeHatenaType(NSString *typeString)
 {
@@ -29,8 +29,11 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	self = [self init];
 	[NSBundle loadNibNamed:@"TypeTableView" owner:self];
 	_owner = owner;
-	[self setSelectedFavoriteIndexes:[NSIndexSet indexSetWithIndex:
-							  [[NSUserDefaults standardUserDefaults] integerForKey:@"favoriteIndex"]]];
+	int findex = [[NSUserDefaults standardUserDefaults] integerForKey:@"favoriteIndex"];
+	if (findex != NSNotFound) {
+		NSIndexSet *indexset = [NSIndexSet indexSetWithIndex:findex];
+		[self setSelectedFavoriteIndexes:indexset];
+	}
 	return self;
 }
 
