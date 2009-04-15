@@ -24,7 +24,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
 #if useLog
-	NSLog([NSString stringWithFormat:@"start openFiles for :%@",[filenames description]]);
+	NSLog([NSString stringWithFormat:@"start application:openFiles: for :%@",[filenames description]]);
 #endif	
 	unsigned int nFile = [filenames count];
 	NSError *error = nil;
@@ -40,6 +40,9 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	}
 	
 	isFirstOpen = NO;
+#if useLog
+	NSLog(@"end application:openFiles:");
+#endif	
 }
 
 - (IBAction)makeDonation:(id)sender
@@ -49,6 +52,9 @@ NSArray *URLsFromPaths(NSArray *filenames)
 
 - (void)openFinderSelection
 {
+#if useLog
+	NSLog(@"start openFinderSelection");
+#endif	
 	NSBundle *bundle = [NSBundle mainBundle];
 	NSString *scriptPath = [bundle pathForResource:@"GetFinderSelection" ofType:@"scpt" inDirectory:@"Scripts"
 		];
@@ -71,7 +77,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 		if ([alert runModal] == NSAlertFirstButtonReturn) {
 		} 
 		[alert release];
-		return;
+		goto bail;
 	}
 	
 	[getFinderSelection release];
@@ -98,6 +104,11 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	else {
 		[documentController openDocument:self];
 	}
+bail:
+#if useLog
+	NSLog(@"end openFinderSelection");
+#endif
+	return;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -127,6 +138,9 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	
 	if (isFirstOpen) [self openFinderSelection];
 	[DonationReminder remindDonation];
+#if useLog
+	NSLog(@"end applicationDidFinishLaunching");
+#endif	
 	return;
 }
 
@@ -141,7 +155,10 @@ NSArray *URLsFromPaths(NSArray *filenames)
 	
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-	[userDefaults registerDefaults:defautlsDict];	
+	[userDefaults registerDefaults:defautlsDict];
+#if useLog
+	NSLog(@"end awakeFromNib");
+#endif	
 }
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender

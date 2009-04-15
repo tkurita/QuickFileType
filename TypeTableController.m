@@ -2,7 +2,7 @@
 #import "HFSTypeUtils.h"
 #import "UtilityFunctions.h"
 
-#define useLog 1
+#define useLog 0
 
 NSString *removeHatenaType(NSString *typeString)
 {
