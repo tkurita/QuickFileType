@@ -207,6 +207,7 @@ bail:
 	}
 	setupIcon(dict, _updatedIcon);
 	[typeTemplatesController addObject:dict];
+	[typeTemplatesController setSelectedObjects:[NSArray arrayWithObject:dict]];
 
 bail:
 	[sheet orderOut:self];
