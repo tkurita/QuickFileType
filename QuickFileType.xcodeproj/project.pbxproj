@@ -21,6 +21,7 @@
 
 /* Begin PBXBuildFile section */
 		2C030D980A946AB9005B592F /* HelpSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C030D970A946AB9005B592F /* HelpSetup.plist */; };
+		2C061F0410231CEC004E7EDC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4BAFDCFA73011CA2CEA /* Credits.rtf */; };
 		2C10503E0B5F8535003C9F18 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1050380B5F8535003C9F18 /* RBSplitView.framework */; };
 		2C1050F70B5F9F21003C9F18 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C1050380B5F8535003C9F18 /* RBSplitView.framework */; };
 		2C15575E0F15159200662B69 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C15575D0F15159200662B69 /* Sparkle.framework */; };
@@ -50,7 +51,6 @@
 		2CF6A1E70F20A2950013F679 /* NDResourceFork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6A1E30F20A2950013F679 /* NDResourceFork.m */; };
 		2CF6A1E80F20A2950013F679 /* NSString+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6A1E60F20A2950013F679 /* NSString+NDCarbonUtilities.m */; };
 		2CFDDBD80A4A501D00433884 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBD70A4A501D00433884 /* Localizable.strings */; };
-		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */; };
 		8D15AC310486D014006FF6A4 /* CTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* CTDocument.m */; settings = {ATTRIBUTES = (); }; };
@@ -81,7 +81,7 @@
 		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2A37F4B5FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/CTDocument.nib; sourceTree = "<group>"; };
 		2A37F4B7FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2A37F4BAFDCFA73011CA2CEA /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C030D970A946AB9005B592F /* HelpSetup.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = HelpSetup.plist; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				2CD406700F7680BE00B96300 /* QuickFileType.icns */,
 				2C15578F0F15175200662B69 /* dsa_pub.pem */,
 				2C030D970A946AB9005B592F /* HelpSetup.plist */,
-				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
+				2A37F4BAFDCFA73011CA2CEA /* Credits.rtf */,
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
 				2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */,
 				2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */,
@@ -335,7 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
+				2C061F0410231CEC004E7EDC /* Credits.rtf in Resources */,
 				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
 				8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */,
 				2C9B816C0A135A7600A872A9 /* FactorySetting.plist in Resources */,
@@ -393,14 +393,6 @@
 				2A37F4B7FDCFA73011CA2CEA /* English */,
 			);
 			name = MainMenu.nib;
-			sourceTree = "<group>";
-		};
-		2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2A37F4BAFDCFA73011CA2CEA /* English */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */ = {
