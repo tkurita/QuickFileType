@@ -2,9 +2,10 @@
 #import "CTDocument.h"
 #import "MCTWindowController.h"
 #import "UtilityFunctions.h"
+#import "HFSTypeUtils.h"
 #import <DonationReminder/DonationReminder.h>
 
-#define useLog 0
+#define useLog 1
 
 static BOOL isFirstOpen = YES;
 
@@ -20,6 +21,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 }
 
 @implementation AppController
+@synthesize itemsOpenWithCreator;
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
@@ -111,6 +113,14 @@ bail:
 	return;
 }
 
+- (void)delayedOpenFinderSelection
+{
+#if useLog
+	NSLog(@"start delayedOpenFinderSelection");
+#endif	
+	if (isFirstOpen) [self openFinderSelection];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 #if useLog
@@ -136,12 +146,32 @@ bail:
 		[userDefaults setBool:NO forKey:@"NeedUpdateIcons"];
 	}
 	
-	if (isFirstOpen) [self openFinderSelection];
+	[self performSelector:@selector(delayedOpenFinderSelection) withObject:nil afterDelay:0.3];
 	[DonationReminder remindDonation];
+	
 #if useLog
 	NSLog(@"end applicationDidFinishLaunching");
 #endif	
 	return;
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification
+{
+	if (itemsOpenWithCreator) {
+		for (NSDictionary *dict in itemsOpenWithCreator) {
+			CFURLRef appurl = NULL;
+			OSStatus err = LSGetApplicationForInfo (kLSUnknownType,
+													UTGetOSTypeFromString((CFStringRef)[dict objectForKey:@"creator"]),
+								NULL, kLSRolesAll, NULL, &appurl);
+			if (err != noErr)
+				 NSLog(@"Failed to LSGetApplicationForInfo with error :%d", err);
+			if (appurl) {
+				[[NSWorkspace sharedWorkspace] openFile:[dict objectForKey:@"path"] 
+						withApplication:[(NSURL *)appurl path] andDeactivate:YES];
+			}
+		}
+		self.itemsOpenWithCreator = nil;
+	}
 }
 
 - (void)awakeFromNib
@@ -156,6 +186,7 @@ bail:
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
 	[userDefaults registerDefaults:defautlsDict];
+	[NSApp setServicesProvider:self];
 #if useLog
 	NSLog(@"end awakeFromNib");
 #endif	
@@ -171,9 +202,63 @@ bail:
 	return YES;
 }
 
-/* method for service menu */
+#pragma mark method for service menu
+- (void)openWithCreator:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
+{
+	NSLog(@"start openWithCreator");
+	isFirstOpen = NO;
+	NSArray *types = [pboard types];
+	NSArray *file_names;
+	if (![types containsObject:NSFilenamesPboardType] 
+		|| !(file_names = [pboard propertyListForType:NSFilenamesPboardType])) {
+        *error = NSLocalizedString(@"Error: Pasteboard doesn't contain file paths.",
+								   @"Pasteboard couldn't give string.");
+        return;
+    }
+	
+	NSMutableArray *target_files = [NSMutableArray array];
+	NSFileManager *file_manager = [NSFileManager defaultManager];
+	NSEnumerator *enumerator = [file_names objectEnumerator];
+	NSString *a_path;
+	NSDictionary *a_dict;
+	NSString *creator = nil;
+	self.itemsOpenWithCreator = [NSMutableArray array];
+	while (a_path = [enumerator nextObject]) {
+		a_dict = [file_manager fileAttributesAtPath:a_path traverseLink:YES];
+		if ([[a_dict objectForKey:NSFileType] isEqualToString:NSFileTypeRegular]) {
+			creator = OSTypeToNSString([a_dict objectForKey:NSFileHFSCreatorCode]);
+			if ([creator length]) {
+				NSDictionary *itemdict = [NSDictionary dictionaryWithObjectsAndKeys:
+										  a_path, @"path", creator, @"creator", nil];
+				[itemsOpenWithCreator addObject:itemdict];
+			} else {
+				[target_files addObject:[NSURL fileURLWithPath:a_path]];
+			}
+		} else {
+			[[NSWorkspace sharedWorkspace] openFile:a_path];
+		}
+	}
+	
+	NSDocumentController *document_controller = [NSDocumentController sharedDocumentController];
+	id mctWindow;
+	switch ([target_files count]) {
+		case 0 :
+			break;
+		case 1 :
+			[document_controller openDocumentWithContentsOfURL:[target_files lastObject] display:YES error:nil];
+			break;
+		default:
+			mctWindow = [[MCTWindowController alloc] initWithWindowNibName:@"MCTWindow"];
+			[mctWindow setupFileTable:target_files];
+			[mctWindow showWindow:self];
+			break;			
+	}
+	return;
+}
+
 - (void)openForServices:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
 {
+	isFirstOpen = NO;
 	NSArray *types = [pboard types];
 	NSArray *file_names;
 	if (![types containsObject:NSFilenamesPboardType] 
@@ -210,7 +295,6 @@ bail:
 			[mctWindow showWindow:self];
 			break;			
 	}
-	//[NSApp activateIgnoringOtherApps:YES];
 }
 
 @end

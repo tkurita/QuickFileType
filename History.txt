@@ -1,4 +1,8 @@
 = To do
+* サービスメニュー経由で起動したとき、openFinderSelection が呼ばれちゃうんじゃない？
+	* そのとおり
+* open with creator でファイルを開くと QuickFileType が activate してしまった、ファイルを開いたアプリケーションが activate しない。
+	* applicationDidActivate の中でファイルを開く処理をする。
 
 == その他
 * typeTemplate ではなく favorites という言葉を使うようにしよう。

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 45;
 	objects = {
 
 /* Begin PBXAppleScriptBuildPhase section */
@@ -50,6 +50,7 @@
 		2CE75EE10A1C01170005790B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE75EE00A1C01170005790B /* HFSTypeUtils.m */; };
 		2CF6A1E70F20A2950013F679 /* NDResourceFork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6A1E30F20A2950013F679 /* NDResourceFork.m */; };
 		2CF6A1E80F20A2950013F679 /* NSString+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6A1E60F20A2950013F679 /* NSString+NDCarbonUtilities.m */; };
+		2CFB62AB1060DB0200A68C2B /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB62AA1060DB0200A68C2B /* ServicesMenu.strings */; };
 		2CFDDBD80A4A501D00433884 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDDBD70A4A501D00433884 /* Localizable.strings */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC2E0486D014006FF6A4 /* CTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */; };
@@ -127,6 +128,7 @@
 		2CF6A1E40F20A2950013F679 /* NDSDKCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSDKCompatibility.h; sourceTree = "<group>"; };
 		2CF6A1E50F20A2950013F679 /* NSString+NDCarbonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NDCarbonUtilities.h"; sourceTree = "<group>"; };
 		2CF6A1E60F20A2950013F679 /* NSString+NDCarbonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NDCarbonUtilities.m"; sourceTree = "<group>"; };
+		2CFB62971060DADA00A68C2B /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; lineEnding = 0; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		32DBCF750370BD2300C91783 /* QuickFileType_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickFileType_Prefix.pch; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* QuickFileType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFileType.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +250,7 @@
 				2C9B816B0A135A7600A872A9 /* FactorySetting.plist */,
 				2CFDDBD70A4A501D00433884 /* Localizable.strings */,
 				2C443E9C0B205E77003DA62E /* InfoPlist.strings */,
+				2CFB62AA1060DB0200A68C2B /* ServicesMenu.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -319,7 +322,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "QuickFileType" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* QuickFileType */;
 			projectDirPath = "";
@@ -348,6 +351,7 @@
 				2C8AA32C0F14D9E8007F2A73 /* plus.tiff in Resources */,
 				2C1557900F15175200662B69 /* dsa_pub.pem in Resources */,
 				2CD406710F7680BE00B96300 /* QuickFileType.icns in Resources */,
+				2CFB62AB1060DB0200A68C2B /* ServicesMenu.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +421,14 @@
 				2C443E960B205E64003DA62E /* English */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2CFB62AA1060DB0200A68C2B /* ServicesMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CFB62971060DADA00A68C2B /* English */,
+			);
+			name = ServicesMenu.strings;
 			sourceTree = "<group>";
 		};
 		2CFDDBD70A4A501D00433884 /* Localizable.strings */ = {
@@ -498,7 +510,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
@@ -514,7 +526,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};

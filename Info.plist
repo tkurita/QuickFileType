@@ -30,7 +30,30 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.1.2 copyright 1999-2009, Tetsuro KURITA</string>
+	<string>3.2 copyright 1999-2009, Tetsuro KURITA</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string>O</string>
+			</dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Open with Creator</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>openWithCreator</string>
+			<key>NSPortName</key>
+			<string>QuickFileTypeService</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleHelpBookFolder</key>
 	<string>QuickFileTypeHelp</string>
 	<key>CFBundleIconFile</key>
@@ -46,7 +69,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3.1.2</string>
+	<string>3.2</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© Tetsuro KURITA, 1999-2009</string>
 	<key>NSMainNibFile</key>
