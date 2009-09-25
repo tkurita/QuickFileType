@@ -205,7 +205,6 @@ bail:
 #pragma mark method for service menu
 - (void)openWithCreator:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
 {
-	NSLog(@"start openWithCreator");
 	isFirstOpen = NO;
 	NSArray *types = [pboard types];
 	NSArray *file_names;
@@ -256,7 +255,7 @@ bail:
 	return;
 }
 
-- (void)openForServices:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
+- (void)changeFileTypes:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
 {
 	isFirstOpen = NO;
 	NSArray *types = [pboard types];

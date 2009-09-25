@@ -230,8 +230,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -282,8 +280,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>24</integer>
-									<integer>23</integer>
+									<integer>18</integer>
 									<integer>8</integer>
 									<integer>0</integer>
 								</array>
@@ -326,7 +323,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ServicesMenu.strings</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -334,11 +331,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ServicesMenu.strings</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2CFB63621061D8A700A68C2B</string>
+										<string>2C18EDD81063041000E7F55F</string>
 										<key>history</key>
 										<array>
 											<string>2CFB62D51060DCD500A68C2B</string>
@@ -346,23 +343,19 @@
 											<string>2CFB63171061CADC00A68C2B</string>
 											<string>2CFB63251061D41F00A68C2B</string>
 											<string>2CFB635F1061D8A700A68C2B</string>
-											<string>2CFB63601061D8A700A68C2B</string>
+											<string>2CFB63811061DD7F00A68C2B</string>
+											<string>2CFB63821061DD7F00A68C2B</string>
+											<string>2CFB63861061DD7F00A68C2B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>2CFB62D11060DC9B00A68C2B</string>
 											<string>2CFB62D71060DCD500A68C2B</string>
-											<string>2CFB62E91060DDDF00A68C2B</string>
 											<string>2CFB62EA1060DDDF00A68C2B</string>
-											<string>2CFB63191061CADC00A68C2B</string>
 											<string>2CFB631A1061CADC00A68C2B</string>
-											<string>2CFB63271061D41F00A68C2B</string>
 											<string>2CFB63281061D41F00A68C2B</string>
-											<string>2CFB63291061D41F00A68C2B</string>
-											<string>2CFB632A1061D41F00A68C2B</string>
-											<string>2CFB632B1061D41F00A68C2B</string>
-											<string>2CFB632C1061D41F00A68C2B</string>
-											<string>2CFB63611061D8A700A68C2B</string>
+											<string>2CFB63841061DD7F00A68C2B</string>
+											<string>2CFB63851061DD7F00A68C2B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -420,9 +413,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2CFB627D1060CBD800A68C2B</string>
+				<string>2C18EDD91063041000E7F55F</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>2CFB627E1060CBD800A68C2B</string>
+				<string>2C18EDDA1063041000E7F55F</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -567,12 +560,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>2CFB62C11060DC7C00A68C2B</string>
-		<string>2CFB62C21060DC7C00A68C2B</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>2C8AA2560F14A26F007F2A73</string>
 		<string>/Users/tkurita/Dev/Projects/QuickFileType/QuickFileType/trunk/QuickFileType.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
