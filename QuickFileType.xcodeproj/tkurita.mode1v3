@@ -311,7 +311,7 @@
 							<real>242</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>504 161 1165 638 0 0 1440 878 </string>
+						<string>175 186 1165 638 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -341,7 +341,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2CDE86D4106C50CF000AC7FA</string>
+										<string>2CDE86D6106C529B000AC7FA</string>
 										<key>history</key>
 										<array>
 											<string>2CFB62D51060DCD500A68C2B</string>
@@ -378,7 +378,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {879, 486}}</string>
 								<key>RubberWindowFrame</key>
-								<string>504 161 1165 638 0 0 1440 878 </string>
+								<string>175 186 1165 638 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -398,7 +398,7 @@
 								<key>Frame</key>
 								<string>{{0, 491}, {879, 106}}</string>
 								<key>RubberWindowFrame</key>
-								<string>504 161 1165 638 0 0 1440 878 </string>
+								<string>175 186 1165 638 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -574,7 +574,7 @@
 		<string>/Users/tkurita/Dev/Projects/QuickFileType/QuickFileType/trunk/QuickFileType.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>504 161 1165 638 0 0 1440 878 </string>
+	<string>175 186 1165 638 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
