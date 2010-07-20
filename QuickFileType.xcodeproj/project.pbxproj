@@ -446,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
@@ -467,6 +468,7 @@
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../RBSplitView/build/Release\"";
 				PRODUCT_NAME = QuickFileType;
+				VERSIONING_SYSTEM = "Apple Generic";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -479,6 +481,7 @@
 					ppc,
 					i386,
 				);
+				CURRENT_PROJECT_VERSION = 5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
@@ -498,6 +501,7 @@
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../RBSplitView/build/Release\"";
 				PRODUCT_NAME = QuickFileType;
+				VERSIONING_SYSTEM = "Apple Generic";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

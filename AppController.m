@@ -5,9 +5,10 @@
 #import "HFSTypeUtils.h"
 #import <DonationReminder/DonationReminder.h>
 
-#define useLog 1
+#define useLog 0
 
-static BOOL isFirstOpen = YES;
+static BOOL AUTO_QUIT = YES;
+//static BOOL isFirstOpen = YES;
 
 NSArray *URLsFromPaths(NSArray *filenames)
 {
@@ -41,7 +42,7 @@ NSArray *URLsFromPaths(NSArray *filenames)
 				openDocumentWithContentsOfURL:[URLsFromPaths(filenames) lastObject] display:YES error:&error];
 	}
 	
-	isFirstOpen = NO;
+	//isFirstOpen = NO;
 #if useLog
 	NSLog(@"end application:openFiles:");
 #endif	
@@ -113,6 +114,7 @@ bail:
 	return;
 }
 
+/*
 - (void)delayedOpenFinderSelection
 {
 #if useLog
@@ -120,6 +122,7 @@ bail:
 #endif	
 	if (isFirstOpen) [self openFinderSelection];
 }
+*/
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -146,7 +149,44 @@ bail:
 		[userDefaults setBool:NO forKey:@"NeedUpdateIcons"];
 	}
 	
-	[self performSelector:@selector(delayedOpenFinderSelection) withObject:nil afterDelay:0.3];
+	//[self performSelector:@selector(delayedOpenFinderSelection) withObject:nil afterDelay:0.3];
+	NSAppleEventDescriptor *ev = [[NSAppleEventManager sharedAppleEventManager] currentAppleEvent];
+#if useLog
+	NSLog([ev description]);
+#endif
+	AEEventID evid = [ev eventID];
+	BOOL should_process = NO;
+	NSAppleEventDescriptor *propData;
+	switch (evid) {
+		case kAEOpenDocuments:
+#if useLog			
+			NSLog(@"kAEOpenDocuments");
+#endif
+			break;
+		case kAEOpenApplication:
+#if useLog			
+			NSLog(@"kAEOpenApplication");
+#endif
+			propData = [ev paramDescriptorForKeyword: keyAEPropData];
+			DescType type = propData ? [propData descriptorType] : typeNull;
+			OSType value = 0;
+			if(type == typeType) {
+				value = [propData typeCodeValue];
+				switch (value) {
+					case keyAELaunchedAsLogInItem:
+						AUTO_QUIT = NO;
+						break;
+					case keyAELaunchedAsServiceItem:
+						break;
+				}
+			} else {
+				should_process = YES;
+			}
+			break;
+	}
+	
+	
+	
 	[DonationReminder remindDonation];
 	
 #if useLog
@@ -194,18 +234,27 @@ bail:
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
 {
-	return NO;
+	return YES;
+}
+
+- (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication
+{
+#if useLog
+	NSLog(@"applicationOpenUntitledFile");
+#endif	
+	[self openFinderSelection];
+	return YES;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
 {
-	return YES;
+	return AUTO_QUIT;
 }
 
 #pragma mark method for service menu
 - (void)openWithCreator:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
 {
-	isFirstOpen = NO;
+	//isFirstOpen = NO;
 	NSArray *types = [pboard types];
 	NSArray *file_names;
 	if (![types containsObject:NSFilenamesPboardType] 
@@ -257,7 +306,7 @@ bail:
 
 - (void)changeFileTypes:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error
 {
-	isFirstOpen = NO;
+	//isFirstOpen = NO;
 	NSArray *types = [pboard types];
 	NSArray *file_names;
 	if (![types containsObject:NSFilenamesPboardType] 
