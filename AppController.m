@@ -185,8 +185,6 @@ bail:
 			break;
 	}
 	
-	
-	
 	[DonationReminder remindDonation];
 	
 #if useLog
