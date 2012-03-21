@@ -1,8 +1,6 @@
 #import "MCTWindowController.h"
 #import "HFSTypeUtils.h"
 #import "CTDocument.h"
-#import "RBSplitView/RBSplitView.h"
-#import "RBSplitView/RBSplitSubview.h"
 
 @implementation MCTWindowController
 
@@ -212,10 +210,18 @@
 	NSSize spacing = [fileTable intercellSpacing];
 	NSRect hframe =	[[fileTable headerView] frame];
 	float table_height = hframe.size.height + ((row_height + spacing.height)*(nrows)) +5;
+	float suggested_dimension = table_height;
 
-	float current_dimension = [splitSubview dimension];
+	//float current_dimension = [splitSubview dimension];
+	NSRect frame = [splitSubview frame];
+	float current_dimension = frame.size.height;
+	if (suggested_dimension > current_dimension) suggested_dimension = current_dimension;
+	[splitView setPosition:suggested_dimension ofDividerAtIndex:0];
+
+	/*
 	if (table_height > current_dimension) table_height = current_dimension;
 	[splitSubview setDimension:table_height ];
+	 */
 }
 
 @end

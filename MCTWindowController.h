@@ -8,6 +8,7 @@
 {
     IBOutlet id fileListController;
     IBOutlet id splitSubview;
+	IBOutlet id splitView;
     IBOutlet id fileTable;
     IBOutlet id typeTableBox;
 	IBOutlet id okButton;
