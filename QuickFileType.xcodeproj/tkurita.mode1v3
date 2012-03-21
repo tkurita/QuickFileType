@@ -214,7 +214,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>2CE8D0FC15197405000A8E8B</string>
+						<string>2CE8D1031519765F000A8E8B</string>
 						<key>history</key>
 						<array>
 							<string>2CE8D0E1151972D7000A8E8B</string>
@@ -268,8 +268,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -329,7 +327,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 535}, {264, 689}}</string>
+							<string>{{0, 0}, {264, 689}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -366,7 +364,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MCTWindowController.m</string>
+								<string>Credits.rtf</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -374,15 +372,14 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MCTWindowController.m</string>
+										<string>Credits.rtf</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2CE8D0FB15197405000A8E8B</string>
+										<string>2CE8D1021519765F000A8E8B</string>
 										<key>history</key>
 										<array>
 											<string>2CFB63821061DD7F00A68C2B</string>
-											<string>2CEB826111546BE80004966F</string>
 											<string>2CEB826211546BE80004966F</string>
 											<string>2C265B5613560D83003C2BAD</string>
 											<string>2CAC68A513600F94001D05E8</string>
@@ -403,7 +400,8 @@
 											<string>2CE8D0E615197357000A8E8B</string>
 											<string>2CE8D0E715197357000A8E8B</string>
 											<string>2CE8D0E815197357000A8E8B</string>
-											<string>2CE8D0E915197357000A8E8B</string>
+											<string>2CE8D1011519765F000A8E8B</string>
+											<string>2CE8D0FF15197658000A8E8B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -852,12 +850,14 @@
 							<key>Dock</key>
 							<array>
 								<dict>
+									<key>BecomeActive</key>
+									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MCTWindowController.m</string>
+										<string>Credits.rtf</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -878,8 +878,6 @@
 							<string>388pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
