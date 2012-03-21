@@ -53,6 +53,17 @@
 			<array>
 				<string>NSFilenamesPboardType</string>
 			</array>
+			<key>NSRequiredContext</key>
+			<dict>
+				<key>NSTextContent</key>
+				<string>FilePath</string>
+			</dict>
+			<key>NSSendFileTypes</key>
+			<array>
+				<string>public.item</string>
+				<string>public.symlink</string>
+				<string>com.apple.alias-file</string>
+			</array>
 		</dict>
 		<dict>
 			<key>NSKeyEquivalent</key>
@@ -69,9 +80,20 @@
 			<string>openWithCreator</string>
 			<key>NSPortName</key>
 			<string>QuickFileTypeService</string>
+			<key>NSRequiredContext</key>
+			<dict>
+				<key>NSTextContent</key>
+				<string>FilePath</string>
+			</dict>
 			<key>NSSendTypes</key>
 			<array>
 				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>NSSendFileTypes</key>
+			<array>
+				<string>public.item</string>
+				<string>public.symlink</string>
+				<string>com.apple.alias-file</string>
 			</array>
 		</dict>
 	</array>
