@@ -69,7 +69,7 @@
 			<key>NSKeyEquivalent</key>
 			<dict>
 				<key>default</key>
-				<string>Y</string>
+				<string>_</string>
 			</dict>
 			<key>NSMenuItem</key>
 			<dict>
