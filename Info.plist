@@ -32,11 +32,11 @@
 	<key>CFBundleVersion</key>
 	<string>6</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© Tetsuro KURITA, 1999-2010</string>
+	<string>© Tetsuro KURITA, 1999-2012</string>
 	<key>CFBundleShortVersionString</key>
 	<string>3.2.1b1</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.2.1b1 copyright 1999-2010, Tetsuro KURITA</string>
+	<string>3.2.1b1 copyright 1999-2012, Tetsuro KURITA</string>
 	<key>NSServices</key>
 	<array>
 		<dict>
@@ -100,8 +100,8 @@
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 	<key>SUFeedURL</key>
-	<string>http://homepage.mac.com/tkurita/scriptfactory/appcast/QuickFileType.xml</string>
+	<string>http://www.script-factory.net/appcast/QuickFileType.xml</string>
 	<key>DonationURL</key>
-	<string>http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html</string>
+	<string>http://www.script-factory.net/donationproxy.html</string>
 </dict>
 </plist>
