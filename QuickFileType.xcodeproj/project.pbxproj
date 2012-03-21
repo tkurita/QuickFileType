@@ -123,6 +123,9 @@
 		2CE8D16A1519858D000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MCTWindow.nib; sourceTree = "<group>"; };
 		2CE8D16B1519859C000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/TypeTableView.nib; sourceTree = "<group>"; };
 		2CE8D16C151985A8000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/CTDocument.nib; sourceTree = "<group>"; };
+		2CE8D17015198792000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2CE8D1711519879B000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		2CE8D17D1519885D000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CF6A1E20F20A2950013F679 /* NDResourceFork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDResourceFork.h; sourceTree = "<group>"; };
 		2CF6A1E30F20A2950013F679 /* NDResourceFork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDResourceFork.m; sourceTree = "<group>"; };
 		2CF6A1E40F20A2950013F679 /* NDSDKCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSDKCompatibility.h; sourceTree = "<group>"; };
@@ -298,6 +301,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "QuickFileType" */;
 			buildPhases = (
+				2CE8D18115198A5E000A8E8B /* ShellScript */,
 				8D15AC2B0486D014006FF6A4 /* Resources */,
 				2CD94AC30A8D9CFD0029C487 /* CopyFiles */,
 				8D15AC300486D014006FF6A4 /* Sources */,
@@ -361,6 +365,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CE8D18115198A5E000A8E8B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/English.lproj/MainMenu.nib",
+				"$(SRCROOT)/Japanese.lproj/MainMenu.strings",
+				"$(SRCROOT)/English.lproj/CTDocument.nib",
+				"$(SRCROOT)/Japanese.lproj/CTDocument.strings",
+				"$(SRCROOT)/English.lproj/MCTWindow.nib",
+				"$(SRCROOT)/Japanese.lproj/MCTWindow.strings",
+				"$(SRCROOT)/English.lproj/TypeTableView.nib",
+				"$(SRCROOT)/Japanse.lproj/TypeTableView.strings",
+			);
+			outputPaths = (
+				"$(SRCROOT)/Japanese.lproj/MainMenu.nib",
+				"$(SRCROOT)/Japanese.lproj/CTDocument.nib",
+				"$(SRCROOT)/Japanese.lproj/MCTWindow.nib",
+				"$(SRCROOT)/Japanese.lproj/TypeTableView.nib",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Extract English strings (use this to check if you added new strings to your nibs)\n# ibtool --generate-strings-file Resources/English.lproj/MainWindow.strings Resources/English.lproj/MainWindow.xib\n# Generate Localized interface\n\nfunction generate_localized_interface\n{\nbase_lang=$1\ntarget_lang=$2\ntarget_nib=$3\nnib_basename=`basename ${target_nib} .nib` \n\ntarget_lang_strings=${target_lang}.lproj/${nib_basename}.strings\ntarget_lang_nib=${target_lang}.lproj/${target_nib}\n\nif ! [ -e ${target_lang_strings} ]; then\n\tibtool --generate-strings-file ${target_lang_strings} ${target_lang_nib}\nelse\n\techo \"${target_lang_strings} exist\"\U0013\nfi\n\nibtool --strings-file ${target_lang_strings} --write ${target_lang_nib} ${base_lang}.lproj/${target_nib}\nrm -rf ${target_lang_nib}/.svn\n}\n\ngenerate_localized_interface English Japanese MainMenu.nib\ngenerate_localized_interface English Japanese CTDocument.nib\ngenerate_localized_interface English Japanese MCTWindow.nib\ngenerate_localized_interface English Japanese TypeTableView.nib\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D15AC300486D014006FF6A4 /* Sources */ = {
@@ -428,6 +460,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2C443E960B205E64003DA62E /* English */,
+				2CE8D17015198792000A8E8B /* Japanese */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -436,6 +469,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2CFB62971060DADA00A68C2B /* English */,
+				2CE8D1711519879B000A8E8B /* Japanese */,
 			);
 			name = ServicesMenu.strings;
 			sourceTree = "<group>";
@@ -444,6 +478,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2C5ED1B30A47828F00036C85 /* English */,
+				2CE8D17D1519885D000A8E8B /* Japanese */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

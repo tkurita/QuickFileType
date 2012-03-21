@@ -1,7 +1,4 @@
 == To do
-* サービスメニューの Snow Leopard 対応。
-* コンパイル時のwarrning を無くす。
-* ローカライズ方法のアップデート
 * サービスメニュー経由で起動したとき、openFinderSelection が呼ばれちゃうんじゃない？
 	* そのとおり
 * open with creator でファイルを開くと QuickFileType が activate してしまった、ファイルを開いたアプリケーションが activate しない。
@@ -26,6 +23,9 @@
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
 
 == 2012-03-21
+* サービスメニューの Snow Leopard 対応。
+* ローカライズ方法のアップデート
+* コンパイル時のwarrning を無くす。-- 済み
 * RBSplitView をやめて、NSSplitView にする。
 * アイコンのアップデート
 
