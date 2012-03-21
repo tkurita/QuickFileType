@@ -119,6 +119,10 @@
 		2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = DonationReminder.framework; path = ../DonationReminder.framework; sourceTree = SOURCE_ROOT; };
 		2CE75EDF0A1C01170005790B /* HFSTypeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSTypeUtils.h; sourceTree = "<group>"; };
 		2CE75EE00A1C01170005790B /* HFSTypeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSTypeUtils.m; sourceTree = "<group>"; };
+		2CE8D16915198583000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2CE8D16A1519858D000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MCTWindow.nib; sourceTree = "<group>"; };
+		2CE8D16B1519859C000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/TypeTableView.nib; sourceTree = "<group>"; };
+		2CE8D16C151985A8000A8E8B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/CTDocument.nib; sourceTree = "<group>"; };
 		2CF6A1E20F20A2950013F679 /* NDResourceFork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDResourceFork.h; sourceTree = "<group>"; };
 		2CF6A1E30F20A2950013F679 /* NDResourceFork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDResourceFork.m; sourceTree = "<group>"; };
 		2CF6A1E40F20A2950013F679 /* NDSDKCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSDKCompatibility.h; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A37F4B5FDCFA73011CA2CEA /* English */,
+				2CE8D16C151985A8000A8E8B /* Japanese */,
 			);
 			name = CTDocument.nib;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A37F4B7FDCFA73011CA2CEA /* English */,
+				2CE8D16915198583000A8E8B /* Japanese */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2C1EDA900A19B17C000C2CB3 /* English */,
+				2CE8D16B1519859C000A8E8B /* Japanese */,
 			);
 			name = TypeTableView.nib;
 			sourceTree = "<group>";
@@ -412,6 +419,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2C1EDBBD0A1A9C62000C2CB3 /* English */,
+				2CE8D16A1519858D000A8E8B /* Japanese */,
 			);
 			name = MCTWindow.nib;
 			sourceTree = "<group>";
