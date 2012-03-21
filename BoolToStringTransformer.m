@@ -25,13 +25,13 @@
 	}
 }
 		
-- (BOOL)reverseTransformedValue:(id)value
+- (id)reverseTransformedValue:(id)value
 {
 	if ([value isEqualToString:@"YES"]) {
-		return YES;
+		return [NSNumber numberWithBool:YES];
 	}
 	else {
-		return NO;
+		return [NSNumber numberWithBool:NO];
 	}
 }
 

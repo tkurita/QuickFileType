@@ -471,9 +471,14 @@ bail:
 	_currentAppPath = path;
 }
 
-- (id) ignoringCreatorForUTI
+- (id)ignoringCreatorForUTI
 {
 	return [NSNumber numberWithBool:_ignoringCreatorForUTI];
+}
+
+- (void)setIgnoringCreatorForUTI:(NSNumber *)value
+{
+	_ignoringCreatorForUTI = [value boolValue];
 }
 
 - (id)ignoringCreatorForExtension
