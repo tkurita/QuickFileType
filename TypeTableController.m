@@ -29,7 +29,7 @@ static NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 	self = [self init];
 	[NSBundle loadNibNamed:@"TypeTableView" owner:self];
 	_owner = owner;
-	int findex = [[NSUserDefaults standardUserDefaults] integerForKey:@"favoriteIndex"];
+	NSInteger findex = [[NSUserDefaults standardUserDefaults] integerForKey:@"favoriteIndex"];
 	if (findex != NSNotFound) {
 		NSIndexSet *indexset = [NSIndexSet indexSetWithIndex:findex];
 		[self setSelectedFavoriteIndexes:indexset];
@@ -318,7 +318,8 @@ bail:
 	return YES;
 }
 
-- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)op 
+- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(NSInteger)row 
+	   proposedDropOperation:(NSTableViewDropOperation)op 
 {
 #if useLog
     NSLog(@"validate Drop: %i",op);
@@ -341,7 +342,7 @@ bail:
 -(void) moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet *)indexSet
 										toIndex:(unsigned int)insertIndex
 {
-	unsigned int	index = [indexSet lastIndex];
+	unsigned long	index = [indexSet lastIndex];
 	
     unsigned int	aboveInsertIndexCount = 0;
     id object;
@@ -379,9 +380,13 @@ bail:
 	NSString *path;
 	NSDictionary *attInfo;
 	NSDictionary *typeDict;
-	NSString *kindString=nil;
+	NSString *kindString = nil;
 	while (path = [arrayEnum nextObject]) {
-		(NSString *)LSCopyKindStringForURL((CFURLRef)[NSURL fileURLWithPath:path], (CFStringRef *)&kindString);
+		OSStatus err = LSCopyKindStringForURL((CFURLRef)[NSURL fileURLWithPath:path], 
+										   (CFStringRef *)&kindString);
+		if (err != noErr) {
+			NSLog(@"Failed LSCopyKindStringForURL with error : %d", err);
+		}
 		[kindString autorelease];
 		attInfo = [fileManager fileAttributesAtPath:path traverseLink:YES];
 		NSNumber *creatorCode = [attInfo objectForKey:NSFileHFSCreatorCode];
@@ -402,7 +407,7 @@ bail:
 
 
 - (BOOL)tableView:(NSTableView *)tv acceptDrop:(id <NSDraggingInfo>)info 
-			  row:(int)row dropOperation:(NSTableViewDropOperation)operation
+			  row:(NSInteger)row dropOperation:(NSTableViewDropOperation)operation
 {
     NSPasteboard* pboard = [info draggingPasteboard];
     BOOL success = NO;
