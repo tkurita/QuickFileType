@@ -30,13 +30,13 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>8</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© Tetsuro KURITA, 1999-2012</string>
+	<string>${COPYRIGHT}</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.2.1</string>
+	<string>${PRODUCT_VERSION}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.2.1 copyright 1999-2012, Tetsuro KURITA</string>
+	<string>${PRODUCT_VERSION} ${COPYRIGHT}</string>
 	<key>NSServices</key>
 	<array>
 		<dict>
@@ -102,7 +102,7 @@
 	<key>CFBundleIconFile</key>
 	<string>QuickFileType.icns</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.5</string>
+	<string>10.8</string>
 	<key>CFBundleIdentifier</key>
 	<string>QuickFileType</string>
 	<key>CFBundleInfoDictionaryVersion</key>
