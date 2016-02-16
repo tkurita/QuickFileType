@@ -3,7 +3,7 @@
 #import "MCTWindowController.h"
 #import "UtilityFunctions.h"
 #import "HFSTypeUtils.h"
-#import <DonationReminder/DonationReminder.h>
+#import "DonationReminder/DonationReminder.h"
 
 #define useLog 0
 

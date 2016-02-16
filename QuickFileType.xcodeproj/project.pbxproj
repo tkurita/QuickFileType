@@ -22,8 +22,6 @@
 /* Begin PBXBuildFile section */
 		2C030D980A946AB9005B592F /* HelpSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C030D970A946AB9005B592F /* HelpSetup.plist */; };
 		2C061F0410231CEC004E7EDC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4BAFDCFA73011CA2CEA /* Credits.rtf */; };
-		2C15575E0F15159200662B69 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C15575D0F15159200662B69 /* Sparkle.framework */; };
-		2C1557630F15159F00662B69 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C15575D0F15159200662B69 /* Sparkle.framework */; };
 		2C1557900F15175200662B69 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2C15578F0F15175200662B69 /* dsa_pub.pem */; };
 		2C1EDA940A19B208000C2CB3 /* TypeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EDA920A19B208000C2CB3 /* TypeTableController.m */; };
 		2C1EDAAD0A19B421000C2CB3 /* TypeTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDAAC0A19B421000C2CB3 /* TypeTableView.nib */; };
@@ -33,6 +31,10 @@
 		2C443E9D0B205E77003DA62E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C443E9C0B205E77003DA62E /* InfoPlist.strings */; };
 		2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */; };
 		2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515CF30A42603B00A87E0C /* UtilityFunctions.m */; };
+		2C7597F51C73666600AEA32C /* DonationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7597F21C73664900AEA32C /* DonationReminder.framework */; };
+		2C7597F61C73667100AEA32C /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C7597F21C73664900AEA32C /* DonationReminder.framework */; };
+		2C7597F81C7366B600AEA32C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7597F71C7366B600AEA32C /* Sparkle.framework */; };
+		2C7597F91C7366BB00AEA32C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C7597F71C7366B600AEA32C /* Sparkle.framework */; };
 		2C8AA32B0F14D9E7007F2A73 /* minus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C8AA3290F14D9E7007F2A73 /* minus.tiff */; };
 		2C8AA32C0F14D9E8007F2A73 /* plus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C8AA32A0F14D9E7007F2A73 /* plus.tiff */; };
 		2C8AA37F0F14E675007F2A73 /* AltActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AA37E0F14E675007F2A73 /* AltActionButton.m */; };
@@ -43,8 +45,6 @@
 		2C9B83E50A147E4400A872A9 /* OSTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B83E40A147E4400A872A9 /* OSTypeTransformer.m */; };
 		2CACFEB80A36F26000748AC9 /* CTDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CACFEB70A36F26000748AC9 /* CTDocumentController.m */; };
 		2CD406710F7680BE00B96300 /* QuickFileType.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2CD406700F7680BE00B96300 /* QuickFileType.icns */; };
-		2CD94ABB0A8D92CB0029C487 /* DonationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */; };
-		2CD94ACA0A8D9D110029C487 /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CD94AB60A8D92CB0029C487 /* DonationReminder.framework */; };
 		2CE75EE10A1C01170005790B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE75EE00A1C01170005790B /* HFSTypeUtils.m */; };
 		2CF6A1E70F20A2950013F679 /* NDResourceFork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6A1E30F20A2950013F679 /* NDResourceFork.m */; };
 		2CF6A1E80F20A2950013F679 /* NSString+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6A1E60F20A2950013F679 /* NSString+NDCarbonUtilities.m */; };
@@ -57,6 +57,23 @@
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2C7597F11C73664900AEA32C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C7597ED1C73664800AEA32C /* DonationReminder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C4A363E19E61FC40031E521;
+			remoteInfo = DonationReminder;
+		};
+		2C7597F31C73665500AEA32C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C7597ED1C73664800AEA32C /* DonationReminder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C4A363119E61FC40031E521;
+			remoteInfo = DonationReminder;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		2CD94AC30A8D9CFD0029C487 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -64,8 +81,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2C1557630F15159F00662B69 /* Sparkle.framework in CopyFiles */,
-				2CD94ACA0A8D9D110029C487 /* DonationReminder.framework in CopyFiles */,
+				2C7597F61C73667100AEA32C /* DonationReminder.framework in CopyFiles */,
+				2C7597F91C7366BB00AEA32C /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +117,8 @@
 		2C515CF20A42603B00A87E0C /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
 		2C515CF30A42603B00A87E0C /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
 		2C5ED1B30A47828F00036C85 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C7597ED1C73664800AEA32C /* DonationReminder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DonationReminder.xcodeproj; path = DonationReminder/DonationReminder.xcodeproj; sourceTree = "<group>"; };
+		2C7597F71C7366B600AEA32C /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		2C8AA3290F14D9E7007F2A73 /* minus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = minus.tiff; sourceTree = "<group>"; };
 		2C8AA32A0F14D9E7007F2A73 /* plus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = plus.tiff; sourceTree = "<group>"; };
 		2C8AA37D0F14E675007F2A73 /* AltActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AltActionButton.h; sourceTree = "<group>"; };
@@ -143,8 +162,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
-				2CD94ABB0A8D92CB0029C487 /* DonationReminder.framework in Frameworks */,
-				2C15575E0F15159200662B69 /* Sparkle.framework in Frameworks */,
+				2C7597F51C73666600AEA32C /* DonationReminder.framework in Frameworks */,
+				2C7597F81C7366B600AEA32C /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +210,7 @@
 				2C8AA3280F14D9E6007F2A73 /* images */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
+				2C7597ED1C73664800AEA32C /* DonationReminder.xcodeproj */,
 			);
 			name = QuickFileType;
 			sourceTree = "<group>";
@@ -259,10 +279,19 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C7597F71C7366B600AEA32C /* Sparkle.framework */,
 				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C7597EE1C73664800AEA32C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C7597F21C73664900AEA32C /* DonationReminder.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		2C8AA3280F14D9E6007F2A73 /* images */ = {
@@ -312,6 +341,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2C7597F41C73665500AEA32C /* PBXTargetDependency */,
 			);
 			name = QuickFileType;
 			productInstallPath = "$(HOME)/Applications";
@@ -336,12 +366,28 @@
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* QuickFileType */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2C7597EE1C73664800AEA32C /* Products */;
+					ProjectRef = 2C7597ED1C73664800AEA32C /* DonationReminder.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* QuickFileType */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2C7597F21C73664900AEA32C /* DonationReminder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DonationReminder.framework;
+			remoteRef = 2C7597F11C73664900AEA32C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D15AC2B0486D014006FF6A4 /* Resources */ = {
@@ -433,6 +479,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2C7597F41C73665500AEA32C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DonationReminder;
+			targetProxy = 2C7597F31C73665500AEA32C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		2A37F4B4FDCFA73011CA2CEA /* CTDocument.nib */ = {
 			isa = PBXVariantGroup;
@@ -510,8 +564,8 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"\"$(SRCROOT)\"",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/..\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -535,8 +589,8 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"\"$(SRCROOT)\"",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/..\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
