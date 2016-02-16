@@ -28,6 +28,7 @@
 		2C1EDBBE0A1A9C62000C2CB3 /* MCTWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1EDBBC0A1A9C62000C2CB3 /* MCTWindow.nib */; };
 		2C1EDBC20A1A9CE6000C2CB3 /* MCTWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */; };
 		2C3ED7F20A3DBE4800E2938D /* FlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3ED7F10A3DBE4800E2938D /* FlipView.m */; };
+		2C40F0C91C73754000CFB049 /* QuickFileTypeHelp in Resources */ = {isa = PBXBuildFile; fileRef = 2C40F0C81C73754000CFB049 /* QuickFileTypeHelp */; };
 		2C443E9D0B205E77003DA62E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C443E9C0B205E77003DA62E /* InfoPlist.strings */; };
 		2C515C940A424EB400A87E0C /* BoolToStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */; };
 		2C515CF40A42603B00A87E0C /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C515CF30A42603B00A87E0C /* UtilityFunctions.m */; };
@@ -111,6 +112,7 @@
 		2C3ED7F00A3DBE4800E2938D /* FlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipView.h; sourceTree = "<group>"; };
 		2C3ED7F10A3DBE4800E2938D /* FlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipView.m; sourceTree = "<group>"; };
 		2C3FF9FD0A35F84400419FF3 /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = History.txt; path = ../History.txt; sourceTree = "<group>"; };
+		2C40F0C81C73754000CFB049 /* QuickFileTypeHelp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = QuickFileTypeHelp; sourceTree = "<group>"; };
 		2C443E960B205E64003DA62E /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C515C920A424EB400A87E0C /* BoolToStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoolToStringTransformer.h; sourceTree = "<group>"; };
 		2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoolToStringTransformer.m; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C40F0C81C73754000CFB049 /* QuickFileTypeHelp */,
 				2CD406700F7680BE00B96300 /* QuickFileType.icns */,
 				2C15578F0F15175200662B69 /* dsa_pub.pem */,
 				2C030D970A946AB9005B592F /* HelpSetup.plist */,
@@ -408,6 +411,7 @@
 				2C1557900F15175200662B69 /* dsa_pub.pem in Resources */,
 				2CD406710F7680BE00B96300 /* QuickFileType.icns in Resources */,
 				2CFB62AB1060DB0200A68C2B /* ServicesMenu.strings in Resources */,
+				2C40F0C91C73754000CFB049 /* QuickFileTypeHelp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +454,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = "/bin/sh -l";
-			shellScript = "if [ \"$BUILD_STYLE\" = 'Release' ]; then\ncd $BUILT_PRODUCTS_DIR\nSetupHelpBook $FULL_PRODUCT_NAME\nfi\n";
+			shellScript = "if [ ! \"$CONFIGURATION\" = 'Release' ]; then\necho \"HelpBook setup script will run only with Release configuration\";\nexit 0\nfi\n\ncd \"$BUILT_PRODUCTS_DIR\"\nSetupHelpBook \"$FULL_PRODUCT_NAME\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

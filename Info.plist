@@ -99,6 +99,8 @@
 	</array>
 	<key>CFBundleHelpBookFolder</key>
 	<string>QuickFileTypeHelp</string>
+	<key>CFBundleHelpBookName</key>
+	<string>Scriptfactory.QuickFileType.help</string>
 	<key>CFBundleIconFile</key>
 	<string>QuickFileType.icns</string>
 	<key>LSMinimumSystemVersion</key>
