@@ -9,7 +9,7 @@
 * Tool Tips を設定する
 * コンテキストメニューを作る
 
-= may not to do
+== may not to do
 * bundle にもcreator と type を設定したい -- やめよう
 	contents folder に PkgInfo をつくれば bundle にも creator と type を割り当てられるみたい
 	Info.plist に
@@ -21,6 +21,13 @@
 	ファイルタイプは BNDL として creator だけ設定できるようにする
 	
 * MCTWindow のファイルテーブルにdrag&drop を受け付けるようにする。
+
+== to do
+* ヘルプブック
+* Base Internatinalization
+* git に移行
+* バージョン情報を修正
+* ローカライズの修正
 
 == 2012-03-21
 * サービスメニューの Snow Leopard 対応。
