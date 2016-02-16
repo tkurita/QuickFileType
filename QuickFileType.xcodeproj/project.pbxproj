@@ -93,7 +93,7 @@
 		2C1EDBC10A1A9CE6000C2CB3 /* MCTWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTWindowController.m; sourceTree = "<group>"; };
 		2C3ED7F00A3DBE4800E2938D /* FlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipView.h; sourceTree = "<group>"; };
 		2C3ED7F10A3DBE4800E2938D /* FlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipView.m; sourceTree = "<group>"; };
-		2C3FF9FD0A35F84400419FF3 /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
+		2C3FF9FD0A35F84400419FF3 /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = History.txt; path = ../History.txt; sourceTree = "<group>"; };
 		2C443E960B205E64003DA62E /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C515C920A424EB400A87E0C /* BoolToStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoolToStringTransformer.h; sourceTree = "<group>"; };
 		2C515C930A424EB400A87E0C /* BoolToStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoolToStringTransformer.m; sourceTree = "<group>"; };
